@@ -1,0 +1,1638 @@
+fileFormatVersion: 2
+guid: bdb19a31e13e78b409f3e6e00d3df54d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7451346994313830504
+    second: keyboard template_0
+  - first:
+      213: -5328618437492197519
+    second: keyboard template_1
+  - first:
+      213: -2513203545322742223
+    second: keyboard template_2
+  - first:
+      213: -6714774767367309990
+    second: keyboard template_3
+  - first:
+      213: 6886893072613354356
+    second: keyboard template_4
+  - first:
+      213: -793101571851842315
+    second: keyboard template_5
+  - first:
+      213: -4488853173667013123
+    second: keyboard template_6
+  - first:
+      213: -4864393320948503868
+    second: keyboard template_7
+  - first:
+      213: 351623715287493080
+    second: keyboard template_8
+  - first:
+      213: 4354778988111028867
+    second: keyboard template_9
+  - first:
+      213: 88943172178637906
+    second: keyboard template_10
+  - first:
+      213: -3632821686977732531
+    second: keyboard template_11
+  - first:
+      213: -1392496710035271726
+    second: keyboard template_12
+  - first:
+      213: -4626714211992843882
+    second: keyboard template_13
+  - first:
+      213: 4386543930199391798
+    second: keyboard template_14
+  - first:
+      213: 4768968942835151879
+    second: keyboard template_15
+  - first:
+      213: 4799517827008032163
+    second: keyboard template_16
+  - first:
+      213: -7587140465376951866
+    second: keyboard template_17
+  - first:
+      213: -3691106063466063917
+    second: keyboard template_18
+  - first:
+      213: 8495200246552350663
+    second: keyboard template_19
+  - first:
+      213: 7581436570019593258
+    second: keyboard template_20
+  - first:
+      213: -8046596932408402784
+    second: keyboard template_21
+  - first:
+      213: -4343193939722895472
+    second: keyboard template_22
+  - first:
+      213: 3342444017954113897
+    second: keyboard template_23
+  - first:
+      213: -2272368570677068452
+    second: keyboard template_24
+  - first:
+      213: 4979565288801956127
+    second: keyboard template_25
+  - first:
+      213: 460168171835717416
+    second: keyboard template_26
+  - first:
+      213: -4610971036185791491
+    second: keyboard template_27
+  - first:
+      213: 5269905553482144142
+    second: keyboard template_28
+  - first:
+      213: -2811633501141408088
+    second: keyboard template_29
+  - first:
+      213: 8521171425463907968
+    second: keyboard template_30
+  - first:
+      213: -3125699121834878603
+    second: keyboard template_31
+  - first:
+      213: -5786089122829224372
+    second: keyboard template_32
+  - first:
+      213: 1747912207449734040
+    second: keyboard template_33
+  - first:
+      213: -492275880647216228
+    second: keyboard template_34
+  - first:
+      213: -9116799003011332516
+    second: keyboard template_35
+  - first:
+      213: -7221294999599680056
+    second: keyboard template_36
+  - first:
+      213: 1806869581094381682
+    second: keyboard template_37
+  - first:
+      213: 7575107891115482533
+    second: keyboard template_38
+  - first:
+      213: -2412938713312344031
+    second: keyboard template_39
+  - first:
+      213: 5184892860083971457
+    second: keyboard template_40
+  - first:
+      213: 8651562685635038805
+    second: keyboard template_41
+  - first:
+      213: 755522485456721403
+    second: keyboard template_42
+  - first:
+      213: 3732660429666347467
+    second: keyboard template_43
+  - first:
+      213: 5335988956294430517
+    second: keyboard template_44
+  - first:
+      213: -8689381885231885614
+    second: keyboard template_45
+  - first:
+      213: -7976190322017789318
+    second: keyboard template_46
+  - first:
+      213: 5147125363344524556
+    second: keyboard template_47
+  - first:
+      213: -433367755074902059
+    second: keyboard template_48
+  - first:
+      213: -494854832844857108
+    second: keyboard template_49
+  - first:
+      213: 5952728835041588365
+    second: keyboard template_50
+  - first:
+      213: 6624669157980944139
+    second: keyboard template_51
+  - first:
+      213: 1288514872597725885
+    second: keyboard template_52
+  - first:
+      213: -2769183273800169756
+    second: keyboard template_53
+  - first:
+      213: -7285789876952585988
+    second: keyboard template_54
+  - first:
+      213: -8214567222435216680
+    second: keyboard template_55
+  - first:
+      213: 8726586146721348277
+    second: keyboard template_56
+  - first:
+      213: -8839852002156823389
+    second: keyboard template_57
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: keyboard template_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 434
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8602046cc90886760800000000000000
+      internalID: 7451346994313830504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_1
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 434
+        width: 100
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1773ea963c1fc06b0800000000000000
+      internalID: -5328618437492197519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_2
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 434
+        width: 100
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13e19c8e0be4f1dd0800000000000000
+      internalID: -2513203545322742223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_3
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 434
+        width: 100
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a55b05cece350d2a0800000000000000
+      internalID: -6714774767367309990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_4
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 434
+        width: 100
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47ba73fd2c8239f50800000000000000
+      internalID: 6886893072613354356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_5
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 434
+        width: 100
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fc87fa82565ef4f0800000000000000
+      internalID: -793101571851842315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_6
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 434
+        width: 101
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfd51be42d364b1c0800000000000000
+      internalID: -4488853173667013123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_7
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 434
+        width: 101
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cae4191c043e7cb0800000000000000
+      internalID: -4864393320948503868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_8
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 434
+        width: 101
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d96054f7e731e400800000000000000
+      internalID: 351623715287493080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_9
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 434
+        width: 101
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38261b5ca684f6c30800000000000000
+      internalID: 4354778988111028867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_10
+      rect:
+        serializedVersion: 2
+        x: 1049
+        y: 434
+        width: 101
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25477e6085dfb3100800000000000000
+      internalID: 88943172178637906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_11
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 434
+        width: 101
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d406b575cef959dc0800000000000000
+      internalID: -3632821686977732531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_12
+      rect:
+        serializedVersion: 2
+        x: 1259
+        y: 434
+        width: 101
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2df8277be9bdcace0800000000000000
+      internalID: -1392496710035271726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_13
+      rect:
+        serializedVersion: 2
+        x: 1364
+        y: 435
+        width: 152
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6994ae400fb9acfb0800000000000000
+      internalID: -4626714211992843882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 326
+        width: 157
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63e3e2fa67220ec30800000000000000
+      internalID: 4386543930199391798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_15
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 325
+        width: 101
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7043f868cf7ce2240800000000000000
+      internalID: 4768968942835151879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_16
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 325
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ade7f3e8005b9240800000000000000
+      internalID: 4799517827008032163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_17
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 325
+        width: 101
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c10734f1ff05b690800000000000000
+      internalID: -7587140465376951866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_18
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 325
+        width: 101
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d790d2779e86ccc0800000000000000
+      internalID: -3691106063466063917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_19
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 325
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cf409f5d9305e570800000000000000
+      internalID: 8495200246552350663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_20
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 325
+        width: 101
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2c7c2b646ca63960800000000000000
+      internalID: 7581436570019593258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_21
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 325
+        width: 101
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ac9c0109beb45090800000000000000
+      internalID: -8046596932408402784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_22
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 325
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09fff208f10e9b3c0800000000000000
+      internalID: -4343193939722895472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_23
+      rect:
+        serializedVersion: 2
+        x: 998
+        y: 325
+        width: 101
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 969c8c3102fb26e20800000000000000
+      internalID: 3342444017954113897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_24
+      rect:
+        serializedVersion: 2
+        x: 1103
+        y: 325
+        width: 101
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5df70213dce670e0800000000000000
+      internalID: -2272368570677068452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_25
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 325
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f11f7ee4f38fa1540800000000000000
+      internalID: 4979565288801956127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_26
+      rect:
+        serializedVersion: 2
+        x: 1312
+        y: 325
+        width: 101
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8277533a388d26600800000000000000
+      internalID: 460168171835717416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_27
+      rect:
+        serializedVersion: 2
+        x: 1417
+        y: 325
+        width: 99
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df3f786c54a8200c0800000000000000
+      internalID: -4610971036185791491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 216
+        width: 169
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8959230e27722940800000000000000
+      internalID: 5269905553482144142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_29
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 215
+        width: 101
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a6e0e53a321bf8d0800000000000000
+      internalID: -2811633501141408088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_30
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 215
+        width: 100
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0863cfca348414670800000000000000
+      internalID: 8521171425463907968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_31
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 215
+        width: 101
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 579184895394f94d0800000000000000
+      internalID: -3125699121834878603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_32
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 215
+        width: 101
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c46330b499ea3bfa0800000000000000
+      internalID: -5786089122829224372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_33
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 215
+        width: 100
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89b3c9f44e4d14810800000000000000
+      internalID: 1747912207449734040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_34
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 215
+        width: 101
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c93b78ad1b51b29f0800000000000000
+      internalID: -492275880647216228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_35
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 215
+        width: 100
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c56cfd01c9f9a7180800000000000000
+      internalID: -9116799003011332516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_36
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 215
+        width: 101
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c57e8a357ec8cb90800000000000000
+      internalID: -7221294999599680056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_37
+      rect:
+        serializedVersion: 2
+        x: 1019
+        y: 215
+        width: 101
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 278e6909f4a431910800000000000000
+      internalID: 1806869581094381682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_38
+      rect:
+        serializedVersion: 2
+        x: 1124
+        y: 215
+        width: 101
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ad52390e70302960800000000000000
+      internalID: 7575107891115482533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_39
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 215
+        width: 101
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 128ca384605838ed0800000000000000
+      internalID: -2412938713312344031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_40
+      rect:
+        serializedVersion: 2
+        x: 1336
+        y: 216
+        width: 180
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 185a3c3e59074f740800000000000000
+      internalID: 5184892860083971457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_41
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 108
+        width: 223
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55e0d45bc66801870800000000000000
+      internalID: 8651562685635038805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_42
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 106
+        width: 101
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf5d77592b72c7a00800000000000000
+      internalID: 755522485456721403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_43
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 106
+        width: 101
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc96b6162e21dc330800000000000000
+      internalID: 3732660429666347467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_44
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 106
+        width: 101
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53f36593fad3d0a40800000000000000
+      internalID: 5335988956294430517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_45
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 106
+        width: 100
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d21a05b63d196780800000000000000
+      internalID: -8689381885231885614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_46
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 106
+        width: 100
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7a983b6921ee4190800000000000000
+      internalID: -7976190322017789318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_47
+      rect:
+        serializedVersion: 2
+        x: 758
+        y: 106
+        width: 100
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c05cd805f334e6740800000000000000
+      internalID: 5147125363344524556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_48
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 106
+        width: 101
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d7e6a5a25e5cf9f0800000000000000
+      internalID: -433367755074902059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_49
+      rect:
+        serializedVersion: 2
+        x: 969
+        y: 106
+        width: 101
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce0a5e0c62ce129f0800000000000000
+      internalID: -494854832844857108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_50
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 106
+        width: 101
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d84f0e826575c9250800000000000000
+      internalID: 5952728835041588365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_51
+      rect:
+        serializedVersion: 2
+        x: 1181
+        y: 106
+        width: 101
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b07b0fb008d8feb50800000000000000
+      internalID: 6624669157980944139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_52
+      rect:
+        serializedVersion: 2
+        x: 1287
+        y: 108
+        width: 229
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db2cef42379b1e110800000000000000
+      internalID: 1288514872597725885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_53
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 164
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e60037fb72e199d0800000000000000
+      internalID: -2769183273800169756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_54
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 0
+        width: 166
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf8aa1c65bca3ea90800000000000000
+      internalID: -7285789876952585988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_55
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 0
+        width: 512
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d28e2342aefffd80800000000000000
+      internalID: -8214567222435216680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_56
+      rect:
+        serializedVersion: 2
+        x: 1021
+        y: 0
+        width: 166
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5babb217ddf0b1970800000000000000
+      internalID: 8726586146721348277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keyboard template_57
+      rect:
+        serializedVersion: 2
+        x: 1352
+        y: 0
+        width: 164
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3acba688079825580800000000000000
+      internalID: -8839852002156823389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      keyboard template_0: 7451346994313830504
+      keyboard template_1: -5328618437492197519
+      keyboard template_10: 88943172178637906
+      keyboard template_11: -3632821686977732531
+      keyboard template_12: -1392496710035271726
+      keyboard template_13: -4626714211992843882
+      keyboard template_14: 4386543930199391798
+      keyboard template_15: 4768968942835151879
+      keyboard template_16: 4799517827008032163
+      keyboard template_17: -7587140465376951866
+      keyboard template_18: -3691106063466063917
+      keyboard template_19: 8495200246552350663
+      keyboard template_2: -2513203545322742223
+      keyboard template_20: 7581436570019593258
+      keyboard template_21: -8046596932408402784
+      keyboard template_22: -4343193939722895472
+      keyboard template_23: 3342444017954113897
+      keyboard template_24: -2272368570677068452
+      keyboard template_25: 4979565288801956127
+      keyboard template_26: 460168171835717416
+      keyboard template_27: -4610971036185791491
+      keyboard template_28: 5269905553482144142
+      keyboard template_29: -2811633501141408088
+      keyboard template_3: -6714774767367309990
+      keyboard template_30: 8521171425463907968
+      keyboard template_31: -3125699121834878603
+      keyboard template_32: -5786089122829224372
+      keyboard template_33: 1747912207449734040
+      keyboard template_34: -492275880647216228
+      keyboard template_35: -9116799003011332516
+      keyboard template_36: -7221294999599680056
+      keyboard template_37: 1806869581094381682
+      keyboard template_38: 7575107891115482533
+      keyboard template_39: -2412938713312344031
+      keyboard template_4: 6886893072613354356
+      keyboard template_40: 5184892860083971457
+      keyboard template_41: 8651562685635038805
+      keyboard template_42: 755522485456721403
+      keyboard template_43: 3732660429666347467
+      keyboard template_44: 5335988956294430517
+      keyboard template_45: -8689381885231885614
+      keyboard template_46: -7976190322017789318
+      keyboard template_47: 5147125363344524556
+      keyboard template_48: -433367755074902059
+      keyboard template_49: -494854832844857108
+      keyboard template_5: -793101571851842315
+      keyboard template_50: 5952728835041588365
+      keyboard template_51: 6624669157980944139
+      keyboard template_52: 1288514872597725885
+      keyboard template_53: -2769183273800169756
+      keyboard template_54: -7285789876952585988
+      keyboard template_55: -8214567222435216680
+      keyboard template_56: 8726586146721348277
+      keyboard template_57: -8839852002156823389
+      keyboard template_6: -4488853173667013123
+      keyboard template_7: -4864393320948503868
+      keyboard template_8: 351623715287493080
+      keyboard template_9: 4354778988111028867
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

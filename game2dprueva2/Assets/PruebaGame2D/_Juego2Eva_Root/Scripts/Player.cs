@@ -17,22 +17,20 @@ public class Player : Entity
     private void HandleInput()
     {
         xInput = 0;
+        // movimiento horizontal (teclado sigue usando axis o keys)
+        // ejemplo usando bindings MoveLeft/MoveRight:
+        if (Input.GetKey(KeyBindingsManager.Instance.GetBinding("MoveRight", InputDeviceType.Keyboard))) xInput += 1;
+        if (Input.GetKey(KeyBindingsManager.Instance.GetBinding("MoveLeft", InputDeviceType.Keyboard))) xInput -= 1;
 
-        // Movimiento horizontal
-        if (Input.GetKey(KeyBindingsManager.Instance.GetBinding("MoveRight"))) xInput += 1;
-        if (Input.GetKey(KeyBindingsManager.Instance.GetBinding("MoveLeft"))) xInput -= 1;
-
-        // Saltar
-        if (Input.GetKeyDown(KeyBindingsManager.Instance.GetBinding("Jump")))
+        // salto: comprobamos primero gamepad effective if connected
+        KeyCode jumpKey = KeyBindingsManager.Instance.GetEffectiveBinding("Jump");
+        if (Input.GetKeyDown(jumpKey))
             TryToJump();
 
-        // Atacar
-        if (Input.GetKeyDown(KeyBindingsManager.Instance.GetBinding("Attack")))
+        // ataque
+        KeyCode attackKey = KeyBindingsManager.Instance.GetEffectiveBinding("Attack");
+        if (Input.GetKeyDown(attackKey))
             HandleAttack();
-
-        // Dash (si lo usas)
-        if (Input.GetKeyDown(KeyBindingsManager.Instance.GetBinding("Dash")))
-            HandleDash();
     }
 
     protected override void HandleMovement()

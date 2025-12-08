@@ -10,7 +10,7 @@ public class MenuController : MonoBehaviour
     public Animator titleAnimator;          // Animator del TitlePanel
     public RectTransform titleRect;         // RectTransform del TitlePanel
     public Animator[] buttonAnimators;      // Animators de cada botón (orden: Play, Options, Exit)
-    public GameObject firstSelected;        // boton seleccionado inicialmente (Play)
+    public GameObject firstSelected;        // botón seleccionado inicialmente (Play)
 
     [Header("Timings")]
     public float initialFadeDuration = 1f;
@@ -31,6 +31,10 @@ public class MenuController : MonoBehaviour
     public CanvasGroup soundPanelGroup;
     public CanvasGroup keyboardPanelGroup;
     public CanvasGroup gamepadPanelGroup;
+
+    [Header("Reassign Panels")] // NUEVO
+    public CanvasGroup keyboardReassignPanel;
+    public CanvasGroup gamepadReassignPanel;
 
     private bool inputEnabled = false;
 
@@ -177,6 +181,33 @@ public class MenuController : MonoBehaviour
         StartCoroutine(FadeOutAndIn(fromPanel, controlsPanelGroup));
     }
 
+    public void ShowMainMenu()
+    {
+        StartCoroutine(FadeOutAndIn(controlsPanelGroup, mainMenuGroup));
+    }
+
+    // -------------------- NUEVOS MÉTODOS PARA REASIGNAR TECLAS --------------------
+    public void OpenKeyboardReassignPanel()
+    {
+        StartCoroutine(FadeOutAndIn(keyboardPanelGroup, keyboardReassignPanel));
+    }
+
+    public void CloseKeyboardReassignPanel()
+    {
+        StartCoroutine(FadeOutAndIn(keyboardReassignPanel, keyboardPanelGroup));
+    }
+
+    public void OpenGamepadReassignPanel()
+    {
+        StartCoroutine(FadeOutAndIn(gamepadPanelGroup, gamepadReassignPanel));
+    }
+
+    public void CloseGamepadReassignPanel()
+    {
+        StartCoroutine(FadeOutAndIn(gamepadReassignPanel, gamepadPanelGroup));
+    }
+
+    // -------------------- CORUTINA GENERAL DE FADE --------------------
     private IEnumerator FadeOutAndIn(CanvasGroup fadeOutGroup, CanvasGroup fadeInGroup)
     {
         float duration = transitionDuration;
@@ -205,10 +236,5 @@ public class MenuController : MonoBehaviour
             yield return null;
         }
         fadeInGroup.alpha = 1f;
-    }
-
-    public void ShowMainMenu()
-    {
-        StartCoroutine(FadeOutAndIn(controlsPanelGroup, mainMenuGroup));
     }
 }

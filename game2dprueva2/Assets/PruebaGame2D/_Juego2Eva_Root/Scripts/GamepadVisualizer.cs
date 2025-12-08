@@ -2,20 +2,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class KeyboardVisualizer : MonoBehaviour
+public class GamepadVisualizer : MonoBehaviour
 {
-    public static KeyboardVisualizer Instance;
+    public static GamepadVisualizer Instance;
 
     [System.Serializable]
     public class KeyHotspot
     {
-        public string keyName; // ej "A", "Space"
-        public RectTransform hotspotTransform; // el rect transform (el GameObject hijo que posicionaste)
-        public GameObject arrowContainer; // hijo que contiene Image + TMP label
+        public string keyName; // ej "JoystickButton0", "JoystickButton1", etc.
+        public RectTransform hotspotTransform;
+        public GameObject arrowContainer; // la flecha + label (desactivado por defecto)
         public TMP_Text label;
     }
 
+    [Header("Hotspots (map each visible gamepad button)")]
     public List<KeyHotspot> hotspots = new List<KeyHotspot>();
+
     private Dictionary<string, KeyHotspot> hotspotMap = new Dictionary<string, KeyHotspot>();
 
     void Awake()
@@ -25,8 +27,10 @@ public class KeyboardVisualizer : MonoBehaviour
 
         hotspotMap.Clear();
         foreach (var hs in hotspots)
+        {
             if (hs != null && !string.IsNullOrEmpty(hs.keyName))
                 hotspotMap[hs.keyName.ToUpper()] = hs;
+        }
     }
 
     void OnEnable() => UpdateAllKeys();
@@ -46,7 +50,7 @@ public class KeyboardVisualizer : MonoBehaviour
         foreach (var action in list.actions)
         {
             string actionName = action.actionName;
-            KeyCode bound = KeyBindingsManager.Instance.GetBinding(actionName, InputDeviceType.Keyboard);
+            KeyCode bound = KeyBindingsManager.Instance.GetBinding(actionName, InputDeviceType.Gamepad);
             if (bound == KeyCode.None) continue;
 
             string keyStr = bound.ToString().ToUpper();
@@ -55,13 +59,13 @@ public class KeyboardVisualizer : MonoBehaviour
                 if (hs.arrowContainer != null) hs.arrowContainer.SetActive(true);
                 if (hs.label != null) hs.label.text = actionName;
             }
-            else Debug.LogWarning($"No hotspot for key {keyStr} (action {actionName})");
+            else Debug.LogWarning($"[GamepadVisualizer] No hotspot for key {keyStr} (action {actionName})");
         }
     }
 
     public void UpdateAction(string actionName)
     {
-        // clear old labels for that action
+        // limpiar label anterior para esa acción
         foreach (var hs in hotspots)
             if (hs.label != null && hs.label.text == actionName)
             {
@@ -69,7 +73,7 @@ public class KeyboardVisualizer : MonoBehaviour
                 if (hs.arrowContainer != null) hs.arrowContainer.SetActive(false);
             }
 
-        KeyCode bound = KeyBindingsManager.Instance.GetBinding(actionName, InputDeviceType.Keyboard);
+        KeyCode bound = KeyBindingsManager.Instance.GetBinding(actionName, InputDeviceType.Gamepad);
         if (bound == KeyCode.None) return;
         string keyStr = bound.ToString().ToUpper();
         if (hotspotMap.TryGetValue(keyStr, out KeyHotspot hs2))

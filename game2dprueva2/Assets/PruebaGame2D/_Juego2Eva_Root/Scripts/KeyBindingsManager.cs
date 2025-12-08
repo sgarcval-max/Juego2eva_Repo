@@ -1,23 +1,43 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public enum InputDeviceType { Keyboard, Gamepad }
 
+// Nota: ActionListSO y ActionData deben existir en tu proyecto.
+// ActionData debe exponer: string actionName; KeyCode defaultKey; string defaultGamepadButton;
 public class KeyBindingsManager : MonoBehaviour
 {
     public static KeyBindingsManager Instance;
 
+    [Header("Data")]
     public ActionListSO actionList;
 
+    // bindings por dispositivo
     private Dictionary<string, KeyCode> keyboardBindings = new Dictionary<string, KeyCode>();
     private Dictionary<string, KeyCode> gamepadBindings = new Dictionary<string, KeyCode>();
 
+    // Evento opcional: permite que otras clases se suscriban a cambios
+    public event Action<string, InputDeviceType, KeyCode> OnBindingChanged;
+
     private void Awake()
     {
-        if (Instance == null) { Instance = this; DontDestroyOnLoad(gameObject); }
-        else { Destroy(gameObject); return; }
+        // singleton clásico
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
 
+        // Cargar desde PlayerPrefs
         LoadBindings();
+
+        Debug.Log("[KeyBindingsManager] Awake - bindings cargados.");
     }
 
     private void LoadBindings()
@@ -36,31 +56,39 @@ public class KeyBindingsManager : MonoBehaviour
             string kKey = $"bind_{action.actionName}_Keyboard";
             string gKey = $"bind_{action.actionName}_Gamepad";
 
-            // Keyboard: stored as string name of KeyCode
+            // Keyboard
             if (PlayerPrefs.HasKey(kKey))
-                keyboardBindings[action.actionName] = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(kKey));
+            {
+                string val = PlayerPrefs.GetString(kKey);
+                if (Enum.TryParse(val, out KeyCode parsedK))
+                    keyboardBindings[action.actionName] = parsedK;
+                else
+                {
+                    Debug.LogWarning($"[KeyBindingsManager] No se pudo parsear '{val}' para {kKey}. Uso default.");
+                    keyboardBindings[action.actionName] = action.defaultKey;
+                }
+            }
             else
                 keyboardBindings[action.actionName] = action.defaultKey;
 
-            // Gamepad: defaultGamepad can be stored as KeyCode joystick enum or a string in ActionData
+            // Gamepad
             if (PlayerPrefs.HasKey(gKey))
-                gamepadBindings[action.actionName] = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(gKey));
-            else
             {
-                // if ActionData contains a default joystick key string, try parse, else set to KeyCode.None
-                if (!string.IsNullOrEmpty(action.defaultGamepadButton))
+                string val = PlayerPrefs.GetString(gKey);
+                if (Enum.TryParse(val, out KeyCode parsedG))
+                    gamepadBindings[action.actionName] = parsedG;
+                else
                 {
-                    try
-                    {
-                        gamepadBindings[action.actionName] = (KeyCode)System.Enum.Parse(typeof(KeyCode), action.defaultGamepadButton);
-                    }
-                    catch { gamepadBindings[action.actionName] = KeyCode.None; }
+                    Debug.LogWarning($"[KeyBindingsManager] No se pudo parsear '{val}' para {gKey}. Uso default.");
+                    gamepadBindings[action.actionName] = TryParseGamepadDefault(action.defaultGamepadButton);
                 }
-                else gamepadBindings[action.actionName] = KeyCode.None;
             }
+            else
+                gamepadBindings[action.actionName] = TryParseGamepadDefault(action.defaultGamepadButton);
         }
     }
 
+    // Guarda todo en PlayerPrefs
     public void SaveBindings()
     {
         foreach (var kv in keyboardBindings)
@@ -70,9 +98,10 @@ public class KeyBindingsManager : MonoBehaviour
             PlayerPrefs.SetString($"bind_{kv.Key}_Gamepad", kv.Value.ToString());
 
         PlayerPrefs.Save();
+        Debug.Log("[KeyBindingsManager] SaveBindings: guardado en PlayerPrefs.");
     }
 
-    // Get binding for a device
+    // Get binding para un dispositivo concreto
     public KeyCode GetBinding(string actionName, InputDeviceType device)
     {
         if (device == InputDeviceType.Keyboard)
@@ -86,7 +115,7 @@ public class KeyBindingsManager : MonoBehaviour
         return KeyCode.None;
     }
 
-    // Rebind for a device
+    // Rebind: ahora guarda + notifica + dispara evento
     public void Rebind(string actionName, KeyCode newKey, InputDeviceType device)
     {
         if (device == InputDeviceType.Keyboard)
@@ -95,26 +124,59 @@ public class KeyBindingsManager : MonoBehaviour
             gamepadBindings[actionName] = newKey;
 
         SaveBindings();
-        Debug.Log($"[KeyBindingsManager] Saved {actionName} for {device} = {newKey}");
+
+        Debug.Log($"[KeyBindingsManager] Rebind -> {actionName} ({device}) = {newKey}");
+
+        // Notificar a visualizadores concretos (si existen)
+        if (device == InputDeviceType.Keyboard)
+            KeyboardVisualizer.Instance?.UpdateAction(actionName);
+        else
+            GamepadVisualizer.Instance?.UpdateAction(actionName);
+
+        // Disparar evento para quien quiera escuchar
+        OnBindingChanged?.Invoke(actionName, device, newKey);
     }
 
-    // Helper: return best effective binding (prefer gamepad if connected)
+    // Helper: prioridad gamepad si está conectado y tiene binding
     public KeyCode GetEffectiveBinding(string actionName)
     {
-        // Aquí decides prioridad: por ejemplo, si hay un gamepad conectado usamos ese; si no, teclado.
         bool gamepadConnected = IsGamepadConnected();
         if (gamepadConnected)
         {
             var g = GetBinding(actionName, InputDeviceType.Gamepad);
             if (g != KeyCode.None) return g;
         }
-        // fallback keyboard
         return GetBinding(actionName, InputDeviceType.Keyboard);
+    }
+
+    // Reset a defaults (útil para debug / opciones)
+    public void ResetToDefaults(bool save = true)
+    {
+        foreach (var action in actionList.actions)
+        {
+            keyboardBindings[action.actionName] = action.defaultKey;
+            if (!string.IsNullOrEmpty(action.defaultGamepadButton) && Enum.TryParse(action.defaultGamepadButton, out KeyCode parsed))
+                gamepadBindings[action.actionName] = parsed;
+            else
+                gamepadBindings[action.actionName] = KeyCode.None;
+        }
+
+        if (save) SaveBindings();
+        Debug.Log("[KeyBindingsManager] Reset to defaults.");
+    }
+
+    private KeyCode TryParseGamepadDefault(string defaultGamepadButton)
+    {
+        if (string.IsNullOrEmpty(defaultGamepadButton)) return KeyCode.None;
+        if (Enum.TryParse(defaultGamepadButton, out KeyCode parsed)) return parsed;
+        return KeyCode.None;
     }
 
     private bool IsGamepadConnected()
     {
-        // Simple detection: si hay joystick names no vacíos
-        return Input.GetJoystickNames().Length > 0 && !string.IsNullOrEmpty(Input.GetJoystickNames()[0]);
+        string[] names = Input.GetJoystickNames();
+        for (int i = 0; i < names.Length; i++)
+            if (!string.IsNullOrEmpty(names[i])) return true;
+        return false;
     }
 }

@@ -79,4 +79,29 @@ public class Player : Entity
         // Por ahora solo un ejemplo de debug:
         Debug.Log("Dash pressed!");
     }
+
+    private float GetHorizontalInput()
+    {
+        // 1) Si hay gamepad con axis asignado
+        if (KeyBindingsManager.Instance != null && KeyBindingsManager.Instance.IsGamepadConnected())
+        {
+            string axis = KeyBindingsManager.Instance.GetGamepadAxisBinding("MoveHorizontal");
+            Debug.Log($"[InputDebug] MoveHorizontal axis binding = '{axis}'");
+            if (!string.IsNullOrEmpty(axis))
+            {
+                float val = Input.GetAxis(axis);
+                Debug.Log($"[InputDebug] Input.GetAxis({axis}) = {val}");
+                if (Mathf.Abs(val) > 0.12f) return val; // umbral
+            }
+        }
+
+        // 2) fallback teclado con MoveLeft/MoveRight
+        float h = 0f;
+        if (KeyBindingsManager.Instance != null)
+        {
+            if (Input.GetKey(KeyBindingsManager.Instance.GetBinding("MoveRight", InputDeviceType.Keyboard))) h += 1f;
+            if (Input.GetKey(KeyBindingsManager.Instance.GetBinding("MoveLeft", InputDeviceType.Keyboard))) h -= 1f;
+        }
+        return h;
+    }
 }

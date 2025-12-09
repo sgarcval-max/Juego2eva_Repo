@@ -12,13 +12,7 @@ public enum InputType
 public class ActionData
 {
     public string actionName;
-
-    // Tecla del teclado
     public KeyCode defaultKey;
-
-    // Botón del gamepad
-    public string defaultGamepadButton;
-
-    // Tipo de input
-    public InputType inputType;
+    public string defaultGamepadButton; // ej "JoystickButton0"
+    public string defaultGamepadAxis;   // ej "LeftStickX" o "" si no aplica
 }

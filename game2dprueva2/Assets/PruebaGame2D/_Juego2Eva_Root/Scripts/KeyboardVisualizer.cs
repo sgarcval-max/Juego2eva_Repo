@@ -10,8 +10,8 @@ public class KeyboardVisualizer : MonoBehaviour
     public class KeyHotspot
     {
         public string keyName; // ej "A", "Space"
-        public RectTransform hotspotTransform; // el rect transform (el GameObject hijo que posicionaste)
-        public GameObject arrowContainer; // hijo que contiene Image + TMP label
+        public RectTransform hotspotTransform; // el objeto vacío que posicionaste sobre la tecla
+        public GameObject arrowContainer; // flecha + label (desactivado por defecto)
         public TMP_Text label;
     }
 
@@ -55,13 +55,12 @@ public class KeyboardVisualizer : MonoBehaviour
                 if (hs.arrowContainer != null) hs.arrowContainer.SetActive(true);
                 if (hs.label != null) hs.label.text = actionName;
             }
-            else Debug.LogWarning($"No hotspot for key {keyStr} (action {actionName})");
         }
     }
 
     public void UpdateAction(string actionName)
     {
-        // clear old labels for that action
+        // limpiar anterior
         foreach (var hs in hotspots)
             if (hs.label != null && hs.label.text == actionName)
             {

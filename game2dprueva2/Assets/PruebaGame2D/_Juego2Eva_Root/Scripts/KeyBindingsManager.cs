@@ -4,46 +4,34 @@ using UnityEngine;
 
 public enum InputDeviceType { Keyboard, Gamepad }
 
-// Nota: ActionListSO y ActionData deben existir en tu proyecto.
-// ActionData debe exponer: string actionName; KeyCode defaultKey; string defaultGamepadButton;
 public class KeyBindingsManager : MonoBehaviour
 {
     public static KeyBindingsManager Instance;
 
-    [Header("Data")]
+    [Header("Datos")]
     public ActionListSO actionList;
 
-    // bindings por dispositivo
     private Dictionary<string, KeyCode> keyboardBindings = new Dictionary<string, KeyCode>();
-    private Dictionary<string, KeyCode> gamepadBindings = new Dictionary<string, KeyCode>();
+    private Dictionary<string, KeyCode> gamepadButtonBindings = new Dictionary<string, KeyCode>();
+    private Dictionary<string, string> gamepadAxisBindings = new Dictionary<string, string>(); // axis names
 
-    // Evento opcional: permite que otras clases se suscriban a cambios
-    public event Action<string, InputDeviceType, KeyCode> OnBindingChanged;
+    public event Action<string, InputDeviceType, object> OnBindingChanged;
+    // object puede ser KeyCode o string (axis)
 
     private void Awake()
     {
-        // singleton clásico
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
+        if (Instance == null) { Instance = this; DontDestroyOnLoad(gameObject); }
+        else { Destroy(gameObject); return; }
 
-        // Cargar desde PlayerPrefs
         LoadBindings();
-
         Debug.Log("[KeyBindingsManager] Awake - bindings cargados.");
     }
 
     private void LoadBindings()
     {
         keyboardBindings.Clear();
-        gamepadBindings.Clear();
+        gamepadButtonBindings.Clear();
+        gamepadAxisBindings.Clear();
 
         if (actionList == null)
         {
@@ -54,54 +42,51 @@ public class KeyBindingsManager : MonoBehaviour
         foreach (var action in actionList.actions)
         {
             string kKey = $"bind_{action.actionName}_Keyboard";
-            string gKey = $"bind_{action.actionName}_Gamepad";
+            string gbKey = $"bind_{action.actionName}_GamepadButton";
+            string gaKey = $"bind_{action.actionName}_GamepadAxis";
 
-            // Keyboard
+            // keyboard
             if (PlayerPrefs.HasKey(kKey))
             {
                 string val = PlayerPrefs.GetString(kKey);
-                if (Enum.TryParse(val, out KeyCode parsedK))
-                    keyboardBindings[action.actionName] = parsedK;
-                else
-                {
-                    Debug.LogWarning($"[KeyBindingsManager] No se pudo parsear '{val}' para {kKey}. Uso default.");
-                    keyboardBindings[action.actionName] = action.defaultKey;
-                }
+                if (Enum.TryParse(val, out KeyCode parsedK)) keyboardBindings[action.actionName] = parsedK;
+                else keyboardBindings[action.actionName] = action.defaultKey;
             }
-            else
-                keyboardBindings[action.actionName] = action.defaultKey;
+            else keyboardBindings[action.actionName] = action.defaultKey;
 
-            // Gamepad
-            if (PlayerPrefs.HasKey(gKey))
+            // gamepad button
+            if (PlayerPrefs.HasKey(gbKey))
             {
-                string val = PlayerPrefs.GetString(gKey);
-                if (Enum.TryParse(val, out KeyCode parsedG))
-                    gamepadBindings[action.actionName] = parsedG;
-                else
-                {
-                    Debug.LogWarning($"[KeyBindingsManager] No se pudo parsear '{val}' para {gKey}. Uso default.");
-                    gamepadBindings[action.actionName] = TryParseGamepadDefault(action.defaultGamepadButton);
-                }
+                string val = PlayerPrefs.GetString(gbKey);
+                if (Enum.TryParse(val, out KeyCode parsedG)) gamepadButtonBindings[action.actionName] = parsedG;
+                else gamepadButtonBindings[action.actionName] = TryParseGamepadButton(action.defaultGamepadButton);
             }
+            else gamepadButtonBindings[action.actionName] = TryParseGamepadButton(action.defaultGamepadButton);
+
+            // gamepad axis
+            if (PlayerPrefs.HasKey(gaKey))
+                gamepadAxisBindings[action.actionName] = PlayerPrefs.GetString(gaKey);
             else
-                gamepadBindings[action.actionName] = TryParseGamepadDefault(action.defaultGamepadButton);
+                gamepadAxisBindings[action.actionName] = action.defaultGamepadAxis ?? "";
         }
     }
 
-    // Guarda todo en PlayerPrefs
     public void SaveBindings()
     {
         foreach (var kv in keyboardBindings)
             PlayerPrefs.SetString($"bind_{kv.Key}_Keyboard", kv.Value.ToString());
 
-        foreach (var kv in gamepadBindings)
-            PlayerPrefs.SetString($"bind_{kv.Key}_Gamepad", kv.Value.ToString());
+        foreach (var kv in gamepadButtonBindings)
+            PlayerPrefs.SetString($"bind_{kv.Key}_GamepadButton", kv.Value.ToString());
+
+        foreach (var kv in gamepadAxisBindings)
+            PlayerPrefs.SetString($"bind_{kv.Key}_GamepadAxis", kv.Value);
 
         PlayerPrefs.Save();
-        Debug.Log("[KeyBindingsManager] SaveBindings: guardado en PlayerPrefs.");
+        Debug.Log("[KeyBindingsManager] SaveBindings guardado en PlayerPrefs.");
     }
 
-    // Get binding para un dispositivo concreto
+    // getters
     public KeyCode GetBinding(string actionName, InputDeviceType device)
     {
         if (device == InputDeviceType.Keyboard)
@@ -110,73 +95,81 @@ public class KeyBindingsManager : MonoBehaviour
         }
         else
         {
-            if (gamepadBindings.TryGetValue(actionName, out var g)) return g;
+            if (gamepadButtonBindings.TryGetValue(actionName, out var g)) return g;
         }
         return KeyCode.None;
     }
 
-    // Rebind: ahora guarda + notifica + dispara evento
+    public string GetGamepadAxisBinding(string actionName)
+    {
+        if (gamepadAxisBindings.TryGetValue(actionName, out var a)) return a;
+        return "";
+    }
+
+    // rebinders
     public void Rebind(string actionName, KeyCode newKey, InputDeviceType device)
     {
-        if (device == InputDeviceType.Keyboard)
-            keyboardBindings[actionName] = newKey;
-        else
-            gamepadBindings[actionName] = newKey;
+        if (device == InputDeviceType.Keyboard) keyboardBindings[actionName] = newKey;
+        else gamepadButtonBindings[actionName] = newKey;
 
         SaveBindings();
-
         Debug.Log($"[KeyBindingsManager] Rebind -> {actionName} ({device}) = {newKey}");
 
-        // Notificar a visualizadores concretos (si existen)
-        if (device == InputDeviceType.Keyboard)
-            KeyboardVisualizer.Instance?.UpdateAction(actionName);
-        else
-            GamepadVisualizer.Instance?.UpdateAction(actionName);
+        // Notificar
+        if (device == InputDeviceType.Keyboard) KeyboardVisualizer.Instance?.UpdateAction(actionName);
+        else GamepadVisualizer.Instance?.UpdateAction(actionName);
 
-        // Disparar evento para quien quiera escuchar
         OnBindingChanged?.Invoke(actionName, device, newKey);
     }
 
-    // Helper: prioridad gamepad si está conectado y tiene binding
+    public void RebindGamepadAxis(string actionName, string axisName)
+    {
+        gamepadAxisBindings[actionName] = axisName ?? "";
+        SaveBindings();
+        Debug.Log($"[KeyBindingsManager] RebindAxis -> {actionName} = {axisName}");
+
+        GamepadVisualizer.Instance?.UpdateAction(actionName);
+        OnBindingChanged?.Invoke(actionName, InputDeviceType.Gamepad, axisName);
+    }
+
+    // utilidad
     public KeyCode GetEffectiveBinding(string actionName)
     {
-        bool gamepadConnected = IsGamepadConnected();
-        if (gamepadConnected)
+        if (IsGamepadConnected())
         {
             var g = GetBinding(actionName, InputDeviceType.Gamepad);
             if (g != KeyCode.None) return g;
+            var axis = GetGamepadAxisBinding(actionName);
+            if (!string.IsNullOrEmpty(axis)) return KeyCode.None; // indicates axis present
         }
         return GetBinding(actionName, InputDeviceType.Keyboard);
     }
 
-    // Reset a defaults (útil para debug / opciones)
-    public void ResetToDefaults(bool save = true)
-    {
-        foreach (var action in actionList.actions)
-        {
-            keyboardBindings[action.actionName] = action.defaultKey;
-            if (!string.IsNullOrEmpty(action.defaultGamepadButton) && Enum.TryParse(action.defaultGamepadButton, out KeyCode parsed))
-                gamepadBindings[action.actionName] = parsed;
-            else
-                gamepadBindings[action.actionName] = KeyCode.None;
-        }
-
-        if (save) SaveBindings();
-        Debug.Log("[KeyBindingsManager] Reset to defaults.");
-    }
-
-    private KeyCode TryParseGamepadDefault(string defaultGamepadButton)
+    private KeyCode TryParseGamepadButton(string defaultGamepadButton)
     {
         if (string.IsNullOrEmpty(defaultGamepadButton)) return KeyCode.None;
         if (Enum.TryParse(defaultGamepadButton, out KeyCode parsed)) return parsed;
         return KeyCode.None;
     }
 
-    private bool IsGamepadConnected()
+    public bool IsGamepadConnected()
     {
-        string[] names = Input.GetJoystickNames();
+        var names = Input.GetJoystickNames();
         for (int i = 0; i < names.Length; i++)
             if (!string.IsNullOrEmpty(names[i])) return true;
         return false;
+    }
+
+    // reset opcional
+    public void ResetToDefaults(bool save = true)
+    {
+        foreach (var action in actionList.actions)
+        {
+            keyboardBindings[action.actionName] = action.defaultKey;
+            gamepadButtonBindings[action.actionName] = TryParseGamepadButton(action.defaultGamepadButton);
+            gamepadAxisBindings[action.actionName] = action.defaultGamepadAxis ?? "";
+        }
+        if (save) SaveBindings();
+        Debug.Log("[KeyBindingsManager] Reset a defaults.");
     }
 }

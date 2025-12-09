@@ -1,106 +1,95 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MenuControllerRuntime : MonoBehaviour
 {
     public static MenuControllerRuntime Instance;
 
-    [Tooltip("Ruta dentro de Resources del prefab Options UI sin extensión (ej: 'OptionsUI')")]
-    public string optionsUIPrefabResourcePath = "OptionsUI";
+    [Header("Scene Main Menu (se asigna desde MenuController)")]
+    public CanvasGroup mainMenuGroup;
 
-    private GameObject optionsUIInstance;
-    private CanvasGroup controlsPanelGroup;
-    private CanvasGroup mainMenuGroupInPrefab; // si tu prefab tiene un panel principal interno (opcional)
+    [Header("Options UI Prefab Panels")]
+    public CanvasGroup controlsPanelGroup;
+    public CanvasGroup soundPanelGroup;
+    public CanvasGroup keyboardPanelGroup;
+    public CanvasGroup gamepadPanelGroup;
+    public CanvasGroup keyboardReassignPanel;
+    public CanvasGroup gamepadReassignPanel;
 
-    void Awake()
+    public GameObject controlsFirstButton; // Primer botón seleccionado del panel de opciones
+    public float transitionDuration = 0.5f;
+
+    private void Awake()
     {
         if (Instance == null) { Instance = this; DontDestroyOnLoad(gameObject); }
         else { Destroy(gameObject); return; }
 
-        // Intenta instanciar el prefab en Awake (para que esté disponible siempre)
-        EnsureOptionsUI();
+        HideAllPanels();
     }
 
-    // Llama a esto si quieres forzar la creación (por si arrancas desde otra escena)
-    public void EnsureOptionsUI()
+    private void HideAllPanels()
     {
-        if (optionsUIInstance != null) return;
-
-        GameObject prefab = Resources.Load<GameObject>(optionsUIPrefabResourcePath);
-        if (prefab == null)
+        CanvasGroup[] all = { controlsPanelGroup, soundPanelGroup, keyboardPanelGroup, gamepadPanelGroup, keyboardReassignPanel, gamepadReassignPanel };
+        foreach (var cg in all)
         {
-            Debug.LogWarning($"[MenuControllerRuntime] No se encontró prefab Resources/{optionsUIPrefabResourcePath}");
-            return;
-        }
-
-        optionsUIInstance = Instantiate(prefab);
-        optionsUIInstance.name = prefab.name;
-        DontDestroyOnLoad(optionsUIInstance);
-
-        CacheReferences();
-        WireInternalButtons();
-        // por defecto ocultamos el panel de opciones
-        if (controlsPanelGroup != null) { controlsPanelGroup.alpha = 0f; controlsPanelGroup.interactable = false; controlsPanelGroup.blocksRaycasts = false; }
-    }
-
-    private void CacheReferences()
-    {
-        // Ajusta estas rutas si tus objetos se llaman distinto dentro del prefab
-        var root = optionsUIInstance.transform;
-
-        var cp = root.Find("ControlsPanelGroup");
-        if (cp != null) controlsPanelGroup = cp.GetComponent<CanvasGroup>();
-
-        var mm = root.Find("MainOptionsContent");
-        if (mm != null) mainMenuGroupInPrefab = mm.GetComponent<CanvasGroup>();
-    }
-
-    private void WireInternalButtons()
-    {
-        // ejemplo: BackButton dentro del prefab que debe cerrar el panel options
-        var back = optionsUIInstance.transform.Find("ControlsPanelGroup/BackButton");
-        if (back != null)
-        {
-            var b = back.GetComponent<Button>();
-            if (b != null)
+            if (cg != null)
             {
-                b.onClick.RemoveAllListeners();
-                b.onClick.AddListener(() => ShowMainMenuFromOptions());
+                cg.alpha = 0f;
+                cg.interactable = false;
+                cg.blocksRaycasts = false;
             }
         }
     }
 
-    // Abre el panel de opciones (fade in)
-    public void ShowControlsPanel(float duration = 0.45f)
+    public void ShowControlsPanel()
     {
-        EnsureOptionsUI();
-        if (controlsPanelGroup == null) { Debug.LogWarning("[MenuControllerRuntime] controlsPanelGroup no asignado"); return; }
-        StartCoroutine(FadeCanvasGroup(controlsPanelGroup, 0f, 1f, duration, true));
+        StartCoroutine(FadeOutAndIn(mainMenuGroup, controlsPanelGroup, controlsFirstButton));
     }
 
-    // Cierra el panel de opciones y vuelve al menu principal de la escena que lo llamó (si aplica)
-    public void ShowMainMenuFromOptions(float duration = 0.45f)
+    public void ReturnToMainMenuFromOptions()
     {
-        if (controlsPanelGroup == null) return;
-        StartCoroutine(FadeCanvasGroup(controlsPanelGroup, 1f, 0f, duration, false));
+        StartCoroutine(FadeOutAndIn(controlsPanelGroup, mainMenuGroup, null));
     }
 
-    private IEnumerator FadeCanvasGroup(CanvasGroup cg, float from, float to, float dur, bool enableOnEnd)
-    {
-        float t = 0f;
-        cg.alpha = from;
-        cg.interactable = false;
-        cg.blocksRaycasts = false;
+    public void ShowSoundPanel() { StartCoroutine(FadeOutAndIn(controlsPanelGroup, soundPanelGroup, null)); }
+    public void ShowKeyboardPanel() { StartCoroutine(FadeOutAndIn(controlsPanelGroup, keyboardPanelGroup, null)); }
+    public void ShowGamepadPanel() { StartCoroutine(FadeOutAndIn(controlsPanelGroup, gamepadPanelGroup, null)); }
+    public void ReturnToControlsPanel(CanvasGroup fromPanel) { StartCoroutine(FadeOutAndIn(fromPanel, controlsPanelGroup, controlsFirstButton)); }
 
-        while (t < dur)
+    public void OpenKeyboardReassignPanel() { StartCoroutine(FadeOutAndIn(keyboardPanelGroup, keyboardReassignPanel, null)); }
+    public void CloseKeyboardReassignPanel() { StartCoroutine(FadeOutAndIn(keyboardReassignPanel, keyboardPanelGroup, null)); }
+    public void OpenGamepadReassignPanel() { StartCoroutine(FadeOutAndIn(gamepadPanelGroup, gamepadReassignPanel, null)); }
+    public void CloseGamepadReassignPanel() { StartCoroutine(FadeOutAndIn(gamepadReassignPanel, gamepadPanelGroup, null)); }
+
+    private IEnumerator FadeOutAndIn(CanvasGroup fadeOut, CanvasGroup fadeIn, GameObject firstSelected)
+    {
+        if (fadeOut != null)
         {
-            t += Time.unscaledDeltaTime;
-            cg.alpha = Mathf.Lerp(from, to, t / dur);
-            yield return null;
+            float t = 0f;
+            fadeOut.interactable = false; fadeOut.blocksRaycasts = false;
+            while (t < transitionDuration)
+            {
+                t += Time.unscaledDeltaTime;
+                fadeOut.alpha = 1f - (t / transitionDuration);
+                yield return null;
+            }
+            fadeOut.alpha = 0f;
         }
-        cg.alpha = to;
-        cg.interactable = enableOnEnd;
-        cg.blocksRaycasts = enableOnEnd;
+
+        if (fadeIn != null)
+        {
+            float t = 0f;
+            fadeIn.alpha = 0f; fadeIn.interactable = true; fadeIn.blocksRaycasts = true;
+            while (t < transitionDuration)
+            {
+                t += Time.unscaledDeltaTime;
+                fadeIn.alpha = t / transitionDuration;
+                yield return null;
+            }
+            fadeIn.alpha = 1f;
+            if (firstSelected != null && EventSystem.current != null)
+                EventSystem.current.SetSelectedGameObject(firstSelected);
+        }
     }
 }

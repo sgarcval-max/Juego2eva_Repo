@@ -6,11 +6,11 @@ using UnityEngine.EventSystems;
 public class MenuController : MonoBehaviour
 {
     [Header("UI refs")]
-    public CanvasGroup fadePanel;           // Fade panel canvasgroup (negro)
-    public Animator titleAnimator;          // Animator del TitlePanel
-    public RectTransform titleRect;         // RectTransform del TitlePanel
-    public Animator[] buttonAnimators;      // Animators de cada botón (orden: Play, Options, Exit)
-    public GameObject firstSelected;        // botón seleccionado inicialmente (Play)
+    public CanvasGroup fadePanel; // Fade panel canvasgroup (negro)
+    public Animator titleAnimator; // Animator del TitlePanel
+    public RectTransform titleRect; // RectTransform del TitlePanel
+    public Animator[] buttonAnimators; // Animators de cada botón (orden: Play, Options, Exit)
+    public GameObject firstSelected; // botón seleccionado inicialmente (Play)
 
     [Header("Timings")]
     public float initialFadeDuration = 1f;
@@ -22,35 +22,16 @@ public class MenuController : MonoBehaviour
     public float blinkSpeed = 0.8f;
     private Coroutine blinkCoroutine = null;
 
-    [Header("Controls Panel & Fading")]
-    public CanvasGroup mainMenuGroup;      // Contiene botones principales
-    public CanvasGroup controlsPanelGroup; // Contiene botones de opciones
-    public float transitionDuration = 0.5f;
-
-    [Header("Submenu Panels")]
-    public CanvasGroup soundPanelGroup;
-    public CanvasGroup keyboardPanelGroup;
-    public CanvasGroup gamepadPanelGroup;
-
-    [Header("Reassign Panels")] // NUEVO
-    public CanvasGroup keyboardReassignPanel;
-    public CanvasGroup gamepadReassignPanel;
+    [Header("Main Menu")]
+    public CanvasGroup mainMenuGroup; // Solo el panel principal de la escena
 
     private bool inputEnabled = false;
 
     void Start()
     {
-        if (fadePanel != null)
-        {
-            fadePanel.alpha = 1f;
-            fadePanel.blocksRaycasts = true;
-        }
-
-        foreach (var b in buttonAnimators)
-            b.gameObject.SetActive(true);
-
-        if (pressSpaceText != null)
-            pressSpaceText.SetActive(false);
+        if (fadePanel != null) { fadePanel.alpha = 1f; fadePanel.blocksRaycasts = true; }
+        if (buttonAnimators != null) { foreach (var b in buttonAnimators) if (b != null) b.gameObject.SetActive(true); }
+        if (pressSpaceText != null) pressSpaceText.SetActive(false);
 
         StartCoroutine(StartupSequence());
     }
@@ -64,38 +45,34 @@ public class MenuController : MonoBehaviour
             if (fadePanel != null) fadePanel.alpha = 1f - (t / initialFadeDuration);
             yield return null;
         }
+
         if (fadePanel != null) { fadePanel.alpha = 0f; fadePanel.blocksRaycasts = false; }
-
         yield return new WaitForSecondsRealtime(titleAppearDelay);
-        titleAnimator.SetTrigger("Appear");
 
+        if (titleAnimator != null) titleAnimator.SetTrigger("Appear");
         yield return new WaitForSecondsRealtime(0.9f);
+
         inputEnabled = true;
+        if (pressSpaceText != null) { pressSpaceText.SetActive(true); blinkCoroutine = StartCoroutine(BlinkTextCoroutine()); }
+        if (firstSelected != null && EventSystem.current != null) EventSystem.current.SetSelectedGameObject(firstSelected);
+    }
 
-        if (pressSpaceText != null)
+    private IEnumerator BlinkTextCoroutine()
+    {
+        while (true)
         {
-            pressSpaceText.SetActive(true);
-            if (blinkCoroutine != null) StopCoroutine(blinkCoroutine);
-            blinkCoroutine = StartCoroutine(BlinkTextCoroutine());
+            if (pressSpaceText != null) pressSpaceText.SetActive(!pressSpaceText.activeSelf);
+            yield return new WaitForSeconds(blinkSpeed);
         }
-
-        if (firstSelected != null) EventSystem.current.SetSelectedGameObject(firstSelected);
     }
 
     void Update()
     {
         if (!inputEnabled) return;
-
         if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Submit") || Input.GetKeyDown(KeyCode.Space))
         {
-            if (blinkCoroutine != null)
-            {
-                StopCoroutine(blinkCoroutine);
-                blinkCoroutine = null;
-            }
-            if (pressSpaceText != null)
-                pressSpaceText.SetActive(false);
-
+            if (blinkCoroutine != null) { StopCoroutine(blinkCoroutine); blinkCoroutine = null; }
+            if (pressSpaceText != null) pressSpaceText.SetActive(false);
             inputEnabled = false;
             StartCoroutine(PlayTitleToMenu());
         }
@@ -103,151 +80,57 @@ public class MenuController : MonoBehaviour
 
     IEnumerator PlayTitleToMenu()
     {
-        titleAnimator.SetTrigger("Disappear");
+        if (titleAnimator != null) titleAnimator.SetTrigger("Disappear");
         yield return new WaitForSecondsRealtime(0.6f);
-
-        titleAnimator.SetTrigger("ToSmall");
+        if (titleAnimator != null) titleAnimator.SetTrigger("ToSmall");
         yield return new WaitForSecondsRealtime(0.6f);
-
-        titleAnimator.SetTrigger("Appear");
+        if (titleAnimator != null) titleAnimator.SetTrigger("Appear");
         yield return new WaitForSecondsRealtime(0.5f);
 
-        for (int i = 0; i < buttonAnimators.Length; i++)
+        if (buttonAnimators != null)
         {
-            buttonAnimators[i].SetTrigger("Show");
-            yield return new WaitForSecondsRealtime(betweenButtonsDelay);
+            for (int i = 0; i < buttonAnimators.Length; i++)
+            {
+                var anim = buttonAnimators[i];
+                if (anim != null) anim.SetTrigger("Show");
+                yield return new WaitForSecondsRealtime(betweenButtonsDelay);
+            }
         }
 
-        if (firstSelected != null) EventSystem.current.SetSelectedGameObject(firstSelected);
+        if (firstSelected != null && EventSystem.current != null)
+            EventSystem.current.SetSelectedGameObject(firstSelected);
     }
 
-    public void OnPlayPressed()
+    public void OnPlayPressed(string IntroCutscene1)
     {
-        StartCoroutine(DoSceneLoad("IntroCutscene1"));
+        // Llama a LoadScene con fade
+        StartCoroutine(LoadSceneWithFade(IntroCutscene1));
     }
 
-    public void OnExitPressed()
-    {
-        Application.Quit();
-    }
-
-    IEnumerator DoSceneLoad(string IntroCutscene1)
+    private IEnumerator LoadSceneWithFade(string IntroCutscene1)
     {
         if (fadePanel != null) fadePanel.blocksRaycasts = true;
-        float dur = 0.9f;
-        float t = 0;
-        while (t < dur)
+        float t = 0f;
+        while (t < initialFadeDuration)
         {
             t += Time.unscaledDeltaTime;
-            if (fadePanel != null) fadePanel.alpha = t / dur;
+            if (fadePanel != null) fadePanel.alpha = t / initialFadeDuration;
             yield return null;
         }
-        if (!string.IsNullOrEmpty(IntroCutscene1)) UnityEngine.SceneManagement.SceneManager.LoadScene(IntroCutscene1);
+        if (!string.IsNullOrEmpty(IntroCutscene1))
+            UnityEngine.SceneManagement.SceneManager.LoadScene(IntroCutscene1);
     }
 
-    private IEnumerator BlinkTextCoroutine()
-    {
-        while (true)
-        {
-            if (pressSpaceText != null)
-                pressSpaceText.SetActive(!pressSpaceText.activeSelf);
-            yield return new WaitForSeconds(blinkSpeed);
-        }
-    }
+    public void OnExitPressed() { Application.Quit(); }
 
-    // -------------------- SUBMENU METHODS --------------------
-
+    // -------------------- OPTIONS --------------------
     public void OnOptionsPressed()
     {
-        // Si existe MenuControllerRuntime, lo usamos para mostrar el panel persistentemente.
         if (MenuControllerRuntime.Instance != null)
         {
+            MenuControllerRuntime.Instance.mainMenuGroup = mainMenuGroup; // Pasamos referencia del MainMenuGroup
             MenuControllerRuntime.Instance.ShowControlsPanel();
-            return;
         }
-
-        // Fallback: comportamiento antiguo (si no hay runtime)
-        // ... tu código antiguo que mostraba el panel en escena ...
-    }
-    public void ShowControlsPanel()
-    {
-        StartCoroutine(FadeOutAndIn(mainMenuGroup, controlsPanelGroup));
-    }
-
-    public void ShowSoundPanel()
-    {
-        StartCoroutine(FadeOutAndIn(controlsPanelGroup, soundPanelGroup));
-    }
-
-    public void ShowKeyboardPanel()
-    {
-        StartCoroutine(FadeOutAndIn(controlsPanelGroup, keyboardPanelGroup));
-    }
-
-    public void ShowGamepadPanel()
-    {
-        StartCoroutine(FadeOutAndIn(controlsPanelGroup, gamepadPanelGroup));
-    }
-
-    public void ReturnToOptionsPanelFromSubmenu(CanvasGroup fromPanel)
-    {
-        StartCoroutine(FadeOutAndIn(fromPanel, controlsPanelGroup));
-    }
-
-    public void ShowMainMenu()
-    {
-        StartCoroutine(FadeOutAndIn(controlsPanelGroup, mainMenuGroup));
-    }
-
-    // -------------------- NUEVOS MÉTODOS PARA REASIGNAR TECLAS --------------------
-    public void OpenKeyboardReassignPanel()
-    {
-        StartCoroutine(FadeOutAndIn(keyboardPanelGroup, keyboardReassignPanel));
-    }
-
-    public void CloseKeyboardReassignPanel()
-    {
-        StartCoroutine(FadeOutAndIn(keyboardReassignPanel, keyboardPanelGroup));
-    }
-
-    public void OpenGamepadReassignPanel()
-    {
-        StartCoroutine(FadeOutAndIn(gamepadPanelGroup, gamepadReassignPanel));
-    }
-
-    public void CloseGamepadReassignPanel()
-    {
-        StartCoroutine(FadeOutAndIn(gamepadReassignPanel, gamepadPanelGroup));
-    }
-
-    // -------------------- CORUTINA GENERAL DE FADE --------------------
-    private IEnumerator FadeOutAndIn(CanvasGroup fadeOutGroup, CanvasGroup fadeInGroup)
-    {
-        float duration = transitionDuration;
-        float t = 0f;
-
-        fadeOutGroup.interactable = false;
-        fadeOutGroup.blocksRaycasts = false;
-
-        while (t < duration)
-        {
-            t += Time.unscaledDeltaTime;
-            fadeOutGroup.alpha = 1f - (t / duration);
-            yield return null;
-        }
-        fadeOutGroup.alpha = 0f;
-
-        fadeInGroup.alpha = 0;
-        fadeInGroup.interactable = true;
-        fadeInGroup.blocksRaycasts = true;
-
-        t = 0f;
-        while (t < duration)
-        {
-            t += Time.unscaledDeltaTime;
-            fadeInGroup.alpha = t / duration;
-            yield return null;
-        }
-        fadeInGroup.alpha = 1f;
     }
 }
+

@@ -156,6 +156,19 @@ public class MenuController : MonoBehaviour
     }
 
     // -------------------- SUBMENU METHODS --------------------
+
+    public void OnOptionsPressed()
+    {
+        // Si existe MenuControllerRuntime, lo usamos para mostrar el panel persistentemente.
+        if (MenuControllerRuntime.Instance != null)
+        {
+            MenuControllerRuntime.Instance.ShowControlsPanel();
+            return;
+        }
+
+        // Fallback: comportamiento antiguo (si no hay runtime)
+        // ... tu código antiguo que mostraba el panel en escena ...
+    }
     public void ShowControlsPanel()
     {
         StartCoroutine(FadeOutAndIn(mainMenuGroup, controlsPanelGroup));

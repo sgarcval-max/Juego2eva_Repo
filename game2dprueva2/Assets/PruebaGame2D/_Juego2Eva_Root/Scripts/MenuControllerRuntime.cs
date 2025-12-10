@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class MenuControllerRuntime : MonoBehaviour
 {
@@ -31,63 +33,30 @@ public class MenuControllerRuntime : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
+            SceneManager.sceneLoaded += OnSceneLoaded;
+
             if (optionsUIPrefab != null)
             {
-                // Creamos un GameObject que sea Canvas para contener el OptionsUI
-                GameObject menuManager = new GameObject("MenuManager");
-                menuManager.transform.SetParent(transform);
-
-                Canvas canvas = menuManager.AddComponent<Canvas>();
+                // Crear Canvas contenedor
+                GameObject canvasGO = new GameObject("MenuManagerCanvas");
+                canvasGO.transform.SetParent(transform);
+                Canvas canvas = canvasGO.AddComponent<Canvas>();
                 canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+                canvas.sortingOrder = 100;
 
-                CanvasScaler scaler = menuManager.AddComponent<CanvasScaler>();
+                CanvasScaler scaler = canvasGO.AddComponent<CanvasScaler>();
                 scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
                 scaler.referenceResolution = new Vector2(1920, 1080);
                 scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
                 scaler.matchWidthOrHeight = 0.5f;
 
-                menuManager.AddComponent<GraphicRaycaster>();
+                canvasGO.AddComponent<GraphicRaycaster>();
 
-                // Instanciamos el OptionsUI como hijo del Canvas
-                optionsUIInstance = Instantiate(optionsUIPrefab, menuManager.transform);
-                optionsUIInstance.transform.localScale = Vector3.one;
+                // Instanciar prefab dentro del Canvas
+                optionsUIInstance = Instantiate(optionsUIPrefab, canvasGO.transform);
 
-                // Ajustamos RectTransform para ocupar todo el Canvas
-                RectTransform rt = optionsUIInstance.GetComponent<RectTransform>();
-                if (rt != null)
-                {
-                    rt.anchorMin = new Vector2(0, 0);
-                    rt.anchorMax = new Vector2(1, 1);
-                    rt.offsetMin = Vector2.zero;
-                    rt.offsetMax = Vector2.zero;
-                }
-
-                // Buscamos todos los paneles dentro del prefab, incluso si están desactivados
-                CanvasGroup[] panels = optionsUIInstance.GetComponentsInChildren<CanvasGroup>(true);
-                foreach (var cg in panels)
-                {
-                    switch (cg.gameObject.name)
-                    {
-                        case "Menuopciones":
-                            Menuopciones = cg;
-                            break;
-                        case "SoundPanel":
-                            soundPanelGroup = cg;
-                            break;
-                        case "KeyboardPanel":
-                            keyboardPanelGroup = cg;
-                            break;
-                        case "GamepadPanel":
-                            gamepadPanelGroup = cg;
-                            break;
-                        case "KeyboardReassignPanel":
-                            keyboardReassignPanel = cg;
-                            break;
-                        case "GamepadReassignPanel":
-                            gamepadReassignPanel = cg;
-                            break;
-                    }
-                }
+                AssignPanels();
+                SetupButtons();
             }
         }
         else
@@ -97,6 +66,26 @@ public class MenuControllerRuntime : MonoBehaviour
         }
 
         HideAllPanels();
+    }
+
+    // -------------------- PANEL ASIGNATION --------------------
+    private void AssignPanels()
+    {
+        if (optionsUIInstance == null) return;
+
+        CanvasGroup[] panels = optionsUIInstance.GetComponentsInChildren<CanvasGroup>(true);
+        foreach (var cg in panels)
+        {
+            switch (cg.gameObject.name)
+            {
+                case "Menuopciones": Menuopciones = cg; break;
+                case "SoundPanel": soundPanelGroup = cg; break;
+                case "KeyboardPanel": keyboardPanelGroup = cg; break;
+                case "GamepadPanel": gamepadPanelGroup = cg; break;
+                case "KeyboardReassignPanel": keyboardReassignPanel = cg; break; // Solución
+                case "GamepadReassignPanel": gamepadReassignPanel = cg; break;   // Solución
+            }
+        }
     }
 
     private void HideAllPanels()
@@ -113,8 +102,31 @@ public class MenuControllerRuntime : MonoBehaviour
         }
     }
 
-    // -------------------- PANEL METHODS --------------------
+    private void SetupButtons()
+    {
+        if (optionsUIInstance == null) return;
 
+        Button[] buttons = optionsUIInstance.GetComponentsInChildren<Button>(true);
+        foreach (var btn in buttons)
+        {
+            btn.onClick.RemoveAllListeners();
+
+            switch (btn.gameObject.name)
+            {
+                case "ButtonOptions": btn.onClick.AddListener(() => ShowControlsPanel()); break;
+                case "ButtonSound": btn.onClick.AddListener(() => ShowSoundPanel()); break;
+                case "ButtonKeyboard": btn.onClick.AddListener(() => ShowKeyboardPanel()); break;
+                case "ButtonGamepad": btn.onClick.AddListener(() => ShowGamepadPanel()); break;
+                case "ButtonBack": btn.onClick.AddListener(() => ReturnToMainMenuFromOptions()); break;
+                case "ButtonKeyboardReassign": btn.onClick.AddListener(() => OpenKeyboardReassignPanel()); break;
+                case "ButtonCloseKeyboardReassign": btn.onClick.AddListener(() => CloseKeyboardReassignPanel()); break;
+                case "ButtonGamepadReassign": btn.onClick.AddListener(() => OpenGamepadReassignPanel()); break;
+                case "ButtonCloseGamepadReassign": btn.onClick.AddListener(() => CloseGamepadReassignPanel()); break;
+            }
+        }
+    }
+
+    // -------------------- PANEL METHODS --------------------
     public void ShowControlsPanel()
     {
         if (Menuopciones != null)
@@ -140,11 +152,9 @@ public class MenuControllerRuntime : MonoBehaviour
     public void CloseGamepadReassignPanel() { StartCoroutine(FadeOutAndIn(gamepadReassignPanel, gamepadPanelGroup)); }
 
     // -------------------- FADE COROUTINES --------------------
-
     private IEnumerator FadeInPanel(CanvasGroup cg)
     {
         if (cg == null) yield break;
-
         cg.alpha = 0f;
         cg.interactable = true;
         cg.blocksRaycasts = true;
@@ -162,11 +172,10 @@ public class MenuControllerRuntime : MonoBehaviour
     private IEnumerator FadeOutPanel(CanvasGroup cg)
     {
         if (cg == null) yield break;
-
-        float t = 0f;
         cg.interactable = false;
         cg.blocksRaycasts = false;
 
+        float t = 0f;
         while (t < transitionDuration)
         {
             t += Time.unscaledDeltaTime;
@@ -180,5 +189,14 @@ public class MenuControllerRuntime : MonoBehaviour
     {
         yield return FadeOutPanel(fadeOutGroup);
         yield return FadeInPanel(fadeInGroup);
+    }
+
+    // -------------------- SCENE HANDLING --------------------
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (optionsUIInstance != null)
+        {
+            AssignPanels(); // Reasigna todos los paneles, incluyendo los que se perdían
+        }
     }
 }

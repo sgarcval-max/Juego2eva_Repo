@@ -1,15 +1,17 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class MenuControllerRuntime : MonoBehaviour
 {
     public static MenuControllerRuntime Instance;
 
-    [Header("Scene Main Menu (se asigna desde MenuController)")]
-    public CanvasGroup mainMenuGroup;
+    [Header("Prefab Options UI")]
+    public GameObject optionsUIPrefab;
 
-    [Header("Options UI Prefab Panels")]
+    [Header("Scene Main Menu")]
+    public CanvasGroup mainMenuGroup; // Se oculta al abrir Options
+
+    [Header("Options UI Panels")]
     public CanvasGroup controlsPanelGroup;
     public CanvasGroup soundPanelGroup;
     public CanvasGroup keyboardPanelGroup;
@@ -17,15 +19,30 @@ public class MenuControllerRuntime : MonoBehaviour
     public CanvasGroup keyboardReassignPanel;
     public CanvasGroup gamepadReassignPanel;
 
-    public GameObject controlsFirstButton; // Primer botón seleccionado del panel de opciones
+    [Header("Transition")]
     public float transitionDuration = 0.5f;
 
     private void Awake()
     {
-        if (Instance == null) { Instance = this; DontDestroyOnLoad(gameObject); }
-        else { Destroy(gameObject); return; }
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
 
-        HideAllPanels();
+            // Instanciar OptionsUI si no está en la escena
+            if (controlsPanelGroup == null && optionsUIPrefab != null)
+            {
+                GameObject go = Instantiate(optionsUIPrefab);
+                CanvasGroup cg = go.GetComponentInChildren<CanvasGroup>(true);
+                if (cg != null) controlsPanelGroup = cg;
+            }
+
+            HideAllPanels();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void HideAllPanels()
@@ -42,54 +59,58 @@ public class MenuControllerRuntime : MonoBehaviour
         }
     }
 
+    // -------------------- Panels --------------------
     public void ShowControlsPanel()
     {
-        StartCoroutine(FadeOutAndIn(mainMenuGroup, controlsPanelGroup, controlsFirstButton));
+        StartCoroutine(FadeOutAndIn(mainMenuGroup, controlsPanelGroup));
     }
 
     public void ReturnToMainMenuFromOptions()
     {
-        StartCoroutine(FadeOutAndIn(controlsPanelGroup, mainMenuGroup, null));
+        StartCoroutine(FadeOutAndIn(controlsPanelGroup, mainMenuGroup));
     }
 
-    public void ShowSoundPanel() { StartCoroutine(FadeOutAndIn(controlsPanelGroup, soundPanelGroup, null)); }
-    public void ShowKeyboardPanel() { StartCoroutine(FadeOutAndIn(controlsPanelGroup, keyboardPanelGroup, null)); }
-    public void ShowGamepadPanel() { StartCoroutine(FadeOutAndIn(controlsPanelGroup, gamepadPanelGroup, null)); }
-    public void ReturnToControlsPanel(CanvasGroup fromPanel) { StartCoroutine(FadeOutAndIn(fromPanel, controlsPanelGroup, controlsFirstButton)); }
+    public void ShowSoundPanel() { StartCoroutine(FadeOutAndIn(controlsPanelGroup, soundPanelGroup)); }
+    public void ShowKeyboardPanel() { StartCoroutine(FadeOutAndIn(controlsPanelGroup, keyboardPanelGroup)); }
+    public void ShowGamepadPanel() { StartCoroutine(FadeOutAndIn(controlsPanelGroup, gamepadPanelGroup)); }
+    public void ReturnToControlsPanel(CanvasGroup fromPanel) { StartCoroutine(FadeOutAndIn(fromPanel, controlsPanelGroup)); }
 
-    public void OpenKeyboardReassignPanel() { StartCoroutine(FadeOutAndIn(keyboardPanelGroup, keyboardReassignPanel, null)); }
-    public void CloseKeyboardReassignPanel() { StartCoroutine(FadeOutAndIn(keyboardReassignPanel, keyboardPanelGroup, null)); }
-    public void OpenGamepadReassignPanel() { StartCoroutine(FadeOutAndIn(gamepadPanelGroup, gamepadReassignPanel, null)); }
-    public void CloseGamepadReassignPanel() { StartCoroutine(FadeOutAndIn(gamepadReassignPanel, gamepadPanelGroup, null)); }
+    public void OpenKeyboardReassignPanel() { StartCoroutine(FadeOutAndIn(keyboardPanelGroup, keyboardReassignPanel)); }
+    public void CloseKeyboardReassignPanel() { StartCoroutine(FadeOutAndIn(keyboardReassignPanel, keyboardPanelGroup)); }
+    public void OpenGamepadReassignPanel() { StartCoroutine(FadeOutAndIn(gamepadPanelGroup, gamepadReassignPanel)); }
+    public void CloseGamepadReassignPanel() { StartCoroutine(FadeOutAndIn(gamepadReassignPanel, gamepadPanelGroup)); }
 
-    private IEnumerator FadeOutAndIn(CanvasGroup fadeOut, CanvasGroup fadeIn, GameObject firstSelected)
+    // -------------------- Corutinas --------------------
+    private IEnumerator FadeInPanel(CanvasGroup cg)
     {
-        if (fadeOut != null)
+        if (cg == null) yield break;
+        cg.alpha = 0f; cg.interactable = true; cg.blocksRaycasts = true;
+        float t = 0f;
+        while (t < transitionDuration)
         {
-            float t = 0f;
-            fadeOut.interactable = false; fadeOut.blocksRaycasts = false;
-            while (t < transitionDuration)
-            {
-                t += Time.unscaledDeltaTime;
-                fadeOut.alpha = 1f - (t / transitionDuration);
-                yield return null;
-            }
-            fadeOut.alpha = 0f;
+            t += Time.unscaledDeltaTime;
+            cg.alpha = Mathf.Lerp(0f, 1f, t / transitionDuration);
+            yield return null;
         }
+        cg.alpha = 1f;
+    }
 
-        if (fadeIn != null)
+    private IEnumerator FadeOutPanel(CanvasGroup cg)
+    {
+        if (cg == null) yield break;
+        float t = 0f; cg.interactable = false; cg.blocksRaycasts = false;
+        while (t < transitionDuration)
         {
-            float t = 0f;
-            fadeIn.alpha = 0f; fadeIn.interactable = true; fadeIn.blocksRaycasts = true;
-            while (t < transitionDuration)
-            {
-                t += Time.unscaledDeltaTime;
-                fadeIn.alpha = t / transitionDuration;
-                yield return null;
-            }
-            fadeIn.alpha = 1f;
-            if (firstSelected != null && EventSystem.current != null)
-                EventSystem.current.SetSelectedGameObject(firstSelected);
+            t += Time.unscaledDeltaTime;
+            cg.alpha = Mathf.Lerp(1f, 0f, t / transitionDuration);
+            yield return null;
         }
+        cg.alpha = 0f;
+    }
+
+    private IEnumerator FadeOutAndIn(CanvasGroup fadeOutGroup, CanvasGroup fadeInGroup)
+    {
+        yield return FadeOutPanel(fadeOutGroup);
+        yield return FadeInPanel(fadeInGroup);
     }
 }

@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class MenuController : MonoBehaviour
@@ -23,7 +22,7 @@ public class MenuController : MonoBehaviour
     private Coroutine blinkCoroutine = null;
 
     [Header("Main Menu")]
-    public CanvasGroup mainMenuGroup; // Solo panel principal de esta escena
+    public CanvasGroup mainMenuGroup; // Solo el panel principal de la escena
 
     private bool inputEnabled = false;
 
@@ -32,6 +31,12 @@ public class MenuController : MonoBehaviour
         if (fadePanel != null) { fadePanel.alpha = 1f; fadePanel.blocksRaycasts = true; }
         if (buttonAnimators != null) { foreach (var b in buttonAnimators) if (b != null) b.gameObject.SetActive(true); }
         if (pressSpaceText != null) pressSpaceText.SetActive(false);
+
+        // Pasar MainMenuGroup local al Runtime
+        if (MenuControllerRuntime.Instance != null)
+        {
+            MenuControllerRuntime.Instance.mainMenuGroup = mainMenuGroup;
+        }
 
         StartCoroutine(StartupSequence());
     }
@@ -101,10 +106,25 @@ public class MenuController : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(firstSelected);
     }
 
-    public void OnPlayPressed()
+    public void OnPlayPressed(string IntroCutscene1)
     {
-        // Cambia "GameplayScene" por el nombre de tu escena
-        UnityEngine.SceneManagement.SceneManager.LoadScene("IntroCutscene1");
+        StartCoroutine(DoSceneLoad(IntroCutscene1));
+    }
+
+    IEnumerator DoSceneLoad(string IntroCutscene1)
+    {
+        if (fadePanel != null) fadePanel.blocksRaycasts = true;
+        float dur = 0.9f;
+        float t = 0;
+        while (t < dur)
+        {
+            t += Time.unscaledDeltaTime;
+            if (fadePanel != null) fadePanel.alpha = t / dur; // Fade in
+            yield return null;
+        }
+
+        if (!string.IsNullOrEmpty(IntroCutscene1))
+            UnityEngine.SceneManagement.SceneManager.LoadScene(IntroCutscene1);
     }
 
     public void OnExitPressed() { Application.Quit(); }
@@ -114,7 +134,6 @@ public class MenuController : MonoBehaviour
     {
         if (MenuControllerRuntime.Instance != null)
         {
-            // Pasamos referencia del Main Menu de esta escena
             MenuControllerRuntime.Instance.mainMenuGroup = mainMenuGroup;
             MenuControllerRuntime.Instance.ShowControlsPanel();
         }

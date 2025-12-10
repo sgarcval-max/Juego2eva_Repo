@@ -6,12 +6,13 @@ public class MenuControllerRuntime : MonoBehaviour
     public static MenuControllerRuntime Instance;
 
     [Header("Prefab Options UI")]
-    public GameObject optionsUIPrefab;
+    public GameObject optionsUIPrefab; // Arrastra tu prefab OptionsUI aquí
+    private GameObject optionsUIInstance;
 
     [Header("Scene Main Menu")]
     public CanvasGroup mainMenuGroup; // Se oculta al abrir Options
 
-    [Header("Options UI Panels")]
+    [Header("Options UI Prefab Panels")]
     public CanvasGroup controlsPanelGroup;
     public CanvasGroup soundPanelGroup;
     public CanvasGroup keyboardPanelGroup;
@@ -27,22 +28,34 @@ public class MenuControllerRuntime : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
-
-            // Instanciar OptionsUI si no está en la escena
-            if (controlsPanelGroup == null && optionsUIPrefab != null)
-            {
-                GameObject go = Instantiate(optionsUIPrefab);
-                CanvasGroup cg = go.GetComponentInChildren<CanvasGroup>(true);
-                if (cg != null) controlsPanelGroup = cg;
-            }
-
-            HideAllPanels();
+            DontDestroyOnLoad(gameObject); // El MenuControllerRuntime no se destruye
         }
         else
         {
             Destroy(gameObject);
+            return;
         }
+
+        // Instanciar OptionsUI si no existe
+        if (optionsUIInstance == null && optionsUIPrefab != null)
+        {
+            optionsUIInstance = Instantiate(optionsUIPrefab);
+            DontDestroyOnLoad(optionsUIInstance);
+
+            // Asignar referencias de UIReferenceHolder si existe
+            UIReferenceHolder uiRef = optionsUIInstance.GetComponent<UIReferenceHolder>();
+            if (uiRef != null)
+            {
+                controlsPanelGroup = uiRef.controlsPanelGroup;
+                soundPanelGroup = uiRef.soundPanelGroup;
+                keyboardPanelGroup = uiRef.keyboardPanelGroup;
+                gamepadPanelGroup = uiRef.gamepadPanelGroup;
+                keyboardReassignPanel = uiRef.keyboardReassignPanel;
+                gamepadReassignPanel = uiRef.gamepadReassignPanel;
+            }
+        }
+
+        HideAllPanels();
     }
 
     private void HideAllPanels()
@@ -59,7 +72,8 @@ public class MenuControllerRuntime : MonoBehaviour
         }
     }
 
-    // -------------------- Panels --------------------
+    // -------------------- PANEL METHODS --------------------
+
     public void ShowControlsPanel()
     {
         StartCoroutine(FadeOutAndIn(mainMenuGroup, controlsPanelGroup));
@@ -80,11 +94,13 @@ public class MenuControllerRuntime : MonoBehaviour
     public void OpenGamepadReassignPanel() { StartCoroutine(FadeOutAndIn(gamepadPanelGroup, gamepadReassignPanel)); }
     public void CloseGamepadReassignPanel() { StartCoroutine(FadeOutAndIn(gamepadReassignPanel, gamepadPanelGroup)); }
 
-    // -------------------- Corutinas --------------------
+    // -------------------- FADE COROUTINES --------------------
+
     private IEnumerator FadeInPanel(CanvasGroup cg)
     {
-        if (cg == null) yield break;
-        cg.alpha = 0f; cg.interactable = true; cg.blocksRaycasts = true;
+        cg.alpha = 0f;
+        cg.interactable = true;
+        cg.blocksRaycasts = true;
         float t = 0f;
         while (t < transitionDuration)
         {
@@ -97,8 +113,9 @@ public class MenuControllerRuntime : MonoBehaviour
 
     private IEnumerator FadeOutPanel(CanvasGroup cg)
     {
-        if (cg == null) yield break;
-        float t = 0f; cg.interactable = false; cg.blocksRaycasts = false;
+        float t = 0f;
+        cg.interactable = false;
+        cg.blocksRaycasts = false;
         while (t < transitionDuration)
         {
             t += Time.unscaledDeltaTime;

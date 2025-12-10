@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuControllerRuntime : MonoBehaviour
 {
@@ -32,9 +33,36 @@ public class MenuControllerRuntime : MonoBehaviour
 
             if (optionsUIPrefab != null)
             {
-                optionsUIInstance = Instantiate(optionsUIPrefab, transform);
+                // Creamos un GameObject que sea Canvas para contener el OptionsUI
+                GameObject menuManager = new GameObject("MenuManager");
+                menuManager.transform.SetParent(transform);
 
-                // Busca todos los paneles dentro del prefab, incluso si están desactivados
+                Canvas canvas = menuManager.AddComponent<Canvas>();
+                canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+
+                CanvasScaler scaler = menuManager.AddComponent<CanvasScaler>();
+                scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+                scaler.referenceResolution = new Vector2(1920, 1080);
+                scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+                scaler.matchWidthOrHeight = 0.5f;
+
+                menuManager.AddComponent<GraphicRaycaster>();
+
+                // Instanciamos el OptionsUI como hijo del Canvas
+                optionsUIInstance = Instantiate(optionsUIPrefab, menuManager.transform);
+                optionsUIInstance.transform.localScale = Vector3.one;
+
+                // Ajustamos RectTransform para ocupar todo el Canvas
+                RectTransform rt = optionsUIInstance.GetComponent<RectTransform>();
+                if (rt != null)
+                {
+                    rt.anchorMin = new Vector2(0, 0);
+                    rt.anchorMax = new Vector2(1, 1);
+                    rt.offsetMin = Vector2.zero;
+                    rt.offsetMax = Vector2.zero;
+                }
+
+                // Buscamos todos los paneles dentro del prefab, incluso si están desactivados
                 CanvasGroup[] panels = optionsUIInstance.GetComponentsInChildren<CanvasGroup>(true);
                 foreach (var cg in panels)
                 {

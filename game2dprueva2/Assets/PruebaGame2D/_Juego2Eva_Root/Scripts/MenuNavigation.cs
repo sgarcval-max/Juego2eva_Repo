@@ -1,12 +1,15 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
 public class MenuNavigation : MonoBehaviour
 {
+    [Header("Navigation Settings")]
     public float stickRepeatDelay = 0.25f;
     public Selectable defaultSelected;
+
+    [Header("Audio")]
     public AudioClip sfxMove;
     public AudioClip sfxConfirm;
 
@@ -14,7 +17,7 @@ public class MenuNavigation : MonoBehaviour
     private EventSystem es;
     private AudioSource audioSource;
 
-    // Ejes alternativos que podr�an usarse para navegar (a�ade los que tengas)
+    // Ejes alternativos que podrían usarse para navegar
     private string[] verticalAxes = new string[] { "Vertical", "LeftStickY", "DPadY" };
     private string[] horizontalAxes = new string[] { "Horizontal", "LeftStickX", "DPadX" };
 
@@ -26,13 +29,13 @@ public class MenuNavigation : MonoBehaviour
 
     void Update()
     {
-        // si hay movimiento de rat�n, dejamos que el mouse controle
+        // Si hay movimiento de ratón, dejamos que el mouse controle
         if (Input.mousePresent && (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0))
             return;
 
         Vector2 move = Vector2.zero;
 
-        // leer ejes alternativos
+        // Leer ejes alternativos
         foreach (var a in horizontalAxes)
         {
             float hv = Input.GetAxisRaw(a);
@@ -65,7 +68,7 @@ public class MenuNavigation : MonoBehaviour
             {
                 var btn = sel.GetComponent<Button>();
                 if (btn != null) btn.onClick.Invoke();
-                if (sfxConfirm != null) audioSource.PlayOneShot(sfxConfirm);
+                PlayConfirm();
             }
         }
     }
@@ -98,7 +101,29 @@ public class MenuNavigation : MonoBehaviour
         if (next != null)
         {
             es.SetSelectedGameObject(next.gameObject);
-            if (sfxMove != null) audioSource.PlayOneShot(sfxMove);
+            TryPlayMove(); // sonido de movimiento del stick/teclado
         }
+    }
+
+    // -------------------- MÉTODOS DE AUDIO --------------------
+
+    public void PlayConfirm()
+    {
+        if (sfxConfirm != null && audioSource != null)
+            audioSource.PlayOneShot(sfxConfirm);
+    }
+
+    public void TryPlayMove()
+    {
+        if (sfxMove != null && audioSource != null)
+            audioSource.PlayOneShot(sfxMove);
+    }
+
+    /// <summary>
+    /// Método seguro para EventTrigger → PointerEnter
+    /// </summary>
+    public void TryPlayMoveEvent()
+    {
+        TryPlayMove();
     }
 }

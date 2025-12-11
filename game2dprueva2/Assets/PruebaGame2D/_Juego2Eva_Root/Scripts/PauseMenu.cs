@@ -1,27 +1,21 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class PauseMenu : MonoBehaviour
 {
-    [Header("Panels")]
-    public GameObject pauseMenuPanel;     // Panel de pausa
-    public CanvasGroup fadePanel;         // Panel negro para fade
-
-    [Header("Fade Settings")]
-    public float fadeDuration = 1f;       // Duración del fade
-
+    public GameObject pauseMenuPanel; // Panel de pausa
     private bool isPaused = false;
+
+    [Header("Fade to Menu")]
+    public CanvasGroup fadePanel; // Panel negro para fade
+    public float fadeDuration = 0.9f;
 
     void Update()
     {
-        // Toggle pausa con Escape
-        if (Input.GetKeyDown(KeyCode.Escape))
+        // Solo abrir el menú con ESC, no cerrar
+        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
         {
-            if (isPaused)
-                ResumeGame();
-            else
-                PauseGame();
+            PauseGame();
         }
     }
 
@@ -39,39 +33,6 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
     }
 
-    // Volver al menú con fade
-    public void ReturnToMainMenu(string menuSceneName)
-    {
-        StartCoroutine(FadeAndLoad(menuSceneName));
-    }
-
-    private IEnumerator FadeAndLoad(string sceneName)
-    {
-        // Aseguramos que el fadePanel está activo
-        fadePanel.gameObject.SetActive(true);
-        fadePanel.alpha = 0f;
-
-        // Mantener la pausa mientras se hace el fade
-        Time.timeScale = 0f;
-
-        float t = 0f;
-        while (t < fadeDuration)
-        {
-            t += Time.unscaledDeltaTime;
-            fadePanel.alpha = Mathf.Clamp01(t / fadeDuration);
-            yield return null;
-        }
-
-        fadePanel.alpha = 1f;
-
-        // Guardar flag para saltar intro en el Main Menu
-        PlayerPrefs.SetInt("SkipIntro", 1);
-
-        // Restaurar tiempo y cargar escena
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(sceneName);
-    }
-
     public void QuitGame()
     {
 #if UNITY_EDITOR
@@ -83,6 +44,33 @@ public class PauseMenu : MonoBehaviour
 
     public void OpenOptions()
     {
-        Debug.Log("Abrir opciones (añade tu panel de opciones aquí)");
+        Debug.Log("Abrir opciones (puedes agregar tu panel de opciones aquí)");
+    }
+
+    public void ReturnToMainMenu(string mainMenuSceneName)
+    {
+        // Mantener menú activo durante el fade
+        pauseMenuPanel.SetActive(true);
+        Time.timeScale = 1f; // Necesario para que corran los fades
+        StartCoroutine(FadeAndLoad(mainMenuSceneName));
+    }
+
+    private System.Collections.IEnumerator FadeAndLoad(string sceneName)
+    {
+        if (fadePanel != null)
+        {
+            fadePanel.blocksRaycasts = true;
+            float t = 0f;
+            while (t < fadeDuration)
+            {
+                t += Time.unscaledDeltaTime;
+                fadePanel.alpha = Mathf.Clamp01(t / fadeDuration);
+                yield return null;
+            }
+            fadePanel.alpha = 1f;
+        }
+
+        // Cargar escena del menú
+        SceneManager.LoadScene(sceneName);
     }
 }

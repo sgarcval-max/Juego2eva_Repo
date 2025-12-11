@@ -29,6 +29,10 @@ public class MenuNavigation : MonoBehaviour
 
     void Update()
     {
+        // ❌ Bloquear ESPACIO completamente
+        if (Input.GetKeyDown(KeyCode.Space))
+            return;
+
         // Si hay movimiento de ratón, dejamos que el mouse controle
         if (Input.mousePresent && (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0))
             return;
@@ -39,12 +43,20 @@ public class MenuNavigation : MonoBehaviour
         foreach (var a in horizontalAxes)
         {
             float hv = Input.GetAxisRaw(a);
-            if (Mathf.Abs(hv) > 0.5f) { move.x = hv; break; }
+            if (Mathf.Abs(hv) > 0.5f)
+            {
+                move.x = hv;
+                break;
+            }
         }
         foreach (var a in verticalAxes)
         {
             float vv = Input.GetAxisRaw(a);
-            if (Mathf.Abs(vv) > 0.5f) { move.y = vv; break; }
+            if (Mathf.Abs(vv) > 0.5f)
+            {
+                move.y = vv;
+                break;
+            }
         }
 
         if (move.sqrMagnitude > 0.01f)
@@ -60,8 +72,13 @@ public class MenuNavigation : MonoBehaviour
             nextMoveTime = 0f;
         }
 
-        // Confirm (acepta JoystickButton0 y Submit)
-        if (Input.GetButtonDown("Submit") || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.JoystickButton0))
+        // -------------------------
+        //   CONFIRMAR (SIN ESPACIO)
+        // -------------------------
+        if ((Input.GetButtonDown("Submit") && !Input.GetKeyDown(KeyCode.Space))
+            || Input.GetKeyDown(KeyCode.Return)
+            || Input.GetKeyDown(KeyCode.KeypadEnter)
+            || Input.GetKeyDown(KeyCode.JoystickButton0))
         {
             GameObject sel = es.currentSelectedGameObject;
             if (sel != null)
@@ -76,10 +93,12 @@ public class MenuNavigation : MonoBehaviour
     void MoveSelection(Vector2 dir)
     {
         if (es == null) return;
+
         GameObject current = es.currentSelectedGameObject;
         if (current == null)
         {
-            if (defaultSelected != null) es.SetSelectedGameObject(defaultSelected.gameObject);
+            if (defaultSelected != null)
+                es.SetSelectedGameObject(defaultSelected.gameObject);
             return;
         }
 
@@ -87,21 +106,20 @@ public class MenuNavigation : MonoBehaviour
         if (sel == null) return;
 
         Selectable next = null;
+
         if (Mathf.Abs(dir.y) > Mathf.Abs(dir.x))
         {
-            if (dir.y > 0) next = sel.FindSelectableOnUp();
-            else next = sel.FindSelectableOnDown();
+            next = (dir.y > 0) ? sel.FindSelectableOnUp() : sel.FindSelectableOnDown();
         }
         else
         {
-            if (dir.x > 0) next = sel.FindSelectableOnRight();
-            else next = sel.FindSelectableOnLeft();
+            next = (dir.x > 0) ? sel.FindSelectableOnRight() : sel.FindSelectableOnLeft();
         }
 
         if (next != null)
         {
             es.SetSelectedGameObject(next.gameObject);
-            TryPlayMove(); // sonido de movimiento del stick/teclado
+            TryPlayMove();
         }
     }
 

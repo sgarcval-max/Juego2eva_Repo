@@ -8,11 +8,13 @@ public class OptionsMenu : MonoBehaviour
 {
     public InputDeviceType deviceType = InputDeviceType.Keyboard;
     public KeyBindingsManager keyManager;
-    public GameObject buttonPrefab; // prefab con Button + TMP_Text
-    public Transform gameplayContainer; // container para sección Gameplay
-    public Transform menuContainer;     // container para sección Menu (pause/menu controls)
-    public List<string> gameplayActions = new List<string>(); // nombres de acciones que van en Gameplay
-    public List<string> menuActions = new List<string>();     // nombres de acciones que van en Menu
+    public GameObject buttonPrefab; // Prefab con Button + TMP_Text
+    public GameObject headerPrefab; // Prefab con TMP_Text solo para el título de sección
+    public Transform contentContainer; // Content del ScrollRect (todo dentro de un mismo Scroll)
+
+    [Header("Secciones")]
+    public List<string> gameplayActions = new List<string>();
+    public List<string> menuActions = new List<string>();
 
     private readonly string[] possibleAxisNames = new string[] {
         "LeftStickX","LeftStickY","RightStickX","RightStickY","DPadX","DPadY"
@@ -20,45 +22,53 @@ public class OptionsMenu : MonoBehaviour
 
     void Start()
     {
-        if (keyManager == null) keyManager = KeyBindingsManager.Instance ?? FindObjectOfType<KeyBindingsManager>();
-        if (keyManager == null) { Debug.LogError("[OptionsMenuDevice] No KeyBindingsManager!"); return; }
+        if (keyManager == null)
+            keyManager = KeyBindingsManager.Instance ?? FindObjectOfType<KeyBindingsManager>();
+        if (keyManager == null)
+        {
+            Debug.LogError("[OptionsMenu] No KeyBindingsManager encontrado!");
+            return;
+        }
 
-        // Generar UI según deviceType y secciones configuradas
-        if (deviceType == InputDeviceType.Keyboard)
-        {
-            PopulateSection(gameplayContainer, gameplayActions);
-            PopulateSection(menuContainer, menuActions);
-        }
-        else // Gamepad
-        {
-            // En gamepad, para movement usamos MoveHorizontal (si existe en ActionList)
-            PopulateSection(gameplayContainer, gameplayActions); // pero gameplayActions en inspector para gamepad debería contener MoveHorizontal en vez de MoveLeft/MoveRight
-            PopulateSection(menuContainer, menuActions);
-        }
+        // Limpiar contenido previo
+        foreach (Transform t in contentContainer) Destroy(t.gameObject);
+
+        // Crear sección Gameplay
+        CreateSection("Gameplay Actions", gameplayActions);
+
+        // Crear sección Menu
+        CreateSection("Menu Actions", menuActions);
     }
 
-    // Rellena un container con botones según la lista de actionNames
-    void PopulateSection(Transform container, List<string> actionNames)
+    void CreateSection(string sectionTitle, List<string> actions)
     {
-        if (container == null) return;
-
-        foreach (var actionName in actionNames)
+        // Crear header
+        if (headerPrefab != null)
         {
-            // buscar ActionData en actionList para validar
-            var ad = FindActionData(actionName);
-            if (ad == null) { Debug.LogWarning($"[OptionsMenuDevice] Action '{actionName}' not found in ActionListSO"); continue; }
+            GameObject headerGO = Instantiate(headerPrefab, contentContainer);
+            TMP_Text headerText = headerGO.GetComponent<TMP_Text>();
+            if (headerText != null) headerText.text = sectionTitle;
+        }
 
-            GameObject b = Instantiate(buttonPrefab, container);
-            TMP_Text txt = b.GetComponentInChildren<TMP_Text>();
+        // Crear botones de la sección
+        foreach (var actionName in actions)
+        {
+            var ad = FindActionData(actionName);
+            if (ad == null)
+            {
+                Debug.LogWarning($"[OptionsMenu] Acción '{actionName}' no encontrada.");
+                continue;
+            }
+
+            GameObject btnGO = Instantiate(buttonPrefab, contentContainer);
+            TMP_Text txt = btnGO.GetComponentInChildren<TMP_Text>();
             UpdateText(txt, actionName);
 
-            Button btn = b.GetComponent<Button>();
+            Button btn = btnGO.GetComponent<Button>();
             btn.onClick.AddListener(() =>
             {
                 if (deviceType == InputDeviceType.Gamepad)
                 {
-                    // decidir rebind boton o axis: si action has defaultGamepadAxis or user chooses, we allow axis
-                    // Aquí simplificamos: si action data tiene defaultGamepadAxis no vacío, abrimos rebind axis directamente, si no rebind boton
                     if (!string.IsNullOrEmpty(ad.defaultGamepadAxis))
                         StartCoroutine(WaitForGamepadAxis(actionName, txt));
                     else
@@ -96,7 +106,6 @@ public class OptionsMenu : MonoBehaviour
         }
     }
 
-    // ---------- Coroutines de rebind (igual que antes) ----------
     IEnumerator WaitForKey(string actionName, TMP_Text txt)
     {
         txt.text = actionName + " : ...";
@@ -109,7 +118,6 @@ public class OptionsMenu : MonoBehaviour
             {
                 if (Input.GetKeyDown(k))
                 {
-                    // filtro: no joystick si teclado
                     string s = k.ToString();
                     if (deviceType == InputDeviceType.Keyboard && s.StartsWith("Joystick")) continue;
 
@@ -131,7 +139,6 @@ public class OptionsMenu : MonoBehaviour
     IEnumerator WaitForGamepadAxis(string actionName, TMP_Text txt)
     {
         txt.text = actionName + " : ... (mueve stick)";
-
         float threshold = 0.5f;
         bool assigned = false;
         yield return new WaitForSeconds(0.05f);
@@ -150,7 +157,6 @@ public class OptionsMenu : MonoBehaviour
                 }
             }
 
-            // fallback botones
             foreach (KeyCode k in System.Enum.GetValues(typeof(KeyCode)))
             {
                 if (Input.GetKeyDown(k))

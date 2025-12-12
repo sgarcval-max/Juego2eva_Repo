@@ -46,7 +46,7 @@ public class OptionsMenu : MonoBehaviour
         if (headerPrefab != null)
         {
             GameObject headerGO = Instantiate(headerPrefab, contentContainer);
-            TMP_Text headerText = headerGO.GetComponent<TMP_Text>();
+            TMP_Text headerText = headerGO.GetComponentInChildren<TMP_Text>();
             if (headerText != null) headerText.text = sectionTitle;
         }
 

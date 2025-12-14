@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
@@ -96,5 +97,25 @@ public class AudioManager : MonoBehaviour
         sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
 
         if (musicSource != null) musicSource.volume = musicVolume;
+    }
+
+    // -------------------- FADE MÚSICA --------------------
+    public void FadeMusic(float targetVolume, float duration)
+    {
+        if (musicSource != null)
+            StartCoroutine(FadeCoroutine(targetVolume, duration));
+    }
+
+    private IEnumerator FadeCoroutine(float target, float duration)
+    {
+        float start = musicSource.volume;
+        float t = 0f;
+        while (t < duration)
+        {
+            t += Time.unscaledDeltaTime;
+            musicSource.volume = Mathf.Lerp(start, target, t / duration);
+            yield return null;
+        }
+        musicSource.volume = target;
     }
 }

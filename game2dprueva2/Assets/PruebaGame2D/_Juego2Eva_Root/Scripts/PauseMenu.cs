@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -12,7 +13,6 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        // Solo abrir el menú con ESC, no cerrar
         if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
         {
             PauseGame();
@@ -49,17 +49,18 @@ public class PauseMenu : MonoBehaviour
 
     public void ReturnToMainMenu(string mainMenuSceneName)
     {
-        // Mantener menú activo durante el fade
+        // Aseguramos que el tiempo esté activo para el fade
+        Time.timeScale = 1f;
         pauseMenuPanel.SetActive(true);
-        Time.timeScale = 1f; // Necesario para que corran los fades
-        StartCoroutine(FadeAndLoad(mainMenuSceneName));
+        StartCoroutine(FadeAndLoadAsync(mainMenuSceneName));
     }
 
-    private System.Collections.IEnumerator FadeAndLoad(string sceneName)
+    private IEnumerator FadeAndLoadAsync(string sceneName)
     {
         if (fadePanel != null)
         {
             fadePanel.blocksRaycasts = true;
+            fadePanel.alpha = 0f;
             float t = 0f;
             while (t < fadeDuration)
             {
@@ -70,7 +71,13 @@ public class PauseMenu : MonoBehaviour
             fadePanel.alpha = 1f;
         }
 
-        // Cargar escena del menú
-        SceneManager.LoadScene(sceneName);
+        // Carga asíncrona de la escena, para que no quede congelado
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+        asyncLoad.allowSceneActivation = true;
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
     }
 }

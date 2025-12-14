@@ -14,12 +14,15 @@ public class MenuNavigation : MonoBehaviour
     public AudioClip sfxConfirm;
 
     private float nextMoveTime = 0f;
+    private float nextMoveSFXTime = 0f; // Limitar SFX move
     private EventSystem es;
     private AudioSource audioSource;
 
-    // Ejes alternativos que podrían usarse para navegar
     private string[] verticalAxes = new string[] { "Vertical", "LeftStickY", "DPadY" };
     private string[] horizontalAxes = new string[] { "Horizontal", "LeftStickX", "DPadX" };
+
+    [Header("SFX Cooldown")]
+    public float moveSFXCooldown = 0.1f; // mínimo tiempo entre reproducir el SFX de move
 
     void Awake()
     {
@@ -29,17 +32,14 @@ public class MenuNavigation : MonoBehaviour
 
     void Update()
     {
-        // ❌ Bloquear ESPACIO completamente
         if (Input.GetKeyDown(KeyCode.Space))
             return;
 
-        // Si hay movimiento de ratón, dejamos que el mouse controle
         if (Input.mousePresent && (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0))
             return;
 
         Vector2 move = Vector2.zero;
 
-        // Leer ejes alternativos
         foreach (var a in horizontalAxes)
         {
             float hv = Input.GetAxisRaw(a);
@@ -73,7 +73,7 @@ public class MenuNavigation : MonoBehaviour
         }
 
         // -------------------------
-        //   CONFIRMAR (SIN ESPACIO)
+        //   CONFIRMAR
         // -------------------------
         if ((Input.GetButtonDown("Submit") && !Input.GetKeyDown(KeyCode.Space))
             || Input.GetKeyDown(KeyCode.Return)
@@ -108,13 +108,9 @@ public class MenuNavigation : MonoBehaviour
         Selectable next = null;
 
         if (Mathf.Abs(dir.y) > Mathf.Abs(dir.x))
-        {
             next = (dir.y > 0) ? sel.FindSelectableOnUp() : sel.FindSelectableOnDown();
-        }
         else
-        {
             next = (dir.x > 0) ? sel.FindSelectableOnRight() : sel.FindSelectableOnLeft();
-        }
 
         if (next != null)
         {
@@ -133,8 +129,13 @@ public class MenuNavigation : MonoBehaviour
 
     public void TryPlayMove()
     {
-        if (sfxMove != null && audioSource != null)
-            audioSource.PlayOneShot(sfxMove);
+        if (sfxMove == null || audioSource == null) return;
+
+        // Limitar SFX de movimiento con cooldown
+        if (Time.unscaledTime < nextMoveSFXTime) return;
+
+        audioSource.PlayOneShot(sfxMove);
+        nextMoveSFXTime = Time.unscaledTime + moveSFXCooldown;
     }
 
     /// <summary>

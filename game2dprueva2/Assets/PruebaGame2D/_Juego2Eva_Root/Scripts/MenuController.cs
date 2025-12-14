@@ -19,6 +19,7 @@ public class MenuController : MonoBehaviour
     [Header("Press Space Message (Blink)")]
     public GameObject pressSpaceText;
     public float blinkSpeed = 0.8f;
+    public float holdTime = 0.15f; // Tiempo que se mantiene al llegar a 0 o 1
     private Coroutine blinkCoroutine = null;
 
     [Header("Main Menu")]
@@ -43,38 +44,70 @@ public class MenuController : MonoBehaviour
 
     IEnumerator StartupSequence()
     {
-        float t = 0f;
-        while (t < initialFadeDuration)
+        // ------------------ FADE IN FLUIDO ------------------
+        if (fadePanel != null)
         {
-            t += Time.unscaledDeltaTime;
-            if (fadePanel != null) fadePanel.alpha = 1f - (t / initialFadeDuration);
-            yield return null;
+            while (fadePanel.alpha > 0f)
+            {
+                fadePanel.alpha = Mathf.MoveTowards(fadePanel.alpha, 0f, Time.deltaTime / initialFadeDuration);
+                yield return null;
+            }
+            fadePanel.blocksRaycasts = false;
         }
 
-        if (fadePanel != null) { fadePanel.alpha = 0f; fadePanel.blocksRaycasts = false; }
         yield return new WaitForSecondsRealtime(titleAppearDelay);
 
         if (titleAnimator != null) titleAnimator.SetTrigger("Appear");
         yield return new WaitForSecondsRealtime(0.9f);
 
+        // ------------------ ACTIVAR INPUT ------------------
         inputEnabled = true;
-        if (pressSpaceText != null) { pressSpaceText.SetActive(true); blinkCoroutine = StartCoroutine(BlinkTextCoroutine()); }
-        if (firstSelected != null && EventSystem.current != null) EventSystem.current.SetSelectedGameObject(firstSelected);
+
+        // ------------------ MOSTRAR TEXTO CON FUNDIDO ------------------
+        if (pressSpaceText != null)
+        {
+            pressSpaceText.SetActive(true);
+            CanvasGroup textCG = pressSpaceText.GetComponent<CanvasGroup>();
+            if (textCG == null)
+            {
+                textCG = pressSpaceText.AddComponent<CanvasGroup>();
+                textCG.alpha = 0f;
+            }
+            blinkCoroutine = StartCoroutine(FadeTextLoop(textCG));
+        }
+
+        if (firstSelected != null && EventSystem.current != null)
+            EventSystem.current.SetSelectedGameObject(firstSelected);
     }
 
-    private IEnumerator BlinkTextCoroutine()
+    private IEnumerator FadeTextLoop(CanvasGroup cg)
     {
         while (true)
         {
-            if (pressSpaceText != null) pressSpaceText.SetActive(!pressSpaceText.activeSelf);
-            yield return new WaitForSeconds(blinkSpeed);
+            // ------------------ FADE IN ------------------
+            while (cg.alpha < 1f)
+            {
+                cg.alpha = Mathf.MoveTowards(cg.alpha, 1f, Time.deltaTime / blinkSpeed);
+                yield return null;
+            }
+            yield return new WaitForSecondsRealtime(holdTime); // Espera al llegar a 1
+
+            // ------------------ FADE OUT ------------------
+            while (cg.alpha > 0f)
+            {
+                cg.alpha = Mathf.MoveTowards(cg.alpha, 0f, Time.deltaTime / blinkSpeed);
+                yield return null;
+            }
+            yield return new WaitForSecondsRealtime(holdTime); // Espera al llegar a 0
         }
     }
 
     void Update()
     {
         if (!inputEnabled) return;
-        if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Submit") || Input.GetKeyDown(KeyCode.Space))
+
+        // SOLO barra espaciadora
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (blinkCoroutine != null) { StopCoroutine(blinkCoroutine); blinkCoroutine = null; }
             if (pressSpaceText != null) pressSpaceText.SetActive(false);
@@ -114,12 +147,20 @@ public class MenuController : MonoBehaviour
     IEnumerator DoSceneLoad(string IntroCutscene1)
     {
         if (fadePanel != null) fadePanel.blocksRaycasts = true;
+
         float dur = 0.9f;
         float t = 0;
+
+        // Fade out de música sincronizado
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.FadeMusic(0f, dur);
+        }
+
         while (t < dur)
         {
             t += Time.unscaledDeltaTime;
-            if (fadePanel != null) fadePanel.alpha = t / dur; // Fade in
+            if (fadePanel != null) fadePanel.alpha = t / dur; // Fade in del panel
             yield return null;
         }
 

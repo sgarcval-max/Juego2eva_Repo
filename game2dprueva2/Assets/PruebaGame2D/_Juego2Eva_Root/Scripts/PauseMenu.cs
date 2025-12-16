@@ -1,24 +1,62 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pauseMenuPanel; // Panel de pausa
-    private bool isPaused = false;
+    [Header("UI")]
+    public GameObject pauseMenuPanel;
 
     [Header("Fade to Menu")]
-    public CanvasGroup fadePanel; // Panel negro para fade
+    public CanvasGroup fadePanel;
     public float fadeDuration = 0.9f;
+
+    private bool isPaused = false;
+
+    [Header("Input")]
+    [SerializeField] private string pauseActionName = "Pause / Menu";
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
+        if (!isPaused && PauseInputPressed())
         {
             PauseGame();
         }
     }
 
+    // ---------------- INPUT ----------------
+    private bool PauseInputPressed()
+    {
+        if (KeyBindingsManager.Instance == null) return false;
+
+        // Detectar si hay gamepad
+        if (KeyBindingsManager.Instance.IsGamepadConnected())
+        {
+            // BotÃ³n gamepad
+            KeyCode gamepadKey = KeyBindingsManager.Instance.GetBinding(
+                pauseActionName,
+                InputDeviceType.Gamepad
+            );
+
+            if (gamepadKey != KeyCode.None && Input.GetKeyDown(gamepadKey))
+                return true;
+
+            // Axis gamepad (opcional)
+            string axis = KeyBindingsManager.Instance.GetGamepadAxisBinding(pauseActionName);
+            if (!string.IsNullOrEmpty(axis) && Mathf.Abs(Input.GetAxisRaw(axis)) > 0.5f)
+                return true;
+        }
+
+        // Teclado
+        KeyCode keyboardKey = KeyBindingsManager.Instance.GetBinding(
+            pauseActionName,
+            InputDeviceType.Keyboard
+        );
+
+        return keyboardKey != KeyCode.None && Input.GetKeyDown(keyboardKey);
+    }
+
+    // ---------------- PAUSE ----------------
     public void PauseGame()
     {
         pauseMenuPanel.SetActive(true);
@@ -33,6 +71,7 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
     }
 
+    // ---------------- BUTTONS ----------------
     public void QuitGame()
     {
 #if UNITY_EDITOR
@@ -44,23 +83,22 @@ public class PauseMenu : MonoBehaviour
 
     public void OpenOptions()
     {
-        Debug.Log("Abrir opciones (puedes agregar tu panel de opciones aquí)");
+        Debug.Log("Abrir opciones");
     }
 
     public void ReturnToMainMenu(string mainMenuSceneName)
     {
-        // Aseguramos que el tiempo esté activo para el fade
-        Time.timeScale = 1f;
-        pauseMenuPanel.SetActive(true);
-        StartCoroutine(FadeAndLoadAsync(mainMenuSceneName));
+        StartCoroutine(FadeAndLoad(mainMenuSceneName));
     }
 
-    private IEnumerator FadeAndLoadAsync(string sceneName)
+    private IEnumerator FadeAndLoad(string sceneName)
     {
+        // Mantener el juego pausado mientras se hace el fade
         if (fadePanel != null)
         {
             fadePanel.blocksRaycasts = true;
             fadePanel.alpha = 0f;
+
             float t = 0f;
             while (t < fadeDuration)
             {
@@ -68,16 +106,13 @@ public class PauseMenu : MonoBehaviour
                 fadePanel.alpha = Mathf.Clamp01(t / fadeDuration);
                 yield return null;
             }
+
             fadePanel.alpha = 1f;
         }
 
-        // Carga asíncrona de la escena, para que no quede congelado
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
-        asyncLoad.allowSceneActivation = true;
+        // ðŸ”‘ IMPORTANTE: despause JUSTO antes de cambiar de escena
+        Time.timeScale = 1f;
 
-        while (!asyncLoad.isDone)
-        {
-            yield return null;
-        }
+        SceneManager.LoadScene(sceneName);
     }
 }

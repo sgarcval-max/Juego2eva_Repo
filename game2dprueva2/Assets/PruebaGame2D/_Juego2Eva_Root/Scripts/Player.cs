@@ -1,12 +1,22 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : Entity
 {
     [Header("Movement details")]
     [SerializeField] protected float moveSpeed = 3.5f;
     [SerializeField] private float jumpForce = 8;
+
     private float xInput;
     private bool canJump = true;
+
+    private void OnEnable()
+    {
+        if (GameInput.Instance != null)
+        {
+            GameInput.Instance.inputActions.Player.Enable();
+        }
+    }
 
     protected override void Update()
     {
@@ -16,20 +26,14 @@ public class Player : Entity
 
     private void HandleInput()
     {
-        xInput = 0;
-        // movimiento horizontal (teclado sigue usando axis o keys)
-        // ejemplo usando bindings MoveLeft/MoveRight:
-        if (Input.GetKey(KeyBindingsManager.Instance.GetBinding("MoveRight", InputDeviceType.Keyboard))) xInput += 1;
-        if (Input.GetKey(KeyBindingsManager.Instance.GetBinding("MoveLeft", InputDeviceType.Keyboard))) xInput -= 1;
+        xInput = GetHorizontalInput();
 
-        // salto: comprobamos primero gamepad effective if connected
-        KeyCode jumpKey = KeyBindingsManager.Instance.GetEffectiveBinding("Jump");
-        if (Input.GetKeyDown(jumpKey))
+        // salto
+        if (GameInput.Instance.inputActions.Player.Jump.triggered)
             TryToJump();
 
         // ataque
-        KeyCode attackKey = KeyBindingsManager.Instance.GetEffectiveBinding("Attack");
-        if (Input.GetKeyDown(attackKey))
+        if (GameInput.Instance.inputActions.Player.Attack.triggered)
             HandleAttack();
     }
 
@@ -61,10 +65,7 @@ public class Player : Entity
 
     public void PlayCutsceneMovement(Vector2 velocity)
     {
-        // Mover al player
         rb.linearVelocity = velocity;
-
-        // Actualizar Animator para que haga animación de caminar
         if (anim != null)
         {
             anim.SetFloat("xVelocity", velocity.x);
@@ -73,35 +74,18 @@ public class Player : Entity
         }
     }
 
-    private void HandleDash()
-    {
-        // Aquí puedes añadir la lógica de dash si la tienes
-        // Por ahora solo un ejemplo de debug:
-        Debug.Log("Dash pressed!");
-    }
-
     private float GetHorizontalInput()
     {
-        // 1) Si hay gamepad con axis asignado
-        if (KeyBindingsManager.Instance != null && KeyBindingsManager.Instance.IsGamepadConnected())
-        {
-            string axis = KeyBindingsManager.Instance.GetGamepadAxisBinding("MoveHorizontal");
-            Debug.Log($"[InputDebug] MoveHorizontal axis binding = '{axis}'");
-            if (!string.IsNullOrEmpty(axis))
-            {
-                float val = Input.GetAxis(axis);
-                Debug.Log($"[InputDebug] Input.GetAxis({axis}) = {val}");
-                if (Mathf.Abs(val) > 0.12f) return val; // umbral
-            }
-        }
+        // 1) Gamepad
+        Vector2 gamepadInput = GameInput.Instance.inputActions.Player.Move.ReadValue<Vector2>();
+        if (Mathf.Abs(gamepadInput.x) > 0.12f)
+            return gamepadInput.x;
 
-        // 2) fallback teclado con MoveLeft/MoveRight
+        // 2) Teclado
         float h = 0f;
-        if (KeyBindingsManager.Instance != null)
-        {
-            if (Input.GetKey(KeyBindingsManager.Instance.GetBinding("MoveRight", InputDeviceType.Keyboard))) h += 1f;
-            if (Input.GetKey(KeyBindingsManager.Instance.GetBinding("MoveLeft", InputDeviceType.Keyboard))) h -= 1f;
-        }
+        if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed) h -= 1f;
+        if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed) h += 1f;
+
         return h;
     }
 }

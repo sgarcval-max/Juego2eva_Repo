@@ -5,16 +5,16 @@ using System.Collections;
 public class CutsceneTrigger2D_Fade : MonoBehaviour
 {
     [Header("Player Settings")]
-    public Player playerScript;       // Tu script Player
+    public Player playerScript;               // Tu script Player
     public Vector2 moveDirection = Vector2.right; // Dirección de la cutscene
-    public float moveSpeed = 3f;      // Velocidad del player
+    public float moveSpeed = 3f;             // Velocidad del player
 
     [Header("Fade Settings")]
-    public CanvasGroup fadeCanvas;    // CanvasGroup negro
-    public float fadeSpeed = 1f;      // Velocidad de fade
+    public CanvasGroup fadeCanvas;           // CanvasGroup negro
+    public float fadeSpeed = 1f;             // Velocidad de fade
 
     [Header("Scene Settings")]
-    public string nextSceneName;      // Nombre de la siguiente escena
+    public string nextSceneName;             // Nombre de la siguiente escena
 
     private bool cutsceneActive = false;
 
@@ -35,22 +35,31 @@ public class CutsceneTrigger2D_Fade : MonoBehaviour
 
     private IEnumerator RunCutscene()
     {
-        while (fadeCanvas.alpha < 1f)
+        // Asegurarnos de que el fade comienza desde alpha 0
+        if (fadeCanvas != null)
         {
-            // Llamar al método del player para moverlo y actualizar animación
+            fadeCanvas.alpha = 0f;
+            fadeCanvas.blocksRaycasts = true;
+        }
+
+        while (fadeCanvas != null && fadeCanvas.alpha < 1f)
+        {
+            // Mover al jugador y actualizar animación
             if (playerScript != null)
                 playerScript.PlayCutsceneMovement(moveDirection * moveSpeed);
 
             // Incrementar alpha del fade
-            if (fadeCanvas != null)
-                fadeCanvas.alpha += fadeSpeed * Time.deltaTime;
+            fadeCanvas.alpha += fadeSpeed * Time.unscaledDeltaTime;
 
             yield return null;
         }
 
-        // Detener al player al final
+        // Detener al jugador
         if (playerScript != null)
             playerScript.PlayCutsceneMovement(Vector2.zero);
+
+        // Antes de cargar la escena, despause si estaba pausado
+        Time.timeScale = 1f;
 
         // Cargar la siguiente escena
         if (!string.IsNullOrEmpty(nextSceneName))

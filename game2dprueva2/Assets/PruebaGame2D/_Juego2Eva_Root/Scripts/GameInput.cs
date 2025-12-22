@@ -12,7 +12,6 @@ public class GameInput : MonoBehaviour
     {
         if (Instance != null) { Destroy(gameObject); return; }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
 
         if (inputActions == null) inputActions = new InputSystem();
         inputActions.Enable();
@@ -29,7 +28,7 @@ public class GameInput : MonoBehaviour
         if (action == null) { Debug.LogWarning($"Action {actionName} not found"); return; }
 
         rebindingOperation = action.PerformInteractiveRebinding(bindingIndex)
-            .WithControlsExcluding("<Mouse>/position") // opcional: excluir controles
+            .WithControlsExcluding("<Mouse>/position")
             .OnComplete(op =>
             {
                 op.Dispose();

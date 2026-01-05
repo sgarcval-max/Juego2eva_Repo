@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using UnityEngine;
 
@@ -51,7 +51,7 @@ public class Entity : MonoBehaviour
         HandleFlip();
     }
 
-    // --- Exponer la vida con properties públicas (lectura)
+    // --- Exponer la vida con properties pÃºblicas (lectura)
     public int MaxHealth => maxHealth;
     public int CurrentHealth => currentHealth;
 
@@ -64,10 +64,14 @@ public class Entity : MonoBehaviour
             Entity entityTarget = enemy.GetComponent<Entity>();
             if (entityTarget != null)
                 entityTarget.TakeDamage(1);
+
+            BreakableWall wall = enemy.GetComponent<BreakableWall>();
+            if (wall != null)
+                wall.TakeHit();
         }
     }
 
-    // Hacer público y con cantidad de daño
+    // Hacer pÃºblico y con cantidad de daÃ±o
     public void TakeDamage(int amount = 1)
     {
         currentHealth = Mathf.Max(0, currentHealth - amount);
@@ -77,7 +81,7 @@ public class Entity : MonoBehaviour
             Die();
     }
 
-    // También método para curar / setear si lo necesitas
+    // TambiÃ©n mÃ©todo para curar / setear si lo necesitas
     public void Heal(int amount)
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);

@@ -57,17 +57,25 @@ public class Entity : MonoBehaviour
 
     public void DamageTargets()
     {
-        Collider2D[] enemyColliders = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, whatIsTarget);
+        Collider2D[] colliders =
+            Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, whatIsTarget);
 
-        foreach (Collider2D enemy in enemyColliders)
+        foreach (Collider2D col in colliders)
         {
-            Entity entityTarget = enemy.GetComponent<Entity>();
+            // Enemigos
+            Entity entityTarget = col.GetComponent<Entity>();
             if (entityTarget != null)
+            {
                 entityTarget.TakeDamage(1);
+                continue;
+            }
 
-            BreakableWall wall = enemy.GetComponent<BreakableWall>();
+            // Pared rompible
+            BreakableWall wall = col.GetComponent<BreakableWall>();
             if (wall != null)
+            {
                 wall.TakeHit();
+            }
         }
     }
 

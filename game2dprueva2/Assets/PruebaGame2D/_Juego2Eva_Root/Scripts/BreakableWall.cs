@@ -3,42 +3,71 @@ using UnityEngine;
 public class BreakableWall : MonoBehaviour
 {
     [Header("Wall Settings")]
-    [SerializeField] private int hitsToBreak = 3;
+    public int hitsToBreak = 3;          // Total golpes para romper
+    private int currentHits = 0;
 
-    [Header("Fragments")]
-    [SerializeField] private GameObject fragmentsPrefab;
-    [SerializeField] private float explosionForce = 4f;
+    [Header("Sprites")]
+    public Sprite[] crackedSprites;       // Los sprites de daño progresivo (0 = sin daño)
+    private SpriteRenderer sr;
 
-    private int currentHits;
+    [Header("Broken Pieces")]
+    public GameObject brokenPrefab;       // Prefab con los trozos que caen
 
-    // Este método lo llamará el ataque del player
+    private Collider2D wallCollider;
+
+    private void Awake()
+    {
+        sr = GetComponent<SpriteRenderer>();
+        wallCollider = GetComponent<Collider2D>();
+
+        // Asegurarse de que el primer sprite sea el correcto
+        if (crackedSprites.Length > 0)
+            sr.sprite = crackedSprites[0];
+    }
+
     public void TakeHit()
     {
         currentHits++;
 
+        // Cambiar sprite según los golpes
+        if (crackedSprites.Length > 0 && currentHits - 1 < crackedSprites.Length)
+        {
+            sr.sprite = crackedSprites[currentHits - 1];
+        }
+
         if (currentHits >= hitsToBreak)
+        {
             BreakWall();
+        }
     }
 
     private void BreakWall()
     {
-        // Instanciar trozos
-        if (fragmentsPrefab != null)
+        // Instanciar los pedazos
+        if (brokenPrefab != null)
         {
-            GameObject fragments = Instantiate(
-                fragmentsPrefab,
-                transform.position,
-                Quaternion.identity
-            );
+            GameObject pieces = Instantiate(brokenPrefab, transform.position, transform.rotation);
 
-            foreach (Rigidbody2D rb in fragments.GetComponentsInChildren<Rigidbody2D>())
+            // Añadir fuerza aleatoria a cada pedazo
+            Rigidbody2D[] rbs = pieces.GetComponentsInChildren<Rigidbody2D>();
+            foreach (Rigidbody2D rb in rbs)
             {
-                Vector2 forceDir = (rb.transform.position - transform.position).normalized;
-                rb.AddForce(forceDir * explosionForce, ForceMode2D.Impulse);
+                // Fuerza aleatoria en X e Y
+                float forceX = Random.Range(-2f, 2f);
+                float forceY = Random.Range(2f, 5f);
+                rb.AddForce(new Vector2(forceX, forceY), ForceMode2D.Impulse);
+
+                // Rotación aleatoria
+                float torque = Random.Range(-10f, 10f);
+                rb.AddTorque(torque, ForceMode2D.Impulse);
             }
         }
 
-        // Destruir pared
-        Destroy(gameObject);
+        // Desactivar colisión
+        if (wallCollider != null)
+            wallCollider.enabled = false;
+
+        // Desactivar la pared original
+        gameObject.SetActive(false);
     }
 }

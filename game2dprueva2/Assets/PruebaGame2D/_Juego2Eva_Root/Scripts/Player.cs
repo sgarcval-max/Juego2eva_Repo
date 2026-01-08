@@ -88,4 +88,16 @@ public class Player : Entity
 
         return h;
     }
+
+    // -------------------- HABILIDADES --------------------
+    [Header("Abilities")]
+    [SerializeField] private bool canDoubleJump = false;
+    [SerializeField] private bool canDash = false;
+    [SerializeField] private bool canFireball = false;
+
+    public void UnlockAbility(AbilityType ability)
+    {
+        Debug.Log("Habilidad desbloqueada: " + ability);
+        // Aquí luego activas doble salto, dash, etc.
+    }
 }

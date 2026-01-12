@@ -1,15 +1,16 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 
 public class CameraFollow2D_Zone : MonoBehaviour
 {
     [Header("Asignaciones")]
-    public Transform player;       // Transform del jugador
-    public Camera mainCamera;      // Main Camera
-    public Vector3 offset = new Vector3(0, 3, -10); // Ajusta a tu gusto
+    public Transform player;
+    public Camera mainCamera;
+    public Vector3 offset = new Vector3(0, 3, -10);
     public float smoothSpeed = 5f;
 
-    private bool stopCamera = false;
+    private bool stopCamera = false;      // si la c√°mara est√° congelada por la zona
     private Vector3 holdPosition;
+    private bool stopCameraPermanently = false; // ‚ùå nueva variable para muerte
 
     void LateUpdate()
     {
@@ -17,21 +18,18 @@ public class CameraFollow2D_Zone : MonoBehaviour
 
         Vector3 targetPosition;
 
-        if (stopCamera)
+        if (stopCamera || stopCameraPermanently)
         {
-            // La c·mara se queda fija en holdPosition
+            // La c√°mara se queda fija
             targetPosition = holdPosition;
         }
         else
         {
-            // La c·mara sigue al jugador + offset
             targetPosition = player.position + offset;
         }
 
-        // Mantener la Z original de la c·mara
         targetPosition.z = mainCamera.transform.position.z;
 
-        // Suavizado de movimiento
         mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, targetPosition, smoothSpeed * Time.deltaTime);
     }
 
@@ -40,9 +38,8 @@ public class CameraFollow2D_Zone : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             stopCamera = true;
-            // Guardamos la posiciÛn actual de la c·mara cuando entra
             holdPosition = mainCamera.transform.position;
-            Debug.Log("C·mara congelada en: " + holdPosition);
+            Debug.Log("C√°mara congelada en: " + holdPosition);
         }
     }
 
@@ -51,7 +48,21 @@ public class CameraFollow2D_Zone : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             stopCamera = false;
-            Debug.Log("C·mara vuelve a seguir al jugador");
+            Debug.Log("C√°mara vuelve a seguir al jugador");
         }
+    }
+
+    // ‚úÖ Nuevo m√©todo que llama Player al morir
+    public void FreezeCameraPermanently()
+    {
+        stopCameraPermanently = true;
+        holdPosition = mainCamera.transform.position;
+        Debug.Log("C√°mara congelada permanentemente por muerte del jugador");
+    }
+
+    // ‚úÖ Para reiniciar la partida y desbloquear la c√°mara
+    public void ResetCamera()
+    {
+        stopCameraPermanently = false;
     }
 }

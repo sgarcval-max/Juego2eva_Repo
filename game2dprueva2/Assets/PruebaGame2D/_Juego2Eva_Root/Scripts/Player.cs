@@ -59,8 +59,13 @@ public class Player : Entity
 
     protected override void Die()
     {
-        base.Die();
+        base.Die(); // Esto ejecuta la animación, físicas y demás
         UI.instance.EnableGameOverUI();
+
+        // SOLO aquí avisamos a la cámara
+        CameraFollow2D_Zone camFollow = FindObjectOfType<CameraFollow2D_Zone>();
+        if (camFollow != null)
+            camFollow.FreezeCameraPermanently();
     }
 
     public void PlayCutsceneMovement(Vector2 velocity)

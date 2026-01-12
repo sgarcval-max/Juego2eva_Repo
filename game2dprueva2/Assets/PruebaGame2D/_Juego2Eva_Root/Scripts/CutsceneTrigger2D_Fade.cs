@@ -61,6 +61,10 @@ public class CutsceneTrigger2D_Fade : MonoBehaviour
         // Antes de cargar la escena, despause si estaba pausado
         Time.timeScale = 1f;
 
+        // 🔑 Guardar la vida actual del jugador
+        if (PlayerHealthManager.Instance != null && playerScript != null)
+            PlayerHealthManager.Instance.UpdateHealth(playerScript.CurrentHealth);
+
         // Cargar la siguiente escena
         if (!string.IsNullOrEmpty(nextSceneName))
             SceneManager.LoadScene(nextSceneName);

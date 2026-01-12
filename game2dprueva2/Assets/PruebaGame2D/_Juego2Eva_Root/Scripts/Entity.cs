@@ -11,7 +11,7 @@ public class Entity : MonoBehaviour
 
     [Header("Health")]
     [SerializeField] private int maxHealth = 1;
-    [SerializeField] private int currentHealth;
+    [SerializeField] protected int currentHealth;
     [SerializeField] private Material damageMaterial;
     [SerializeField] private float damageFeedbackDuration = .1f;
     private Coroutine damageFeedbackCoroutine;
@@ -80,7 +80,7 @@ public class Entity : MonoBehaviour
     }
 
     // Hacer público y con cantidad de daño
-    public void TakeDamage(int amount = 1)
+    public virtual void TakeDamage(int amount = 1)
     {
         currentHealth = Mathf.Max(0, currentHealth - amount);
         PlayDamageFeedback();

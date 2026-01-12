@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Player : Entity
@@ -98,6 +98,34 @@ public class Player : Entity
     public void UnlockAbility(AbilityType ability)
     {
         Debug.Log("Habilidad desbloqueada: " + ability);
-        // Aqu� luego activas doble salto, dash, etc.
+        // Aquí luego activas doble salto, dash, etc.
+    }
+
+    public override void TakeDamage(int amount = 1)
+    {
+        base.TakeDamage(amount);
+
+        // avisamos al manager si seguimos vivos
+        if (currentHealth > 0 && PlayerHealthManager.Instance != null)
+            PlayerHealthManager.Instance.UpdateHealth(currentHealth);
+
+        // morir resetea vida
+        if (currentHealth <= 0 && PlayerHealthManager.Instance != null)
+        {
+            PlayerHealthManager.Instance.ResetHealth(); // reaparece con vida máxima
+        }
+    }
+
+    public void SetHealth(int health)
+    {
+        currentHealth = Mathf.Clamp(health, 0, MaxHealth);
+    }
+
+    protected virtual void Start()
+    {
+        if (PlayerHealthManager.Instance != null)
+        {
+            SetHealth(PlayerHealthManager.Instance.GetSavedHealth());
+        }
     }
 }

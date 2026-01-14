@@ -10,12 +10,13 @@ public class Player : Entity
     private float xInput;
     private bool canJump = true;
 
+    // Nueva propiedad pública para consultar si está muerto
+    public bool IsDead => currentHealth <= 0;
+
     private void OnEnable()
     {
         if (GameInput.Instance != null)
-        {
             GameInput.Instance.inputActions.Player.Enable();
-        }
     }
 
     protected override void Update()
@@ -28,11 +29,9 @@ public class Player : Entity
     {
         xInput = GetHorizontalInput();
 
-        // salto
         if (GameInput.Instance.inputActions.Player.Jump.triggered)
             TryToJump();
 
-        // ataque
         if (GameInput.Instance.inputActions.Player.Attack.triggered)
             HandleAttack();
     }
@@ -59,13 +58,8 @@ public class Player : Entity
 
     protected override void Die()
     {
-        base.Die(); // Esto ejecuta la animación, físicas y demás
+        base.Die();
         UI.instance.EnableGameOverUI();
-
-        // SOLO aquí avisamos a la cámara
-        CameraFollow2D_Zone camFollow = FindObjectOfType<CameraFollow2D_Zone>();
-        if (camFollow != null)
-            camFollow.FreezeCameraPermanently();
     }
 
     public void PlayCutsceneMovement(Vector2 velocity)
@@ -81,17 +75,30 @@ public class Player : Entity
 
     private float GetHorizontalInput()
     {
-        // 1) Gamepad
         Vector2 gamepadInput = GameInput.Instance.inputActions.Player.Move.ReadValue<Vector2>();
         if (Mathf.Abs(gamepadInput.x) > 0.12f)
             return gamepadInput.x;
 
-        // 2) Teclado
         float h = 0f;
         if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed) h -= 1f;
         if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed) h += 1f;
-
         return h;
+    }
+
+    public new void TakeDamage(int amount = 1)
+    {
+        base.TakeDamage(amount);
+
+        if (PlayerHealthManager.Instance != null)
+            PlayerHealthManager.Instance.UpdateHealth(currentHealth);
+
+        if (currentHealth <= 0 && PlayerHealthManager.Instance != null)
+            PlayerHealthManager.Instance.ResetHealth();
+    }
+
+    public void SetHealth(int health)
+    {
+        currentHealth = Mathf.Clamp(health, 0, MaxHealth);
     }
 
     // -------------------- HABILIDADES --------------------
@@ -106,31 +113,4 @@ public class Player : Entity
         // Aquí luego activas doble salto, dash, etc.
     }
 
-    public override void TakeDamage(int amount = 1)
-    {
-        base.TakeDamage(amount);
-
-        // avisamos al manager si seguimos vivos
-        if (currentHealth > 0 && PlayerHealthManager.Instance != null)
-            PlayerHealthManager.Instance.UpdateHealth(currentHealth);
-
-        // morir resetea vida
-        if (currentHealth <= 0 && PlayerHealthManager.Instance != null)
-        {
-            PlayerHealthManager.Instance.ResetHealth(); // reaparece con vida máxima
-        }
-    }
-
-    public void SetHealth(int health)
-    {
-        currentHealth = Mathf.Clamp(health, 0, MaxHealth);
-    }
-
-    protected virtual void Start()
-    {
-        if (PlayerHealthManager.Instance != null)
-        {
-            SetHealth(PlayerHealthManager.Instance.GetSavedHealth());
-        }
-    }
 }

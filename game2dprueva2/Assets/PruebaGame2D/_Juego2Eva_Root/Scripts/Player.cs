@@ -35,20 +35,36 @@ public class Player : Entity
 
     private void HandleInput()
     {
+        if (KeyBindingsManager.Instance == null) return;
+
         xInput = GetHorizontalInput();
 
-        if (GameInput.Instance.inputActions.Player.Jump.triggered)
-            TryToJump();
+        KeyCode jumpKey = KeyBindingsManager.Instance.GetBinding("Jump", InputDeviceType.Keyboard);
+        KeyCode attackKey = KeyBindingsManager.Instance.GetBinding("Attack", InputDeviceType.Keyboard);
+        KeyCode fireKey = KeyBindingsManager.Instance.GetBinding("Fire", InputDeviceType.Keyboard);
 
-        if (GameInput.Instance.inputActions.Player.Attack.triggered)
-            HandleAttack();
-
-        // FIRE definitivo
-        if (GameInput.Instance.inputActions.Player.Fire.triggered)
+        // SALTO
+        if (Input.GetKeyDown(jumpKey))
         {
-            Debug.Log("Fire detectado correctamente");
-            anim.SetTrigger("fire");
-            ShootFireball(); // Llamamos al método que dispara la bola de fuego
+            TryToJump();
+        }
+
+        // ATAQUE NORMAL
+        if (Input.GetKeyDown(attackKey))
+        {
+            HandleAttack();
+        }
+
+        // ATAQUE FIREBALL
+        if (Input.GetKeyDown(fireKey))
+        {
+            if (Time.time >= lastFireTime + fireCooldown)
+            {
+                lastFireTime = Time.time;
+
+                anim.SetTrigger("fire");
+                ShootFireball();
+            }
         }
     }
 
@@ -91,14 +107,18 @@ public class Player : Entity
 
     private float GetHorizontalInput()
     {
-        Vector2 gamepadInput = GameInput.Instance.inputActions.Player.Move.ReadValue<Vector2>();
-        if (Mathf.Abs(gamepadInput.x) > 0.12f)
-            return gamepadInput.x;
+        if (KeyBindingsManager.Instance == null)
+            return 0;
 
-        float h = 0f;
-        if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed) h -= 1f;
-        if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed) h += 1f;
-        return h;
+        KeyCode leftKey = KeyBindingsManager.Instance.GetBinding("MoveLeft", InputDeviceType.Keyboard);
+        KeyCode rightKey = KeyBindingsManager.Instance.GetBinding("MoveRight", InputDeviceType.Keyboard);
+
+        float input = 0;
+
+        if (Input.GetKey(leftKey)) input -= 1;
+        if (Input.GetKey(rightKey)) input += 1;
+
+        return input;
     }
 
     public new void TakeDamage(int amount = 1)

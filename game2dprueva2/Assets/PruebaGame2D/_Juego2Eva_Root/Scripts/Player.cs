@@ -7,6 +7,14 @@ public class Player : Entity
     [SerializeField] protected float moveSpeed = 3.5f;
     [SerializeField] private float jumpForce = 8;
 
+    [Header("Fireball Attack")]
+    [SerializeField] private GameObject fireballPrefab;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private float fireCooldown = 0.5f;
+    [SerializeField] private string fireTriggerName = "fire"; // el trigger en el Animator
+
+    private float lastFireTime;
+
     private float xInput;
     private bool canJump = true;
 
@@ -34,6 +42,14 @@ public class Player : Entity
 
         if (GameInput.Instance.inputActions.Player.Attack.triggered)
             HandleAttack();
+
+        // FIRE definitivo
+        if (GameInput.Instance.inputActions.Player.Fire.triggered)
+        {
+            Debug.Log("Fire detectado correctamente");
+            anim.SetTrigger("fire");
+            ShootFireball(); // Llamamos al método que dispara la bola de fuego
+        }
     }
 
     protected override void HandleMovement()
@@ -112,5 +128,67 @@ public class Player : Entity
         Debug.Log("Habilidad desbloqueada: " + ability);
         // Aquí luego activas doble salto, dash, etc.
     }
+
+    private void TryFire()
+    {
+        if (!canFireball) return;
+
+        anim.SetTrigger("Fire");
+        EnableMovement(false);
+    }
+
+    // Se llamará desde un EVENTO en la animación
+    public void SpawnFireballFromAnimation()
+    {
+        FireballProjectile prefab = Resources.Load<FireballProjectile>("Fireball");
+
+        if (prefab == null)
+        {
+            Debug.LogError("No se encontró el prefab Fireball en Resources");
+            return;
+        }
+
+        Vector2 dir = facingRight ? Vector2.right : Vector2.left;
+
+        Vector3 spawnPos = transform.position + new Vector3(facingRight ? 1f : -1f, 0.5f, 0);
+
+        Instantiate(prefab, spawnPos, Quaternion.identity)
+            .Initialize(dir);
+    }
+
+    public void OnFireAnimationEnd()
+    {
+        EnableMovement(true);
+    }
+
+    public void ShootFireball()
+    {
+        if (fireballPrefab == null || firePoint == null)
+        {
+            Debug.LogWarning("Falta asignar fireballPrefab o firePoint");
+            return;
+        }
+
+        GameObject fb = Instantiate(fireballPrefab, firePoint.position, Quaternion.identity);
+
+        Fireball fireballScript = fb.GetComponent<Fireball>();
+
+        // Dirección según a dónde mira el player
+        Vector2 dir = facingRight ? Vector2.right : Vector2.left;
+
+        fireballScript.SetDirection(dir);
+    }
+
+    public void FireAttack()
+    {
+        if (!canMove) return; // evita disparar mientras otra animación bloquea movimiento
+
+        // desactivar movimiento
+        EnableMovement(false);
+
+        // disparar animación
+        anim.SetTrigger(fireTriggerName);
+    }
+
 
 }

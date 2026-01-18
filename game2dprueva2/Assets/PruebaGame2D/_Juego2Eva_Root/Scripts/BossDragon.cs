@@ -8,6 +8,9 @@ public class BossDragon : Entity
     [Header("Boss Config")]
     public BossPhase currentPhase = BossPhase.Phase1;
 
+    [Header("Animator")]
+    public Animator animator;
+
     public int phase1Health = 10;
     public int phase2Health = 15;
     public int phase3Health = 20;
@@ -116,16 +119,19 @@ public class BossDragon : Entity
 
         float distanceX = player.position.x - transform.position.x;
 
-        // Solo se mueve si está fuera de la distancia mínima
         if (Mathf.Abs(distanceX) > followDistance)
         {
             float directionX = Mathf.Sign(distanceX);
             transform.position += new Vector3(directionX * moveSpeed * Time.deltaTime, 0, 0);
 
-            // Flip visual corregido para que mire al jugador
+            // Flip corregido
             if (directionX > 0 && facingRight) Flip();
             else if (directionX < 0 && !facingRight) Flip();
         }
+
+        // Animación de movimiento
+        if (animator != null)
+            animator.SetBool("isMoving", Mathf.Abs(distanceX) > followDistance);
     }
 
     void TryShootFireball()
@@ -134,6 +140,9 @@ public class BossDragon : Entity
         {
             nextFireTime = Time.time + fireRate;
             Instantiate(fireballPrefab, firePoint.position, Quaternion.identity);
+
+            if (animator != null)
+                animator.SetTrigger("attackFireball");
         }
     }
 
@@ -143,6 +152,9 @@ public class BossDragon : Entity
         {
             nextShockwaveTime = Time.time + shockwaveRate;
             Instantiate(shockwavePrefab, shockwavePoint.position, Quaternion.identity);
+
+            if (animator != null)
+                animator.SetTrigger("attackShockwave");
         }
     }
 
@@ -151,8 +163,10 @@ public class BossDragon : Entity
         if (!canTakeDamage) return;
 
         base.TakeDamage(amount);
-
         BossHealthBar.Instance.UpdateHealth(currentHealth, GetMaxHealthForPhase());
+
+        if (animator != null)
+            animator.SetTrigger("hit");
     }
 
     protected override void Die()

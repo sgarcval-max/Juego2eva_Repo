@@ -6,82 +6,71 @@ public class BossUIManager : MonoBehaviour
 {
     public static BossUIManager Instance;
 
-    [Header("UI References")]
-    public CanvasGroup phaseCanvasGroup;
-    public TMP_Text phaseText;
-
-    [Header("Settings")]
-    public float fadeDuration = 0.8f;
-    public float phaseTextVisibleTime = 2f;
-    public float defeatedTextTime = 4f;
+    public CanvasGroup panelGroup;
+    public TextMeshProUGUI text;
 
     private void Awake()
     {
         Instance = this;
-
-        phaseCanvasGroup.alpha = 0;
-        phaseCanvasGroup.gameObject.SetActive(false);
+        panelGroup.alpha = 0;
     }
 
-    // -------- INICIO DE PELEA --------
-    public void ShowBossIntro()
+    public void ShowPhaseTextFade(int phase)
     {
-        StopAllCoroutines();
-        StartCoroutine(BossIntroRoutine());
+        StartCoroutine(ShowTextRoutine(phase));
     }
 
-    IEnumerator BossIntroRoutine()
+    IEnumerator ShowTextRoutine(int phase)
     {
-        // PRIMERO: "BOSS DRAGON"
-        yield return StartCoroutine(ShowTextRoutine("BOSS DRAGON", phaseTextVisibleTime));
+        string message = "";
 
-        // DESPUÉS: "FASE 1"
-        yield return StartCoroutine(ShowTextRoutine("FASE 1", phaseTextVisibleTime));
-    }
+        if (phase == 1)
+            message = "Boss Dragon\nFase 1";
+        else if (phase == 2)
+            message = "Fase 2";
+        else if (phase == 3)
+            message = "Fase 3";
 
-    // -------- CAMBIO DE FASE --------
-    public void ShowPhaseText(int phase)
-    {
-        StopAllCoroutines();
-        StartCoroutine(ShowTextRoutine("FASE " + phase, phaseTextVisibleTime));
-    }
+        text.text = message;
 
-    // -------- FINAL DEL BOSS --------
-    public void ShowBossDefeated()
-    {
-        StopAllCoroutines();
-        StartCoroutine(ShowTextRoutine("DRAGÓN DERROTADO", defeatedTextTime));
-    }
-
-    // -------- RUTINA GENERAL --------
-    IEnumerator ShowTextRoutine(string text, float visibleTime)
-    {
-        phaseText.text = text;
-        phaseCanvasGroup.gameObject.SetActive(true);
-
-        // FADE IN
-        yield return StartCoroutine(FadeCanvasGroup(0, 1));
-
-        // TIEMPO EN PANTALLA
-        yield return new WaitForSeconds(visibleTime);
-
-        // FADE OUT
-        yield return StartCoroutine(FadeCanvasGroup(1, 0));
-
-        phaseCanvasGroup.gameObject.SetActive(false);
-    }
-
-    IEnumerator FadeCanvasGroup(float from, float to)
-    {
-        float timer = 0;
-
-        while (timer < fadeDuration)
+        // Fade In
+        for (float i = 0; i <= 1; i += Time.deltaTime)
         {
-            timer += Time.deltaTime;
-            phaseCanvasGroup.alpha = Mathf.Lerp(from, to, timer / fadeDuration);
+            panelGroup.alpha = i;
             yield return null;
         }
 
-        phaseCanvasGroup.alpha = to;
+        yield return new WaitForSeconds(2f);
+
+        // Fade Out
+        for (float i = 1; i >= 0; i -= Time.deltaTime)
+        {
+            panelGroup.alpha = i;
+            yield return null;
+        }
+    }
+
+    public void ShowBossDefeated()
+    {
+        StartCoroutine(ShowFinalText());
+    }
+
+    IEnumerator ShowFinalText()
+    {
+        text.text = "Dragon Derrotado";
+
+        for (float i = 0; i <= 1; i += Time.deltaTime)
+        {
+            panelGroup.alpha = i;
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(4f);
+
+        for (float i = 1; i >= 0; i -= Time.deltaTime)
+        {
+            panelGroup.alpha = i;
+            yield return null;
+        }
     }
 }

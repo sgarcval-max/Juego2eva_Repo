@@ -26,27 +26,58 @@ public class BossDragon : Entity
     public float moveSpeed = 3f;
     public Transform player;
 
+    [Header("Movimiento Fase 3")]
+    public float followDistance = 3f; // distancia mínima que mantiene respecto al jugador
+    public float stopDistance = 1f;   // opcional: distancia a la que deja de moverse
+
     private float nextFireTime;
     private float nextShockwaveTime;
 
     private bool isTransitioning = false;
+    private bool fightStarted = false;
+    private bool canTakeDamage = true;
 
-    [Header("Activation")]
-    public bool fightStarted = false;
     public float activationDistance = 5f;
 
-    [Header("Fase 3 - Seguimiento")]
-    public float followDistance = 3f;
-    public float stopDistance = 1f;
+    void CheckActivation()
+    {
+        if (fightStarted) return;
+        if (player == null) return;
+
+        if (Vector2.Distance(transform.position, player.position) <= activationDistance)
+        {
+            fightStarted = true;
+
+            // MOSTRAR BARRA AL INICIAR EL COMBATE
+            if (BossHealthBar.Instance != null)
+                BossHealthBar.Instance.Show();
+
+            StartCoroutine(StartPhase(1));
+        }
+    }
+
+    IEnumerator StartPhase(int phaseNumber)
+    {
+        isTransitioning = true;
+        canTakeDamage = false;
+
+        BossUIManager.Instance.ShowPhaseTextFade(phaseNumber);
+
+        yield return new WaitForSeconds(2f);
+
+        currentPhase = (BossPhase)(phaseNumber - 1);
+        currentHealth = GetMaxHealthForPhase();
+
+        BossHealthBar.Instance.UpdateHealth(currentHealth, GetMaxHealthForPhase());
+
+        canTakeDamage = true;
+        isTransitioning = false;
+    }
 
     protected override void Awake()
     {
         base.Awake();
         currentHealth = phase1Health;
-
-        // Ocultar barra al empezar
-        if (BossHealthBar.Instance != null)
-            BossHealthBar.Instance.gameObject.SetActive(false);
     }
 
     protected override void Update()
@@ -63,95 +94,20 @@ public class BossDragon : Entity
 
         switch (currentPhase)
         {
-            case BossPhase.Phase1:
-                Phase1Logic();
-                break;
-            case BossPhase.Phase2:
-                Phase2Logic();
-                break;
-            case BossPhase.Phase3:
-                Phase3Logic();
-                break;
+            case BossPhase.Phase1: Phase1Logic(); break;
+            case BossPhase.Phase2: Phase2Logic(); break;
+            case BossPhase.Phase3: Phase3Logic(); break;
         }
     }
 
-    void CheckActivation()
-    {
-        if (fightStarted) return;
-
-        if (player == null) return;
-
-        if (Vector2.Distance(transform.position, player.position) <= activationDistance)
-        {
-            fightStarted = true;
-
-            // Mostrar barra de vida al empezar
-            BossHealthBar.Instance?.gameObject.SetActive(true);
-
-            StartCoroutine(StartPhase(1));
-        }
-    }
-
-    IEnumerator StartPhase(int phaseNumber)
-    {
-        isTransitioning = true;
-
-        BossUIManager.Instance.ShowPhaseText(phaseNumber);
-
-        yield return new WaitForSeconds(2f);
-
-        currentPhase = (BossPhase)(phaseNumber - 1);
-        currentHealth = GetMaxHealthForPhase();
-
-        BossHealthBar.Instance.UpdateHealth(currentHealth, GetMaxHealthForPhase());
-
-        isTransitioning = false;
-    }
-
-    void Phase1Logic()
-    {
-        TryShootFireball();
-    }
-
-    void Phase2Logic()
-    {
-        TryShootFireball();
-        TryShockwave();
-    }
-
+    void Phase1Logic() { TryShootFireball(); }
+    void Phase2Logic() { TryShootFireball(); TryShockwave(); }
     void Phase3Logic()
     {
         TryShootFireball();
         TryShockwave();
 
-        MoveTowardsPlayer();
-    }
-
-    void TryShootFireball()
-    {
-        if (Time.time >= nextFireTime)
-        {
-            nextFireTime = Time.time + fireRate;
-
-            Instantiate(fireballPrefab, firePoint.position, Quaternion.identity);
-        }
-    }
-
-    void TryShockwave()
-    {
-        if (Time.time >= nextShockwaveTime && shockwavePrefab != null && shockwavePoint != null)
-        {
-            nextShockwaveTime = Time.time + shockwaveRate;
-
-            GameObject sw = Instantiate(shockwavePrefab, shockwavePoint.position, Quaternion.identity);
-
-            Vector2 dir = (player.position - shockwavePoint.position).normalized;
-            Shockwave shockScript = sw.GetComponent<Shockwave>();
-            if (shockScript != null)
-            {
-                shockScript.transform.right = dir;
-            }
-        }
+        MoveTowardsPlayer(); // Esto hace que el dragón siga al jugador
     }
 
     void MoveTowardsPlayer()
@@ -160,23 +116,43 @@ public class BossDragon : Entity
 
         float distanceX = player.position.x - transform.position.x;
 
+        // Solo se mueve si está fuera de la distancia mínima
         if (Mathf.Abs(distanceX) > followDistance)
         {
             float directionX = Mathf.Sign(distanceX);
             transform.position += new Vector3(directionX * moveSpeed * Time.deltaTime, 0, 0);
 
-            if (directionX > 0 && !facingRight) Flip();
-            else if (directionX < 0 && facingRight) Flip();
+            // Flip visual corregido para que mire al jugador
+            if (directionX > 0 && facingRight) Flip();
+            else if (directionX < 0 && !facingRight) Flip();
+        }
+    }
+
+    void TryShootFireball()
+    {
+        if (Time.time >= nextFireTime)
+        {
+            nextFireTime = Time.time + fireRate;
+            Instantiate(fireballPrefab, firePoint.position, Quaternion.identity);
+        }
+    }
+
+    void TryShockwave()
+    {
+        if (Time.time >= nextShockwaveTime)
+        {
+            nextShockwaveTime = Time.time + shockwaveRate;
+            Instantiate(shockwavePrefab, shockwavePoint.position, Quaternion.identity);
         }
     }
 
     public override void TakeDamage(int amount = 1)
     {
-        if (isTransitioning) return;   // 🔒 Inmortal durante textos
+        if (!canTakeDamage) return;
 
         base.TakeDamage(amount);
 
-        BossHealthBar.Instance?.UpdateHealth(currentHealth, GetMaxHealthForPhase());
+        BossHealthBar.Instance.UpdateHealth(currentHealth, GetMaxHealthForPhase());
     }
 
     protected override void Die()
@@ -189,63 +165,50 @@ public class BossDragon : Entity
     IEnumerator NextPhaseRoutine()
     {
         isTransitioning = true;
+        canTakeDamage = false;
 
         yield return new WaitForSeconds(2f);
 
+        // Regenerar al jugador hasta 2 puntos
         RegeneratePlayerHealth();
-
-        int oldMaxHealth = GetMaxHealthForPhase();
 
         if (currentPhase == BossPhase.Phase1)
         {
             currentPhase = BossPhase.Phase2;
-            BossUIManager.Instance.ShowPhaseText(2);
-
-            yield return StartCoroutine(AnimateHealthBar(oldMaxHealth, phase2Health));
-
             currentHealth = phase2Health;
+
+            BossUIManager.Instance.ShowPhaseTextFade(2);
+
+            // 🔥 ANIMAR RELLENO DE VIDA
+            BossHealthBar.Instance.AnimateRefill(phase2Health);
         }
         else if (currentPhase == BossPhase.Phase2)
         {
             currentPhase = BossPhase.Phase3;
-            BossUIManager.Instance.ShowPhaseText(3);
-
-            yield return StartCoroutine(AnimateHealthBar(oldMaxHealth, phase3Health));
-
             currentHealth = phase3Health;
+
+            BossUIManager.Instance.ShowPhaseTextFade(3);
+
+            // 🔥 ANIMAR RELLENO DE VIDA
+            BossHealthBar.Instance.AnimateRefill(phase3Health);
         }
         else
         {
-            Destroy(gameObject);
+            // FINAL DEL BOSS
             BossUIManager.Instance.ShowBossDefeated();
 
-            // Ocultar barra al final
-            BossHealthBar.Instance?.gameObject.SetActive(false);
+            // OCULTAR BARRA AL MORIR
+            BossHealthBar.Instance.Hide();
 
+            Destroy(gameObject);
             yield break;
         }
 
-        BossHealthBar.Instance.UpdateHealth(currentHealth, GetMaxHealthForPhase());
+        // Esperar un poco a que el jugador vea el texto y la barra llenarse
+        yield return new WaitForSeconds(2.5f);
 
+        canTakeDamage = true;
         isTransitioning = false;
-    }
-
-    IEnumerator AnimateHealthBar(int from, int to)
-    {
-        float duration = 1.5f;
-        float elapsed = 0f;
-
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            int current = (int)Mathf.Lerp(from, to, elapsed / duration);
-
-            BossHealthBar.Instance.UpdateHealth(current, to);
-
-            yield return null;
-        }
-
-        BossHealthBar.Instance.UpdateHealth(to, to);
     }
 
     private void RegeneratePlayerHealth()
@@ -255,18 +218,12 @@ public class BossDragon : Entity
         Player player = GameObject.FindWithTag("Player")?.GetComponent<Player>();
         if (player == null) return;
 
-        int maxPlayerHealth = player.MaxHealth;
-        int currentPlayerHealth = player.CurrentHealth;
-
-        int lostHealth = maxPlayerHealth - currentPlayerHealth;
-
+        int lostHealth = player.MaxHealth - player.CurrentHealth;
         if (lostHealth > 0)
         {
-            int regenAmount = Mathf.Min(2, lostHealth);
-            player.SetHealth(currentPlayerHealth + regenAmount);
+            int regen = Mathf.Min(2, lostHealth);
+            player.SetHealth(player.CurrentHealth + regen);
             PlayerHealthManager.Instance.UpdateHealth(player.CurrentHealth);
-
-            Debug.Log($"Jugador regeneró {regenAmount} de vida al iniciar nueva fase");
         }
     }
 
@@ -281,3 +238,4 @@ public class BossDragon : Entity
         return phase1Health;
     }
 }
+

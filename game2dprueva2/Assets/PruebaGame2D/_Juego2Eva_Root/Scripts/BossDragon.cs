@@ -33,69 +33,20 @@ public class BossDragon : Entity
 
     [Header("Activation")]
     public bool fightStarted = false;
-    public float activationDistance = 5f; // distancia m�nima al jugador
+    public float activationDistance = 5f;
 
     [Header("Fase 3 - Seguimiento")]
-    public float followDistance = 3f; // distancia mínima que mantiene respecto al jugador
-    public float stopDistance = 1f;   // distancia a la que deja de moverse
-
-    private void RegeneratePlayerHealth()
-    {
-        if (PlayerHealthManager.Instance == null) return;
-
-        Player player = GameObject.FindWithTag("Player")?.GetComponent<Player>();
-        if (player == null) return;
-
-        int maxPlayerHealth = player.MaxHealth; // vida máxima
-        int currentPlayerHealth = player.CurrentHealth;
-
-        int lostHealth = maxPlayerHealth - currentPlayerHealth;
-
-        if (lostHealth > 0)
-        {
-            int regenAmount = Mathf.Min(2, lostHealth); // regenera 2 como máximo o lo que haya perdido
-            player.SetHealth(currentPlayerHealth + regenAmount);
-            PlayerHealthManager.Instance.UpdateHealth(player.CurrentHealth);
-
-            Debug.Log($"Jugador regeneró {regenAmount} de vida al iniciar nueva fase");
-        }
-    }
-
-    void CheckActivation()
-    {
-        if (fightStarted) return;
-
-        if (player == null) return;
-
-        if (Vector2.Distance(transform.position, player.position) <= activationDistance)
-        {
-            StartCoroutine(StartPhase(1));
-            fightStarted = true;
-        }
-    }
-
-    IEnumerator StartPhase(int phaseNumber)
-    {
-        isTransitioning = true;
-
-        // Mostrar texto
-        BossUIManager.Instance.ShowPhaseText(phaseNumber);
-
-        yield return new WaitForSeconds(2f);
-
-        // Comenzar fase
-        currentPhase = (BossPhase)(phaseNumber - 1); // Phase1 = 0
-        currentHealth = GetMaxHealthForPhase();
-
-        BossHealthBar.Instance.UpdateHealth(currentHealth, GetMaxHealthForPhase());
-
-        isTransitioning = false;
-    }
+    public float followDistance = 3f;
+    public float stopDistance = 1f;
 
     protected override void Awake()
     {
         base.Awake();
         currentHealth = phase1Health;
+
+        // Ocultar barra al empezar
+        if (BossHealthBar.Instance != null)
+            BossHealthBar.Instance.gameObject.SetActive(false);
     }
 
     protected override void Update()
@@ -122,6 +73,39 @@ public class BossDragon : Entity
                 Phase3Logic();
                 break;
         }
+    }
+
+    void CheckActivation()
+    {
+        if (fightStarted) return;
+
+        if (player == null) return;
+
+        if (Vector2.Distance(transform.position, player.position) <= activationDistance)
+        {
+            fightStarted = true;
+
+            // Mostrar barra de vida al empezar
+            BossHealthBar.Instance?.gameObject.SetActive(true);
+
+            StartCoroutine(StartPhase(1));
+        }
+    }
+
+    IEnumerator StartPhase(int phaseNumber)
+    {
+        isTransitioning = true;
+
+        BossUIManager.Instance.ShowPhaseText(phaseNumber);
+
+        yield return new WaitForSeconds(2f);
+
+        currentPhase = (BossPhase)(phaseNumber - 1);
+        currentHealth = GetMaxHealthForPhase();
+
+        BossHealthBar.Instance.UpdateHealth(currentHealth, GetMaxHealthForPhase());
+
+        isTransitioning = false;
     }
 
     void Phase1Logic()
@@ -159,15 +143,13 @@ public class BossDragon : Entity
         {
             nextShockwaveTime = Time.time + shockwaveRate;
 
-            // Instancia la onda en el punto
             GameObject sw = Instantiate(shockwavePrefab, shockwavePoint.position, Quaternion.identity);
 
-            // Opcional: si quieres que vaya hacia el jugador
             Vector2 dir = (player.position - shockwavePoint.position).normalized;
             Shockwave shockScript = sw.GetComponent<Shockwave>();
             if (shockScript != null)
             {
-                shockScript.transform.right = dir; // orientar la onda hacia el jugador
+                shockScript.transform.right = dir;
             }
         }
     }
@@ -176,16 +158,13 @@ public class BossDragon : Entity
     {
         if (player == null) return;
 
-        // Calculamos la distancia horizontal entre dragón y jugador
         float distanceX = player.position.x - transform.position.x;
 
-        // Solo nos movemos si estamos fuera del rango deseado
         if (Mathf.Abs(distanceX) > followDistance)
         {
-            float directionX = Mathf.Sign(distanceX); // -1 o 1 según la dirección
+            float directionX = Mathf.Sign(distanceX);
             transform.position += new Vector3(directionX * moveSpeed * Time.deltaTime, 0, 0);
 
-            // Flip visual
             if (directionX > 0 && !facingRight) Flip();
             else if (directionX < 0 && facingRight) Flip();
         }
@@ -193,6 +172,8 @@ public class BossDragon : Entity
 
     public override void TakeDamage(int amount = 1)
     {
+        if (isTransitioning) return;   // 🔒 Inmortal durante textos
+
         base.TakeDamage(amount);
 
         BossHealthBar.Instance?.UpdateHealth(currentHealth, GetMaxHealthForPhase());
@@ -211,26 +192,36 @@ public class BossDragon : Entity
 
         yield return new WaitForSeconds(2f);
 
-        // Regenerar vida del jugador al terminar la fase
         RegeneratePlayerHealth();
+
+        int oldMaxHealth = GetMaxHealthForPhase();
 
         if (currentPhase == BossPhase.Phase1)
         {
             currentPhase = BossPhase.Phase2;
-            currentHealth = phase2Health;
             BossUIManager.Instance.ShowPhaseText(2);
+
+            yield return StartCoroutine(AnimateHealthBar(oldMaxHealth, phase2Health));
+
+            currentHealth = phase2Health;
         }
         else if (currentPhase == BossPhase.Phase2)
         {
             currentPhase = BossPhase.Phase3;
-            currentHealth = phase3Health;
             BossUIManager.Instance.ShowPhaseText(3);
+
+            yield return StartCoroutine(AnimateHealthBar(oldMaxHealth, phase3Health));
+
+            currentHealth = phase3Health;
         }
         else
         {
-            // BOSS DERROTADO FINALMENTE
             Destroy(gameObject);
             BossUIManager.Instance.ShowBossDefeated();
+
+            // Ocultar barra al final
+            BossHealthBar.Instance?.gameObject.SetActive(false);
+
             yield break;
         }
 
@@ -239,6 +230,45 @@ public class BossDragon : Entity
         isTransitioning = false;
     }
 
+    IEnumerator AnimateHealthBar(int from, int to)
+    {
+        float duration = 1.5f;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            int current = (int)Mathf.Lerp(from, to, elapsed / duration);
+
+            BossHealthBar.Instance.UpdateHealth(current, to);
+
+            yield return null;
+        }
+
+        BossHealthBar.Instance.UpdateHealth(to, to);
+    }
+
+    private void RegeneratePlayerHealth()
+    {
+        if (PlayerHealthManager.Instance == null) return;
+
+        Player player = GameObject.FindWithTag("Player")?.GetComponent<Player>();
+        if (player == null) return;
+
+        int maxPlayerHealth = player.MaxHealth;
+        int currentPlayerHealth = player.CurrentHealth;
+
+        int lostHealth = maxPlayerHealth - currentPlayerHealth;
+
+        if (lostHealth > 0)
+        {
+            int regenAmount = Mathf.Min(2, lostHealth);
+            player.SetHealth(currentPlayerHealth + regenAmount);
+            PlayerHealthManager.Instance.UpdateHealth(player.CurrentHealth);
+
+            Debug.Log($"Jugador regeneró {regenAmount} de vida al iniciar nueva fase");
+        }
+    }
 
     int GetMaxHealthForPhase()
     {

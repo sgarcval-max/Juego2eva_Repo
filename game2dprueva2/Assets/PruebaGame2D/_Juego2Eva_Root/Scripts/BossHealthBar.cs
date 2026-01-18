@@ -18,3 +18,4 @@ public class BossHealthBar : MonoBehaviour
         slider.value = current;
     }
 }
+

@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class PlayerAbilities : MonoBehaviour
 {
-    public static PlayerAbilities instance;
+    public static PlayerAbilities Instance;
 
-    public bool canDash;
     public bool canDoubleJump;
+    public bool canChargedFire;
+    public bool canMeleeAttack;
 
     private void Awake()
     {
-        if (instance == null)
-            instance = this;
+        if (Instance == null)
+            Instance = this;
         else
             Destroy(gameObject);
     }
@@ -19,12 +20,16 @@ public class PlayerAbilities : MonoBehaviour
     {
         switch (ability)
         {
-            case AbilityType.Dash:
-                canDash = true;
-                break;
-
             case AbilityType.DoubleJump:
                 canDoubleJump = true;
+                break;
+
+            case AbilityType.ChargedFire:
+                canChargedFire = true;
+                break;
+
+            case AbilityType.MeleeAttack:
+                canMeleeAttack = true;
                 break;
         }
     }

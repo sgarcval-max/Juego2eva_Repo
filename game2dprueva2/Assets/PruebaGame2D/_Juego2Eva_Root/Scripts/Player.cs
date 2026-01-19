@@ -7,34 +7,76 @@ public class Player : Entity
     [SerializeField] protected float moveSpeed = 3.5f;
     [SerializeField] private float jumpForce = 8;
 
+    [Header("Fireball Attack")]
+    [SerializeField] private GameObject fireballPrefab;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private float fireCooldown = 0.5f;
+    [SerializeField] private string fireTriggerName = "fire";
+
+    private float lastFireTime;
+
     private float xInput;
     private bool canJump = true;
+    private int jumpCount = 0;
+    public int maxJumps = 2;
+
+    public bool IsDead => currentHealth <= 0;
 
     private void OnEnable()
     {
         if (GameInput.Instance != null)
-        {
             GameInput.Instance.inputActions.Player.Enable();
-        }
     }
 
     protected override void Update()
     {
         base.Update();
+
+        if (isGrounded)
+            jumpCount = 0;
+
         HandleInput();
     }
 
     private void HandleInput()
     {
+        if (KeyBindingsManager.Instance == null) return;
+
         xInput = GetHorizontalInput();
 
-        // salto
-        if (GameInput.Instance.inputActions.Player.Jump.triggered)
-            TryToJump();
+        KeyCode jumpKey = KeyBindingsManager.Instance.GetBinding("Jump", InputDeviceType.Keyboard);
+        KeyCode attackKey = KeyBindingsManager.Instance.GetBinding("Attack", InputDeviceType.Keyboard);
+        KeyCode fireKey = KeyBindingsManager.Instance.GetBinding("Fire", InputDeviceType.Keyboard);
 
-        // ataque
-        if (GameInput.Instance.inputActions.Player.Attack.triggered)
-            HandleAttack();
+        // SALTO
+        if (Input.GetKeyDown(jumpKey))
+        {
+            TryToJump();
+        }
+
+        // ATAQUE NORMAL (solo si está desbloqueado)
+        if (Input.GetKeyDown(attackKey))
+        {
+            if (AbilityManager.Instance != null &&
+                AbilityManager.Instance.meleeAttackUnlocked)
+            {
+                HandleAttack();
+            }
+        }
+
+        // FIREBALL NORMAL
+        if (Input.GetKeyDown(fireKey))
+        {
+            if (Time.time >= lastFireTime + fireCooldown)
+            {
+                lastFireTime = Time.time;
+
+                anim.SetTrigger("fire");
+                ShootFireball();
+            }
+        }
+
+        HandleChargedFireInput();
     }
 
     protected override void HandleMovement()
@@ -48,7 +90,17 @@ public class Player : Entity
     private void TryToJump()
     {
         if (isGrounded && canJump)
+        {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            jumpCount = 1;
+        }
+        else if (AbilityManager.Instance != null &&
+                 AbilityManager.Instance.doubleJumpUnlocked &&
+                 jumpCount < maxJumps)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            jumpCount++;
+        }
     }
 
     public override void EnableMovement(bool enable)
@@ -59,18 +111,14 @@ public class Player : Entity
 
     protected override void Die()
     {
-        base.Die(); // Esto ejecuta la animación, físicas y demás
+        base.Die();
         UI.instance.EnableGameOverUI();
-
-        // SOLO aquí avisamos a la cámara
-        CameraFollow2D_Zone camFollow = FindObjectOfType<CameraFollow2D_Zone>();
-        if (camFollow != null)
-            camFollow.FreezeCameraPermanently();
     }
 
     public void PlayCutsceneMovement(Vector2 velocity)
     {
         rb.linearVelocity = velocity;
+
         if (anim != null)
         {
             anim.SetFloat("xVelocity", velocity.x);
@@ -81,44 +129,29 @@ public class Player : Entity
 
     private float GetHorizontalInput()
     {
-        // 1) Gamepad
-        Vector2 gamepadInput = GameInput.Instance.inputActions.Player.Move.ReadValue<Vector2>();
-        if (Mathf.Abs(gamepadInput.x) > 0.12f)
-            return gamepadInput.x;
+        if (KeyBindingsManager.Instance == null)
+            return 0;
 
-        // 2) Teclado
-        float h = 0f;
-        if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed) h -= 1f;
-        if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed) h += 1f;
+        KeyCode leftKey = KeyBindingsManager.Instance.GetBinding("MoveLeft", InputDeviceType.Keyboard);
+        KeyCode rightKey = KeyBindingsManager.Instance.GetBinding("MoveRight", InputDeviceType.Keyboard);
 
-        return h;
+        float input = 0;
+
+        if (Input.GetKey(leftKey)) input -= 1;
+        if (Input.GetKey(rightKey)) input += 1;
+
+        return input;
     }
 
-    // -------------------- HABILIDADES --------------------
-    [Header("Abilities")]
-    [SerializeField] private bool canDoubleJump = false;
-    [SerializeField] private bool canDash = false;
-    [SerializeField] private bool canFireball = false;
-
-    public void UnlockAbility(AbilityType ability)
-    {
-        Debug.Log("Habilidad desbloqueada: " + ability);
-        // Aquí luego activas doble salto, dash, etc.
-    }
-
-    public override void TakeDamage(int amount = 1)
+    public new void TakeDamage(int amount = 1)
     {
         base.TakeDamage(amount);
 
-        // avisamos al manager si seguimos vivos
-        if (currentHealth > 0 && PlayerHealthManager.Instance != null)
+        if (PlayerHealthManager.Instance != null)
             PlayerHealthManager.Instance.UpdateHealth(currentHealth);
 
-        // morir resetea vida
         if (currentHealth <= 0 && PlayerHealthManager.Instance != null)
-        {
-            PlayerHealthManager.Instance.ResetHealth(); // reaparece con vida máxima
-        }
+            PlayerHealthManager.Instance.ResetHealth();
     }
 
     public void SetHealth(int health)
@@ -126,11 +159,113 @@ public class Player : Entity
         currentHealth = Mathf.Clamp(health, 0, MaxHealth);
     }
 
-    protected virtual void Start()
+    // -------------------- SISTEMA DE HABILIDADES --------------------
+
+    public void UnlockAbility(AbilityType ability)
     {
-        if (PlayerHealthManager.Instance != null)
+        Debug.Log("Habilidad desbloqueada: " + ability);
+
+        if (AbilityManager.Instance == null) return;
+
+        switch (ability)
         {
-            SetHealth(PlayerHealthManager.Instance.GetSavedHealth());
+            case AbilityType.DoubleJump:
+                AbilityManager.Instance.doubleJumpUnlocked = true;
+                break;
+
+            case AbilityType.ChargedFire:
+                AbilityManager.Instance.chargedFireUnlocked = true;
+                break;
+
+            case AbilityType.MeleeAttack:
+                AbilityManager.Instance.meleeAttackUnlocked = true;
+                break;
         }
+    }
+
+    // -------------------- ATAQUE CARGADO --------------------
+
+    [Header("Charged Fire Attack")]
+    [SerializeField] private GameObject chargedFireballPrefab;
+    [SerializeField] private Transform chargedFirePoint;
+
+    [SerializeField] private float maxChargeTime = 2f;
+    [SerializeField] private float chargeCooldown = 3f;
+
+    private float chargeTimer = 0f;
+    private bool isCharging = false;
+    private float nextChargeTime = 0f;
+
+    private void HandleChargedFireInput()
+    {
+        if (AbilityManager.Instance == null) return;
+        if (!AbilityManager.Instance.chargedFireUnlocked) return;
+
+        if (Time.time < nextChargeTime) return;
+
+        KeyCode fireKey = KeyBindingsManager.Instance.GetBinding("Fire", InputDeviceType.Keyboard);
+
+        if (Input.GetKeyDown(fireKey))
+        {
+            isCharging = true;
+            chargeTimer = 0f;
+        }
+
+        if (Input.GetKey(fireKey) && isCharging)
+        {
+            chargeTimer += Time.deltaTime;
+            chargeTimer = Mathf.Clamp(chargeTimer, 0, maxChargeTime);
+        }
+
+        if (Input.GetKeyUp(fireKey) && isCharging)
+        {
+            ShootChargedFireball();
+            isCharging = false;
+            nextChargeTime = Time.time + chargeCooldown;
+        }
+    }
+
+    private void ShootChargedFireball()
+    {
+        if (chargedFireballPrefab == null || chargedFirePoint == null)
+            return;
+
+        GameObject fire = Instantiate(chargedFireballPrefab, chargedFirePoint.position, Quaternion.identity);
+
+        Fireball fireballScript = fire.GetComponent<Fireball>();
+
+        Vector2 dir = facingRight ? Vector2.right : Vector2.left;
+        fireballScript.SetDirection(dir);
+
+        float damageMultiplier = 1f + (chargeTimer / maxChargeTime);
+
+        fireballScript.damage = Mathf.RoundToInt(fireballScript.damage * damageMultiplier);
+    }
+
+    // -------------------- FIREBALL NORMAL --------------------
+
+    public void ShootFireball()
+    {
+        if (fireballPrefab == null || firePoint == null)
+        {
+            Debug.LogWarning("Falta asignar fireballPrefab o firePoint");
+            return;
+        }
+
+        GameObject fb = Instantiate(fireballPrefab, firePoint.position, Quaternion.identity);
+
+        Fireball fireballScript = fb.GetComponent<Fireball>();
+
+        Vector2 dir = facingRight ? Vector2.right : Vector2.left;
+
+        fireballScript.SetDirection(dir);
+    }
+
+    public void FireAttack()
+    {
+        if (!canMove) return;
+
+        EnableMovement(false);
+        anim.SetTrigger(fireTriggerName);
     }
 }

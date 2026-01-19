@@ -2,18 +2,55 @@ using UnityEngine;
 
 public enum AbilityType
 {
-    None,
     DoubleJump,
-    Dash,
-    Fireball
-    // Añade las habilidades que quieras
+    ChargedFire,
+    MeleeAttack
 }
 
-[CreateAssetMenu(menuName = "Items/Item Data")]
-public class ItemData : ScriptableObject
+public class ItemData : MonoBehaviour
 {
-    public string itemName;
-    [TextArea] public string description;
-    public Sprite icon;
     public AbilityType ability;
+
+    [Header("UI Info")]
+    public Sprite icon;
+    public string itemName;
+    [TextArea]
+    public string description;
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            UnlockAbility();
+
+            // Mostrar popup de UI
+            ItemPopupUI popup = FindObjectOfType<ItemPopupUI>();
+            if (popup != null)
+            {
+                popup.ShowItem(this);
+            }
+
+            Destroy(gameObject);
+        }
+    }
+
+    void UnlockAbility()
+    {
+        switch (ability)
+        {
+            case AbilityType.DoubleJump:
+                AbilityManager.Instance.doubleJumpUnlocked = true;
+                break;
+
+            case AbilityType.ChargedFire:
+                AbilityManager.Instance.chargedFireUnlocked = true;
+                break;
+
+            case AbilityType.MeleeAttack:
+                AbilityManager.Instance.meleeAttackUnlocked = true;
+                break;
+        }
+
+        Debug.Log("Habilidad desbloqueada: " + ability);
+    }
 }

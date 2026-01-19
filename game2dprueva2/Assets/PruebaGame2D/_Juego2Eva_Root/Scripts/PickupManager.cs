@@ -1,9 +1,8 @@
-﻿using NUnit.Framework.Interfaces;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PickupManager : MonoBehaviour
 {
-    public static PickupManager instance;
+    public static PickupManager Instance;
 
     [Header("UI")]
     public GameObject pickupPanel;
@@ -11,25 +10,36 @@ public class PickupManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-            instance = this;
+        if (Instance == null)
+            Instance = this;
         else
             Destroy(gameObject);
     }
 
     public void CollectItem(ItemData item)
     {
-        Time.timeScale = 0f; // 🔥 PAUSA TOTAL
+        if (item == null) return;
 
-        pickupPanel.SetActive(true);
-        pickupUI.ShowItem(item);
+        // Pausa el juego
+        Time.timeScale = 0f;
 
-        PlayerAbilities.instance.UnlockAbility(item.ability);
+        // Mostrar panel y UI del item
+        if (pickupPanel != null)
+            pickupPanel.SetActive(true);
+
+        if (pickupUI != null)
+            pickupUI.ShowItem(item);
+
+        // Desbloquear habilidad
+        if (PlayerAbilities.Instance != null)
+            PlayerAbilities.Instance.UnlockAbility(item.ability);
     }
 
     public void ClosePickup()
     {
-        pickupPanel.SetActive(false);
+        if (pickupPanel != null)
+            pickupPanel.SetActive(false);
+
         Time.timeScale = 1f;
     }
 }

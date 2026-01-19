@@ -11,14 +11,15 @@ public class Player : Entity
     [SerializeField] private GameObject fireballPrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float fireCooldown = 0.5f;
-    [SerializeField] private string fireTriggerName = "fire"; // el trigger en el Animator
+    [SerializeField] private string fireTriggerName = "fire";
 
     private float lastFireTime;
 
     private float xInput;
     private bool canJump = true;
+    private int jumpCount = 0;
+    public int maxJumps = 2;
 
-    // Nueva propiedad pública para consultar si está muerto
     public bool IsDead => currentHealth <= 0;
 
     private void OnEnable()
@@ -30,6 +31,10 @@ public class Player : Entity
     protected override void Update()
     {
         base.Update();
+
+        if (isGrounded)
+            jumpCount = 0;
+
         HandleInput();
     }
 
@@ -49,13 +54,17 @@ public class Player : Entity
             TryToJump();
         }
 
-        // ATAQUE NORMAL
+        // ATAQUE NORMAL (solo si está desbloqueado)
         if (Input.GetKeyDown(attackKey))
         {
-            HandleAttack();
+            if (AbilityManager.Instance != null &&
+                AbilityManager.Instance.meleeAttackUnlocked)
+            {
+                HandleAttack();
+            }
         }
 
-        // ATAQUE FIREBALL
+        // FIREBALL NORMAL
         if (Input.GetKeyDown(fireKey))
         {
             if (Time.time >= lastFireTime + fireCooldown)
@@ -66,6 +75,8 @@ public class Player : Entity
                 ShootFireball();
             }
         }
+
+        HandleChargedFireInput();
     }
 
     protected override void HandleMovement()
@@ -79,7 +90,17 @@ public class Player : Entity
     private void TryToJump()
     {
         if (isGrounded && canJump)
+        {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            jumpCount = 1;
+        }
+        else if (AbilityManager.Instance != null &&
+                 AbilityManager.Instance.doubleJumpUnlocked &&
+                 jumpCount < maxJumps)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            jumpCount++;
+        }
     }
 
     public override void EnableMovement(bool enable)
@@ -97,6 +118,7 @@ public class Player : Entity
     public void PlayCutsceneMovement(Vector2 velocity)
     {
         rb.linearVelocity = velocity;
+
         if (anim != null)
         {
             anim.SetFloat("xVelocity", velocity.x);
@@ -137,49 +159,90 @@ public class Player : Entity
         currentHealth = Mathf.Clamp(health, 0, MaxHealth);
     }
 
-    // -------------------- HABILIDADES --------------------
-    [Header("Abilities")]
-    [SerializeField] private bool canDoubleJump = false;
-    [SerializeField] private bool canDash = false;
-    [SerializeField] private bool canFireball = false;
+    // -------------------- SISTEMA DE HABILIDADES --------------------
 
     public void UnlockAbility(AbilityType ability)
     {
         Debug.Log("Habilidad desbloqueada: " + ability);
-        // Aquí luego activas doble salto, dash, etc.
-    }
 
-    private void TryFire()
-    {
-        if (!canFireball) return;
+        if (AbilityManager.Instance == null) return;
 
-        anim.SetTrigger("Fire");
-        EnableMovement(false);
-    }
-
-    // Se llamará desde un EVENTO en la animación
-    public void SpawnFireballFromAnimation()
-    {
-        FireballProjectile prefab = Resources.Load<FireballProjectile>("Fireball");
-
-        if (prefab == null)
+        switch (ability)
         {
-            Debug.LogError("No se encontró el prefab Fireball en Resources");
-            return;
+            case AbilityType.DoubleJump:
+                AbilityManager.Instance.doubleJumpUnlocked = true;
+                break;
+
+            case AbilityType.ChargedFire:
+                AbilityManager.Instance.chargedFireUnlocked = true;
+                break;
+
+            case AbilityType.MeleeAttack:
+                AbilityManager.Instance.meleeAttackUnlocked = true;
+                break;
+        }
+    }
+
+    // -------------------- ATAQUE CARGADO --------------------
+
+    [Header("Charged Fire Attack")]
+    [SerializeField] private GameObject chargedFireballPrefab;
+    [SerializeField] private Transform chargedFirePoint;
+
+    [SerializeField] private float maxChargeTime = 2f;
+    [SerializeField] private float chargeCooldown = 3f;
+
+    private float chargeTimer = 0f;
+    private bool isCharging = false;
+    private float nextChargeTime = 0f;
+
+    private void HandleChargedFireInput()
+    {
+        if (AbilityManager.Instance == null) return;
+        if (!AbilityManager.Instance.chargedFireUnlocked) return;
+
+        if (Time.time < nextChargeTime) return;
+
+        KeyCode fireKey = KeyBindingsManager.Instance.GetBinding("Fire", InputDeviceType.Keyboard);
+
+        if (Input.GetKeyDown(fireKey))
+        {
+            isCharging = true;
+            chargeTimer = 0f;
         }
 
-        Vector2 dir = facingRight ? Vector2.right : Vector2.left;
+        if (Input.GetKey(fireKey) && isCharging)
+        {
+            chargeTimer += Time.deltaTime;
+            chargeTimer = Mathf.Clamp(chargeTimer, 0, maxChargeTime);
+        }
 
-        Vector3 spawnPos = transform.position + new Vector3(facingRight ? 1f : -1f, 0.5f, 0);
-
-        Instantiate(prefab, spawnPos, Quaternion.identity)
-            .Initialize(dir);
+        if (Input.GetKeyUp(fireKey) && isCharging)
+        {
+            ShootChargedFireball();
+            isCharging = false;
+            nextChargeTime = Time.time + chargeCooldown;
+        }
     }
 
-    public void OnFireAnimationEnd()
+    private void ShootChargedFireball()
     {
-        EnableMovement(true);
+        if (chargedFireballPrefab == null || chargedFirePoint == null)
+            return;
+
+        GameObject fire = Instantiate(chargedFireballPrefab, chargedFirePoint.position, Quaternion.identity);
+
+        Fireball fireballScript = fire.GetComponent<Fireball>();
+
+        Vector2 dir = facingRight ? Vector2.right : Vector2.left;
+        fireballScript.SetDirection(dir);
+
+        float damageMultiplier = 1f + (chargeTimer / maxChargeTime);
+
+        fireballScript.damage = Mathf.RoundToInt(fireballScript.damage * damageMultiplier);
     }
+
+    // -------------------- FIREBALL NORMAL --------------------
 
     public void ShootFireball()
     {
@@ -193,7 +256,6 @@ public class Player : Entity
 
         Fireball fireballScript = fb.GetComponent<Fireball>();
 
-        // Dirección según a dónde mira el player
         Vector2 dir = facingRight ? Vector2.right : Vector2.left;
 
         fireballScript.SetDirection(dir);
@@ -201,14 +263,9 @@ public class Player : Entity
 
     public void FireAttack()
     {
-        if (!canMove) return; // evita disparar mientras otra animación bloquea movimiento
+        if (!canMove) return;
 
-        // desactivar movimiento
         EnableMovement(false);
-
-        // disparar animación
         anim.SetTrigger(fireTriggerName);
     }
-
-
 }

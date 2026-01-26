@@ -1,0 +1,935 @@
+fileFormatVersion: 2
+guid: 94d1a5d565a8d3748861ac7074d4f1b2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4224909575129793064
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_0
+  - first:
+      213: -4573635205079190968
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_1
+  - first:
+      213: 2465757659488913000
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_2
+  - first:
+      213: 3593239202152779895
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_3
+  - first:
+      213: -955893542142519761
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_4
+  - first:
+      213: 7274119936055997293
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_5
+  - first:
+      213: 563861949346920815
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_6
+  - first:
+      213: -8502596863292628066
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_7
+  - first:
+      213: 1944651744342177088
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_8
+  - first:
+      213: 8502031522024516841
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_9
+  - first:
+      213: 5116018357857589537
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_10
+  - first:
+      213: -458020660503655533
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_11
+  - first:
+      213: 2478280835790839274
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_12
+  - first:
+      213: 8992297139692529388
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_13
+  - first:
+      213: -3575456174683280430
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_14
+  - first:
+      213: 7954438262068911151
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_15
+  - first:
+      213: 8973386083705662008
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_16
+  - first:
+      213: 6582915244973871270
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_17
+  - first:
+      213: 7868777305119160395
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_18
+  - first:
+      213: -1528761642021108580
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_19
+  - first:
+      213: 8510396035762545214
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_20
+  - first:
+      213: -8114795215317600483
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_21
+  - first:
+      213: -6243511712471750551
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_22
+  - first:
+      213: 1660375763382430375
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_23
+  - first:
+      213: -914955406507578870
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_24
+  - first:
+      213: 2037354752706023493
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_25
+  - first:
+      213: -1963929324101501578
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_26
+  - first:
+      213: 9209760692748297449
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_27
+  - first:
+      213: -8652059102057023339
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_28
+  - first:
+      213: 7866102247892650901
+    second: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ddfd3e302b1e55c0800000000000000
+      internalID: -4224909575129793064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 842b80d530f2780c0800000000000000
+      internalID: -4573635205079190968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8660904f681283220800000000000000
+      internalID: 2465757659488913000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 770135d3400cdd130800000000000000
+      internalID: 3593239202152779895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f26518153ebfbb2f0800000000000000
+      internalID: -955893542142519761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d63743aba8dd2f460800000000000000
+      internalID: 7274119936055997293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_6
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f69be29947d33d700800000000000000
+      internalID: 563861949346920815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_7
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e93a7179335b00a80800000000000000
+      internalID: -8502596863292628066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 045fb51557accfa10800000000000000
+      internalID: 1944651744342177088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_9
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 128
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ece173af984df570800000000000000
+      internalID: 8502031522024516841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_10
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1299a74379fbff640800000000000000
+      internalID: 5116018357857589537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_11
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 128
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39bc3eec2a8c4a9f0800000000000000
+      internalID: -458020660503655533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_12
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 128
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aed98f62a4f946220800000000000000
+      internalID: 2478280835790839274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce66226fa9e0bcc70800000000000000
+      internalID: 8992297139692529388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_14
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dba60e7d8d616ec0800000000000000
+      internalID: -3575456174683280430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_15
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2c94667477d36e60800000000000000
+      internalID: 7954438262068911151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83aa5bf991fd78c70800000000000000
+      internalID: 8973386083705662008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_17
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a0db2b99863b5b50800000000000000
+      internalID: 6582915244973871270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_18
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 64
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b487848b443833d60800000000000000
+      internalID: 7868777305119160395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_19
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 64
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c94c615e26fb8cae0800000000000000
+      internalID: -1528761642021108580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_20
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 64
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e32e481ca100b1670800000000000000
+      internalID: 8510396035762545214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1774f5eeb4726f80800000000000000
+      internalID: -8114795215317600483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_22
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96861235d279a59a0800000000000000
+      internalID: -6243511712471750551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_23
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7aae312b5f6da0710800000000000000
+      internalID: 1660375763382430375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_24
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0aeac9c7ec6d43f0800000000000000
+      internalID: -914955406507578870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_25
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5401f7c6a53264c10800000000000000
+      internalID: 2037354752706023493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_26
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67df4f06fa8beb4e0800000000000000
+      internalID: -1963929324101501578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_27
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e42e9dfd84afcf70800000000000000
+      internalID: 9209760692748297449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_28
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 598b4365616bde780800000000000000
+      internalID: -8652059102057023339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_29
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59b0b8c61520a2d60800000000000000
+      internalID: 7866102247892650901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Santiago_Garcia_Prac 7_A3D_SpriteNivel1_30
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c28efce788cefb4438db0af15e339b25
+      internalID: -1643940066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 594977246b1eb4d479204875ff4c97ba
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_0: -4224909575129793064
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_1: -4573635205079190968
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_10: 5116018357857589537
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_11: -458020660503655533
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_12: 2478280835790839274
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_13: 8992297139692529388
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_14: -3575456174683280430
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_15: 7954438262068911151
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_16: 8973386083705662008
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_17: 6582915244973871270
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_18: 7868777305119160395
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_19: -1528761642021108580
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_2: 2465757659488913000
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_20: 8510396035762545214
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_21: -8114795215317600483
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_22: -6243511712471750551
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_23: 1660375763382430375
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_24: -914955406507578870
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_25: 2037354752706023493
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_26: -1963929324101501578
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_27: 9209760692748297449
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_28: -8652059102057023339
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_29: 7866102247892650901
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_3: 3593239202152779895
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_30: -1643940066
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_4: -955893542142519761
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_5: 7274119936055997293
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_6: 563861949346920815
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_7: -8502596863292628066
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_8: 1944651744342177088
+      Santiago_Garcia_Prac 7_A3D_SpriteNivel1_9: 8502031522024516841
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

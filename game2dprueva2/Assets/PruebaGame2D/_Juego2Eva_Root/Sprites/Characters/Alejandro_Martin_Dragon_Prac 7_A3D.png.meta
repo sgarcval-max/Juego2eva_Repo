@@ -1,0 +1,1118 @@
+fileFormatVersion: 2
+guid: 3b53df04c048d684cb2523dbde36f615
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5560742868753608737
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_0
+  - first:
+      213: -1014628566782680067
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_1
+  - first:
+      213: 877103114429706339
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_2
+  - first:
+      213: 7135450054633532433
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_3
+  - first:
+      213: 7747287694077366310
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_4
+  - first:
+      213: 1592478672184203205
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_5
+  - first:
+      213: 8399849016905101718
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_6
+  - first:
+      213: 732844421327037345
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_7
+  - first:
+      213: 290506211244165927
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_8
+  - first:
+      213: -3394328865696864180
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_9
+  - first:
+      213: -1247417012233285813
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_10
+  - first:
+      213: -843127086250655100
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_11
+  - first:
+      213: -3533667440451461868
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_12
+  - first:
+      213: 4465987190788739253
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_13
+  - first:
+      213: -8312488044446075722
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_14
+  - first:
+      213: 2409268271936450701
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_15
+  - first:
+      213: 8070144053621263588
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_16
+  - first:
+      213: -8831219566161186406
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_17
+  - first:
+      213: -4073421622788400460
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_18
+  - first:
+      213: 2636462650233872253
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_19
+  - first:
+      213: -954935589633496611
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_20
+  - first:
+      213: -1401112763880751591
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_21
+  - first:
+      213: -6611437220990469498
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_22
+  - first:
+      213: 8007218602768209079
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_23
+  - first:
+      213: -8010498779226767014
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_24
+  - first:
+      213: -966515541743209598
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_25
+  - first:
+      213: -7324320190140300091
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_26
+  - first:
+      213: 4597766172891147101
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_27
+  - first:
+      213: 2753152467274084525
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_28
+  - first:
+      213: 572609050858209767
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_29
+  - first:
+      213: -232808118152312303
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_30
+  - first:
+      213: -5574623668343629437
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_31
+  - first:
+      213: -4356872082779545262
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_32
+  - first:
+      213: 7140762750732241632
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_33
+  - first:
+      213: 8501416510671521791
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_34
+  - first:
+      213: 3660356972671858402
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_35
+  - first:
+      213: -7479207087160720099
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_36
+  - first:
+      213: -7446192711882755435
+    second: Alejandro_Martin_Dragon_Prac 7_A3D_37
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_0
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 6399
+        width: 1072
+        height: 1142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12078535d2abb2d40800000000000000
+      internalID: 5560742868753608737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_1
+      rect:
+        serializedVersion: 2
+        x: 1349
+        y: 6399
+        width: 1072
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df364f9b1b05be1f0800000000000000
+      internalID: -1014628566782680067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_2
+      rect:
+        serializedVersion: 2
+        x: 2629
+        y: 6399
+        width: 1072
+        height: 1042
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 360b8fea2a81c2c00800000000000000
+      internalID: 877103114429706339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_3
+      rect:
+        serializedVersion: 2
+        x: 3909
+        y: 6399
+        width: 1072
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11c29faf406360360800000000000000
+      internalID: 7135450054633532433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_4
+      rect:
+        serializedVersion: 2
+        x: 5189
+        y: 6399
+        width: 1072
+        height: 1102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6209c326c15e38b60800000000000000
+      internalID: 7747287694077366310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_5
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 5119
+        width: 1072
+        height: 1142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c7dcef3aee991610800000000000000
+      internalID: 1592478672184203205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_6
+      rect:
+        serializedVersion: 2
+        x: 1349
+        y: 5119
+        width: 1092
+        height: 1122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 691fa833d22429470800000000000000
+      internalID: 8399849016905101718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_7
+      rect:
+        serializedVersion: 2
+        x: 2629
+        y: 5119
+        width: 1142
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a323d05e169b2a00800000000000000
+      internalID: 732844421327037345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_8
+      rect:
+        serializedVersion: 2
+        x: 3909
+        y: 5119
+        width: 1202
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72bc0462cd5180400800000000000000
+      internalID: 290506211244165927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_9
+      rect:
+        serializedVersion: 2
+        x: 5189
+        y: 5119
+        width: 1202
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c48a84d61ebe4e0d0800000000000000
+      internalID: -3394328865696864180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_10
+      rect:
+        serializedVersion: 2
+        x: 6469
+        y: 5119
+        width: 1142
+        height: 1142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4f4e0326d840bee0800000000000000
+      internalID: -1247417012233285813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_11
+      rect:
+        serializedVersion: 2
+        x: 7749
+        y: 5119
+        width: 1092
+        height: 1142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4820583d16c9c44f0800000000000000
+      internalID: -843127086250655100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_12
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 3839
+        width: 1072
+        height: 1142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41dd6816f24e5fec0800000000000000
+      internalID: -3533667440451461868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_13
+      rect:
+        serializedVersion: 2
+        x: 1369
+        y: 3839
+        width: 1052
+        height: 1162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b0586e20bf5afd30800000000000000
+      internalID: 4465987190788739253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_14
+      rect:
+        serializedVersion: 2
+        x: 2649
+        y: 3839
+        width: 1052
+        height: 1182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b43c1f3a2c14ac80800000000000000
+      internalID: -8312488044446075722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_15
+      rect:
+        serializedVersion: 2
+        x: 3959
+        y: 3849
+        width: 1052
+        height: 1192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d80346d7ab07f6120800000000000000
+      internalID: 2409268271936450701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_16
+      rect:
+        serializedVersion: 2
+        x: 5239
+        y: 3869
+        width: 1022
+        height: 1192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ec83526249eeff60800000000000000
+      internalID: 8070144053621263588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_17
+      rect:
+        serializedVersion: 2
+        x: 6539
+        y: 3899
+        width: 982
+        height: 1162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a91bb792894317580800000000000000
+      internalID: -8831219566161186406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_18
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 2619
+        width: 982
+        height: 1162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ba5d41bd9c4877c0800000000000000
+      internalID: -4073421622788400460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_19
+      rect:
+        serializedVersion: 2
+        x: 1419
+        y: 2589
+        width: 982
+        height: 1162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7f56c2dfc8969420800000000000000
+      internalID: 2636462650233872253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_20
+      rect:
+        serializedVersion: 2
+        x: 2699
+        y: 2559
+        width: 982
+        height: 1162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd9648404236fb2f0800000000000000
+      internalID: -954935589633496611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_21
+      rect:
+        serializedVersion: 2
+        x: 3979
+        y: 2589
+        width: 982
+        height: 1162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91e3f9a5d5f3e8ce0800000000000000
+      internalID: -1401112763880751591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_22
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 1339
+        width: 982
+        height: 1162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68a311c50e47f34a0800000000000000
+      internalID: -6611437220990469498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_23
+      rect:
+        serializedVersion: 2
+        x: 1419
+        y: 1339
+        width: 982
+        height: 1162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b416e825ea5f1f60800000000000000
+      internalID: 8007218602768209079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_24
+      rect:
+        serializedVersion: 2
+        x: 2699
+        y: 1339
+        width: 1002
+        height: 1162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a510d7e3dcdf4d090800000000000000
+      internalID: -8010498779226767014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_25
+      rect:
+        serializedVersion: 2
+        x: 3979
+        y: 1339
+        width: 1062
+        height: 1162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28370805c3f3692f0800000000000000
+      internalID: -966515541743209598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_26
+      rect:
+        serializedVersion: 2
+        x: 5259
+        y: 1339
+        width: 1062
+        height: 1162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c4477dc799ca5a90800000000000000
+      internalID: -7324320190140300091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_27
+      rect:
+        serializedVersion: 2
+        x: 6539
+        y: 1339
+        width: 1002
+        height: 1162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5beb7769fb8ecf30800000000000000
+      internalID: 4597766172891147101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_28
+      rect:
+        serializedVersion: 2
+        x: 7819
+        y: 1339
+        width: 982
+        height: 1162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da0bc580599253620800000000000000
+      internalID: 2753152467274084525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_29
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 59
+        width: 982
+        height: 1162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e1c39fd5e052f700800000000000000
+      internalID: 572609050858209767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_30
+      rect:
+        serializedVersion: 2
+        x: 1399
+        y: 29
+        width: 1022
+        height: 1192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11a44b00046e4ccf0800000000000000
+      internalID: -232808118152312303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_31
+      rect:
+        serializedVersion: 2
+        x: 2679
+        y: 9
+        width: 1052
+        height: 1192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38994eb2f45f2a2b0800000000000000
+      internalID: -5574623668343629437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_32
+      rect:
+        serializedVersion: 2
+        x: 3909
+        y: 0
+        width: 1072
+        height: 1141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 251eb16ace74983c0800000000000000
+      internalID: -4356872082779545262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_33
+      rect:
+        serializedVersion: 2
+        x: 5189
+        y: 0
+        width: 1072
+        height: 1081
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ea8cbe63e5191360800000000000000
+      internalID: 7140762750732241632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_34
+      rect:
+        serializedVersion: 2
+        x: 6469
+        y: 0
+        width: 1072
+        height: 1041
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff7873626491bf570800000000000000
+      internalID: 8501416510671521791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_35
+      rect:
+        serializedVersion: 2
+        x: 7749
+        y: 0
+        width: 1072
+        height: 991
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e6fa33f5433cc230800000000000000
+      internalID: 3660356972671858402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_36
+      rect:
+        serializedVersion: 2
+        x: 9029
+        y: 0
+        width: 1072
+        height: 911
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d158330e7c4843890800000000000000
+      internalID: -7479207087160720099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Dragon_Prac 7_A3D_37
+      rect:
+        serializedVersion: 2
+        x: 10309
+        y: 0
+        width: 1072
+        height: 851
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 592302f1e2fc9a890800000000000000
+      internalID: -7446192711882755435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Alejandro_Martin_Dragon_Prac 7_A3D_0: 5560742868753608737
+      Alejandro_Martin_Dragon_Prac 7_A3D_1: -1014628566782680067
+      Alejandro_Martin_Dragon_Prac 7_A3D_10: -1247417012233285813
+      Alejandro_Martin_Dragon_Prac 7_A3D_11: -843127086250655100
+      Alejandro_Martin_Dragon_Prac 7_A3D_12: -3533667440451461868
+      Alejandro_Martin_Dragon_Prac 7_A3D_13: 4465987190788739253
+      Alejandro_Martin_Dragon_Prac 7_A3D_14: -8312488044446075722
+      Alejandro_Martin_Dragon_Prac 7_A3D_15: 2409268271936450701
+      Alejandro_Martin_Dragon_Prac 7_A3D_16: 8070144053621263588
+      Alejandro_Martin_Dragon_Prac 7_A3D_17: -8831219566161186406
+      Alejandro_Martin_Dragon_Prac 7_A3D_18: -4073421622788400460
+      Alejandro_Martin_Dragon_Prac 7_A3D_19: 2636462650233872253
+      Alejandro_Martin_Dragon_Prac 7_A3D_2: 877103114429706339
+      Alejandro_Martin_Dragon_Prac 7_A3D_20: -954935589633496611
+      Alejandro_Martin_Dragon_Prac 7_A3D_21: -1401112763880751591
+      Alejandro_Martin_Dragon_Prac 7_A3D_22: -6611437220990469498
+      Alejandro_Martin_Dragon_Prac 7_A3D_23: 8007218602768209079
+      Alejandro_Martin_Dragon_Prac 7_A3D_24: -8010498779226767014
+      Alejandro_Martin_Dragon_Prac 7_A3D_25: -966515541743209598
+      Alejandro_Martin_Dragon_Prac 7_A3D_26: -7324320190140300091
+      Alejandro_Martin_Dragon_Prac 7_A3D_27: 4597766172891147101
+      Alejandro_Martin_Dragon_Prac 7_A3D_28: 2753152467274084525
+      Alejandro_Martin_Dragon_Prac 7_A3D_29: 572609050858209767
+      Alejandro_Martin_Dragon_Prac 7_A3D_3: 7135450054633532433
+      Alejandro_Martin_Dragon_Prac 7_A3D_30: -232808118152312303
+      Alejandro_Martin_Dragon_Prac 7_A3D_31: -5574623668343629437
+      Alejandro_Martin_Dragon_Prac 7_A3D_32: -4356872082779545262
+      Alejandro_Martin_Dragon_Prac 7_A3D_33: 7140762750732241632
+      Alejandro_Martin_Dragon_Prac 7_A3D_34: 8501416510671521791
+      Alejandro_Martin_Dragon_Prac 7_A3D_35: 3660356972671858402
+      Alejandro_Martin_Dragon_Prac 7_A3D_36: -7479207087160720099
+      Alejandro_Martin_Dragon_Prac 7_A3D_37: -7446192711882755435
+      Alejandro_Martin_Dragon_Prac 7_A3D_4: 7747287694077366310
+      Alejandro_Martin_Dragon_Prac 7_A3D_5: 1592478672184203205
+      Alejandro_Martin_Dragon_Prac 7_A3D_6: 8399849016905101718
+      Alejandro_Martin_Dragon_Prac 7_A3D_7: 732844421327037345
+      Alejandro_Martin_Dragon_Prac 7_A3D_8: 290506211244165927
+      Alejandro_Martin_Dragon_Prac 7_A3D_9: -3394328865696864180
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

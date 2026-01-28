@@ -1,10 +1,9 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
-
     public static UI instance;
 
     [SerializeField] private GameObject gameOverUI;
@@ -14,26 +13,43 @@ public class UI : MonoBehaviour
 
     private int killCount;
 
+    [Header("Game Over Settings")]
+    [SerializeField] private float slowMotionTime = 0.5f; // velocidad al morir
+
     private void Awake()
     {
         instance = this;
-        Time.timeScale = 1;
-
+        Time.timeScale = 1f;
     }
 
     private void Update()
     {
-        timerText.text = Time.time.ToString("F2") + "s";
+        if (timerText != null)
+            timerText.text = Time.time.ToString("F2") + "s";
     }
 
     public void EnableGameOverUI()
     {
-        Time.timeScale = .5f;
-        gameOverUI.SetActive(true);
+        // Slow motion al morir
+        Time.timeScale = slowMotionTime;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale; // ajustar física
+
+        if (gameOverUI != null)
+            gameOverUI.SetActive(true);
     }
 
     public void RestartLevel()
     {
+        // Reset de vida al reiniciar
+        if (PlayerHealthManager.Instance != null)
+        {
+            PlayerHealthManager.Instance.ResetHealth();
+        }
+
+        // Restaurar velocidad normal
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
+
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(sceneIndex);
     }
@@ -41,6 +57,7 @@ public class UI : MonoBehaviour
     public void AddKillCount()
     {
         killCount++;
-        killCountText.text = killCount.ToString();
+        if (killCountText != null)
+            killCountText.text = killCount.ToString();
     }
 }

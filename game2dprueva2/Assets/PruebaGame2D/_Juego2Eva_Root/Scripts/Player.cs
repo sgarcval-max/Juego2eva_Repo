@@ -22,6 +22,7 @@ public class Player : Entity
 
     public bool IsDead => currentHealth <= 0;
 
+
     private void OnEnable()
     {
         if (GameInput.Instance != null)

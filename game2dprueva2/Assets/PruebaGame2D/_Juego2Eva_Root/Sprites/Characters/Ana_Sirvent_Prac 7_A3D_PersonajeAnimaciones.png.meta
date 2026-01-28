@@ -1,0 +1,1129 @@
+fileFormatVersion: 2
+guid: cb7cc62befbe84d449af8b48dc6a13a9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2685619114900251283
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_0
+  - first:
+      213: -7764448294153643361
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_1
+  - first:
+      213: -7984030667131540673
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_2
+  - first:
+      213: -556065113826401943
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_3
+  - first:
+      213: 6309791516092538205
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_4
+  - first:
+      213: 2669814774577961277
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_5
+  - first:
+      213: 2479918100857641735
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_6
+  - first:
+      213: 310331306232705051
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_7
+  - first:
+      213: -8495857894010398247
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_8
+  - first:
+      213: -6210940988594613269
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_9
+  - first:
+      213: -1345419797319597105
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_10
+  - first:
+      213: -4470491140464526444
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_11
+  - first:
+      213: -5453169372575511400
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_12
+  - first:
+      213: 2970417265979871654
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_13
+  - first:
+      213: -8635803899195828269
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_14
+  - first:
+      213: 8800864884715814533
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_15
+  - first:
+      213: -6787300693183176611
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_16
+  - first:
+      213: -7843491851395356557
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_17
+  - first:
+      213: 4025173982880746072
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_18
+  - first:
+      213: -8861675694260088235
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_19
+  - first:
+      213: 4980505077137539646
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_20
+  - first:
+      213: 6297163055204720060
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_21
+  - first:
+      213: 3818891278159293377
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_22
+  - first:
+      213: -7660631902317379297
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_23
+  - first:
+      213: 4091167688618580723
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_24
+  - first:
+      213: -8618749268540057084
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_25
+  - first:
+      213: -3608851508509541530
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_26
+  - first:
+      213: -2291476720264780502
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_27
+  - first:
+      213: 3521256804479387242
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_28
+  - first:
+      213: 877188533194630332
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_29
+  - first:
+      213: 7161732513632146992
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_30
+  - first:
+      213: 280402551381279847
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_31
+  - first:
+      213: 3145898677122438643
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_32
+  - first:
+      213: -2278956386476187882
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_33
+  - first:
+      213: 4814000834173406054
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_34
+  - first:
+      213: -6273144486488677817
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_35
+  - first:
+      213: 6925692693674971191
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_36
+  - first:
+      213: -2017895140698662967
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_37
+  - first:
+      213: 186962179722964750
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_38
+  - first:
+      213: -7445269628658111219
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_39
+  - first:
+      213: -7862353844081553188
+    second: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_40
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 448
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 392e0a12b5c354520800000000000000
+      internalID: 2685619114900251283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 448
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9a951e0a632f3490800000000000000
+      internalID: -7764448294153643361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 448
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3bacc1d866033190800000000000000
+      internalID: -7984030667131540673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 448
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 961e362a9b57848f0800000000000000
+      internalID: -556065113826401943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5d187304f1e09750800000000000000
+      internalID: 6309791516092538205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 384
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d391fc664661d0520800000000000000
+      internalID: 2669814774577961277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_6
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70b5ea1af507a6220800000000000000
+      internalID: 2479918100857641735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_7
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b10fea6cda48e4400800000000000000
+      internalID: 310331306232705051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d9df452246a81a80800000000000000
+      internalID: -8495857894010398247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_9
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 384
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be397ede31e4ec9a0800000000000000
+      internalID: -6210940988594613269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_10
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc3ccfa92db145de0800000000000000
+      internalID: -1345419797319597105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_11
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 384
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49bb4115eff95f1c0800000000000000
+      internalID: -4470491140464526444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89cc89709537254b0800000000000000
+      internalID: -5453169372575511400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_13
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 320
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a1da65f3ca093920800000000000000
+      internalID: 2970417265979871654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_14
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 320
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d7df7eab16772880800000000000000
+      internalID: -8635803899195828269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_15
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 320
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58ef1b1dbf3f22a70800000000000000
+      internalID: 8800864884715814533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_16
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 320
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d50ed0feaf9aec1a0800000000000000
+      internalID: -6787300693183176611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 378a8eeb7b1562390800000000000000
+      internalID: -7843491851395356557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_18
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 256
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85a40c0496a4cd730800000000000000
+      internalID: 4025173982880746072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_19
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5521ae048e0050580800000000000000
+      internalID: -8861675694260088235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_20
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 256
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3200d4dafe4e1540800000000000000
+      internalID: 4980505077137539646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_21
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbdd0365f64046750800000000000000
+      internalID: 6297163055204720060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_22
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 256
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cba586526d6ff430800000000000000
+      internalID: 3818891278159293377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_23
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 256
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1109536fd7ffa590800000000000000
+      internalID: -7660631902317379297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fa9aac365fb6c830800000000000000
+      internalID: 4091167688618580723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_25
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40a1380543d046880800000000000000
+      internalID: -8618749268540057084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_26
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66bf72c6ca8caedc0800000000000000
+      internalID: -3608851508509541530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a256a8d401a0330e0800000000000000
+      internalID: -2291476720264780502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_28
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a66cbe148640ed030800000000000000
+      internalID: 3521256804479387242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_29
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb4ac1ac2566c2c00800000000000000
+      internalID: 877188533194630332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_30
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 036d863d6c5936360800000000000000
+      internalID: 7161732513632146992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_31
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 764c13582a034e300800000000000000
+      internalID: 280402551381279847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_32
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f5114ddd2a78ab20800000000000000
+      internalID: 3145898677122438643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61f9a7dad358f50e0800000000000000
+      internalID: -2278956386476187882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_34
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66b0755c044cec240800000000000000
+      internalID: 4814000834173406054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_35
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 742642a735051f8a0800000000000000
+      internalID: -6273144486488677817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_36
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 730d30e9fc00d1060800000000000000
+      internalID: 6925692693674971191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_37
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.445, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c75ba09f0ffef3e0800000000000000
+      internalID: -2017895140698662967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":8.0,"y":8.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.4449999928474426,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_0: 2685619114900251283
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_1: -7764448294153643361
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_10: -1345419797319597105
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_11: -4470491140464526444
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_12: -5453169372575511400
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_13: 2970417265979871654
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_14: -8635803899195828269
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_15: 8800864884715814533
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_16: -6787300693183176611
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_17: -7843491851395356557
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_18: 4025173982880746072
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_19: -8861675694260088235
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_2: -7984030667131540673
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_20: 4980505077137539646
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_21: 6297163055204720060
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_22: 3818891278159293377
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_23: -7660631902317379297
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_24: 4091167688618580723
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_25: -8618749268540057084
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_26: -3608851508509541530
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_27: -2291476720264780502
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_28: 3521256804479387242
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_29: 877188533194630332
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_3: -556065113826401943
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_30: 7161732513632146992
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_31: 280402551381279847
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_32: 3145898677122438643
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_33: -2278956386476187882
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_34: 4814000834173406054
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_35: -6273144486488677817
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_36: 6925692693674971191
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_37: -2017895140698662967
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_4: 6309791516092538205
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_5: 2669814774577961277
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_6: 2479918100857641735
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_7: 310331306232705051
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_8: -8495857894010398247
+      Ana_Sirvent_Prac 7_A3D_PersonajeAnimaciones_9: -6210940988594613269
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

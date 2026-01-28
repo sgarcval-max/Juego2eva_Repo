@@ -103,8 +103,18 @@ public class BossDragon : Entity
         }
     }
 
-    void Phase1Logic() { TryShootFireball(); }
-    void Phase2Logic() { TryShootFireball(); TryShockwave(); }
+    void Phase1Logic()
+    {
+        FacePlayer();
+        TryShootFireball();
+    }
+
+    void Phase2Logic()
+    {
+        FacePlayer();
+        TryShootFireball();
+        TryShockwave();
+    }
     void Phase3Logic()
     {
         TryShootFireball();
@@ -132,6 +142,18 @@ public class BossDragon : Entity
         // Animación de movimiento
         if (animator != null)
             animator.SetBool("isMoving", Mathf.Abs(distanceX) > followDistance);
+    }
+
+    void FacePlayer()
+    {
+        if (player == null) return;
+
+        float distanceX = player.position.x - transform.position.x;
+
+        if (distanceX > 0 && facingRight)
+            Flip();
+        else if (distanceX < 0 && !facingRight)
+            Flip();
     }
 
     void TryShootFireball()

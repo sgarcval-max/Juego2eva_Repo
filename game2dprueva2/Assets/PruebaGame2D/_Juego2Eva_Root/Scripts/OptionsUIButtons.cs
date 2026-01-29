@@ -4,12 +4,12 @@ using UnityEngine.UI;
 public class OptionsUIButtons : MonoBehaviour
 {
     [Header("Botones de Opciones")]
-    public Button backButtonMain;            // Back principal al men˙
-    public Button backButtonSound;           // Back dentro del panel Sound
+    public Button backButtonMain;            // Back principal al menÅE    public Button backButtonSound;           // Back dentro del panel Sound
     public Button backButtonKeyboard;        // Back dentro del panel Keyboard
     public Button backButtonGamepad;         // Back dentro del panel Gamepad
     public Button backButtonKeyboardReassign; // Back dentro de reasignar teclado
     public Button backButtonGamepadReassign;  // Back dentro de reasignar gamepad
+    public Button backButtonSound;
 
     public Button soundButton;
     public Button keyboardButton;

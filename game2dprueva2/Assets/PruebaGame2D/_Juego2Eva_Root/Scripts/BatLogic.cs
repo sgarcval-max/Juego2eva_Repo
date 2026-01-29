@@ -24,7 +24,6 @@ public class BatLogic : MonoBehaviour
         if (playerDetected && canMove)
         {
             FollowPlayer();
-            animator.SetBool ("Detection", true);
         }
     }
 
@@ -40,6 +39,7 @@ public class BatLogic : MonoBehaviour
                 if (distance <= detectionRadius)
                 {
                     playerDetected = true;
+                    Debug.Log(playerDetected);
                     player = playerObj.transform;
                     StartCoroutine(ReactionDelay()); //espera 2 segundos antes de atacar
                 }
@@ -50,6 +50,7 @@ public class BatLogic : MonoBehaviour
     IEnumerator ReactionDelay()
     {
         //El enemigo detecta al jugador pero aún no se mueve
+        animator.SetBool("Detection", true);
         yield return new WaitForSeconds(reactionTime);
         canMove = true;
     }

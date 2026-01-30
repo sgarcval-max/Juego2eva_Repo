@@ -133,7 +133,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -147,7 +147,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -171,7 +171,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -199,10 +199,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_0
       rect:
         serializedVersion: 2
-        x: 169
-        y: 2019
-        width: 312
-        height: 541
+        x: 167
+        y: 2016
+        width: 315
+        height: 544
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,10 +221,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_1
       rect:
         serializedVersion: 2
-        x: 809
-        y: 2019
-        width: 312
-        height: 541
+        x: 806
+        y: 2016
+        width: 318
+        height: 544
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -243,10 +243,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_2
       rect:
         serializedVersion: 2
-        x: 1449
-        y: 2019
-        width: 302
-        height: 541
+        x: 1447
+        y: 2016
+        width: 307
+        height: 544
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -265,10 +265,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_3
       rect:
         serializedVersion: 2
-        x: 2079
-        y: 2019
-        width: 312
-        height: 541
+        x: 2077
+        y: 2016
+        width: 318
+        height: 544
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -287,10 +287,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_4
       rect:
         serializedVersion: 2
-        x: 2719
-        y: 2019
-        width: 312
-        height: 541
+        x: 2716
+        y: 2016
+        width: 317
+        height: 544
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -309,10 +309,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_5
       rect:
         serializedVersion: 2
-        x: 3359
-        y: 2019
-        width: 312
-        height: 541
+        x: 3357
+        y: 2016
+        width: 317
+        height: 544
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -331,10 +331,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_6
       rect:
         serializedVersion: 2
-        x: 4009
-        y: 2019
-        width: 302
-        height: 541
+        x: 4006
+        y: 2016
+        width: 307
+        height: 544
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -353,10 +353,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_7
       rect:
         serializedVersion: 2
-        x: 4649
-        y: 2019
-        width: 312
-        height: 541
+        x: 4626
+        y: 2016
+        width: 378
+        height: 544
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -375,10 +375,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_8
       rect:
         serializedVersion: 2
-        x: 5289
-        y: 2019
-        width: 312
-        height: 541
+        x: 5286
+        y: 2016
+        width: 318
+        height: 544
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -397,10 +397,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_9
       rect:
         serializedVersion: 2
-        x: 159
-        y: 1379
-        width: 312
-        height: 542
+        x: 156
+        y: 1377
+        width: 318
+        height: 546
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -419,10 +419,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_10
       rect:
         serializedVersion: 2
-        x: 879
-        y: 1419
-        width: 372
-        height: 492
+        x: 876
+        y: 1416
+        width: 377
+        height: 498
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -441,10 +441,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_11
       rect:
         serializedVersion: 2
-        x: 1399
-        y: 1459
-        width: 492
-        height: 392
+        x: 1396
+        y: 1456
+        width: 498
+        height: 396
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -463,10 +463,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_12
       rect:
         serializedVersion: 2
-        x: 1989
-        y: 1279
-        width: 492
-        height: 642
+        x: 1987
+        y: 1276
+        width: 498
+        height: 647
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -485,10 +485,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_13
       rect:
         serializedVersion: 2
-        x: 2699
-        y: 1279
-        width: 432
-        height: 482
+        x: 2696
+        y: 1276
+        width: 438
+        height: 486
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -507,10 +507,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_14
       rect:
         serializedVersion: 2
-        x: 3249
-        y: 1359
-        width: 552
-        height: 482
+        x: 3247
+        y: 1357
+        width: 557
+        height: 487
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -529,10 +529,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_15
       rect:
         serializedVersion: 2
-        x: 3839
-        y: 1369
-        width: 642
-        height: 452
+        x: 3838
+        y: 1366
+        width: 646
+        height: 458
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -552,9 +552,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 729
-        width: 641
-        height: 452
+        y: 727
+        width: 643
+        height: 456
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -573,10 +573,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_17
       rect:
         serializedVersion: 2
-        x: 659
-        y: 719
-        width: 602
-        height: 452
+        x: 657
+        y: 716
+        width: 607
+        height: 458
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -595,10 +595,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_18
       rect:
         serializedVersion: 2
-        x: 1299
-        y: 669
-        width: 602
-        height: 452
+        x: 1295
+        y: 665
+        width: 608
+        height: 459
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -617,10 +617,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_19
       rect:
         serializedVersion: 2
-        x: 1959
-        y: 659
-        width: 562
-        height: 452
+        x: 1956
+        y: 657
+        width: 568
+        height: 456
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -639,10 +639,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_20
       rect:
         serializedVersion: 2
-        x: 2599
-        y: 659
-        width: 562
-        height: 452
+        x: 2597
+        y: 657
+        width: 566
+        height: 456
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -661,10 +661,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_21
       rect:
         serializedVersion: 2
-        x: 3239
-        y: 659
-        width: 562
-        height: 452
+        x: 3236
+        y: 657
+        width: 568
+        height: 456
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -683,10 +683,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_22
       rect:
         serializedVersion: 2
-        x: 3859
-        y: 659
-        width: 602
-        height: 462
+        x: 3857
+        y: 657
+        width: 608
+        height: 467
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -705,10 +705,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_23
       rect:
         serializedVersion: 2
-        x: 4499
-        y: 699
-        width: 602
-        height: 472
+        x: 4496
+        y: 696
+        width: 607
+        height: 478
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -727,10 +727,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_24
       rect:
         serializedVersion: 2
-        x: 5139
-        y: 719
-        width: 602
-        height: 452
+        x: 5137
+        y: 716
+        width: 623
+        height: 458
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -749,10 +749,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_25
       rect:
         serializedVersion: 2
-        x: 19
-        y: 79
-        width: 602
-        height: 452
+        x: 16
+        y: 0
+        width: 607
+        height: 533
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -771,10 +771,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_26
       rect:
         serializedVersion: 2
-        x: 639
-        y: 59
-        width: 602
-        height: 442
+        x: 637
+        y: 0
+        width: 607
+        height: 505
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -793,10 +793,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_27
       rect:
         serializedVersion: 2
-        x: 1299
-        y: 59
-        width: 552
-        height: 482
+        x: 1295
+        y: 0
+        width: 560
+        height: 544
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -815,10 +815,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_28
       rect:
         serializedVersion: 2
-        x: 1939
-        y: 39
-        width: 552
-        height: 472
+        x: 1936
+        y: 0
+        width: 557
+        height: 513
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -837,10 +837,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_29
       rect:
         serializedVersion: 2
-        x: 2669
-        y: 19
-        width: 412
-        height: 442
+        x: 2668
+        y: 0
+        width: 416
+        height: 463
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -859,10 +859,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_30
       rect:
         serializedVersion: 2
-        x: 3269
-        y: 19
-        width: 472
-        height: 332
+        x: 3267
+        y: 0
+        width: 478
+        height: 353
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -881,10 +881,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_31
       rect:
         serializedVersion: 2
-        x: 3909
-        y: 19
-        width: 492
-        height: 262
+        x: 3905
+        y: 0
+        width: 498
+        height: 283
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -903,10 +903,10 @@ TextureImporter:
       name: Alejandro_Martin_Murcielago_Prac 7_A3D_32
       rect:
         serializedVersion: 2
-        x: 4549
+        x: 4546
         y: 0
-        width: 492
-        height: 261
+        width: 1007
+        height: 263
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -925,7 +925,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5df0115f366a8764b9e011e4a1dd2f91
     internalID: 0
     vertices: []
     indices: 
@@ -933,7 +933,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Alejandro_Martin_Murcielago_Prac 7_A3D_0: 1814748814157585368
       Alejandro_Martin_Murcielago_Prac 7_A3D_1: -8898778351872808121

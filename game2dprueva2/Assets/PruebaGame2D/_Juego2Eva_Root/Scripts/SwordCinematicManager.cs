@@ -1,88 +1,89 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using UnityEngine.Video;
+using UnityEngine.UI;
+using System;
+using System.Collections;
 
 public class SwordCinematicManager : MonoBehaviour
 {
-    public static SwordCinematicManager Instance;
+    public static SwordCinematicManager instance;
 
-    [Header("Video Player & Canvas")]
-    public VideoPlayer videoPlayer;  // asignar en inspector
-    public CanvasGroup fadeCanvas;   // un panel negro con CanvasGroup
+    [Header("Video")]
+    public VideoPlayer videoPlayer;
+    public RawImage videoScreen; // Canvas RawImage para mostrar el video
 
-    [Header("Fade Settings")]
+    [Header("Fade")]
+    public CanvasGroup fadeCanvas; // CanvasGroup para hacer fade
     public float fadeDuration = 1f;
-    public float fadeOutBeforeEnd = 2f;
+    public float fadeOutBeforeEnd = 2f; // segundos antes de terminar para hacer fade out
 
     private void Awake()
     {
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
-            return;
         }
-
-        // Inicializamos VideoPlayer y Canvas
-        if (videoPlayer != null) videoPlayer.gameObject.SetActive(false);
-        if (fadeCanvas != null) fadeCanvas.alpha = 0f;
     }
 
-    public void PlaySwordCinematic(Action onComplete)
+    public void PlaySwordCinematic(Action onCinematicEnd)
     {
-        if (videoPlayer == null || fadeCanvas == null)
+        if (!gameObject.activeInHierarchy)
         {
-            Debug.LogError("SwordCinematicManager: VideoPlayer o FadeCanvas no asignado.");
-            onComplete?.Invoke();
+            Debug.LogWarning("SwordCinematicManager está desactivado!");
             return;
         }
 
-        // Activamos el video y el canvas
-        videoPlayer.gameObject.SetActive(true);
-        StartCoroutine(CinematicRoutine(onComplete));
+        StartCoroutine(CinematicRoutine(onCinematicEnd));
     }
 
-    private IEnumerator CinematicRoutine(Action onComplete)
+    private IEnumerator CinematicRoutine(Action onCinematicEnd)
     {
-        // Fade in desde negro
-        yield return StartCoroutine(Fade(1f, 0f, fadeDuration));
+        // --- 1. Fade in a negro ---
+        fadeCanvas.alpha = 0f;
+        fadeCanvas.gameObject.SetActive(true);
+        yield return StartCoroutine(Fade(0f, 1f, fadeDuration));
 
-        // Reproducir video
+        // --- 2. Fade out mientras empieza el video ---
+        videoScreen.gameObject.SetActive(true);
+        videoPlayer.time = 0;
         videoPlayer.Play();
+        yield return StartCoroutine(Fade(1f, 0f, fadeDuration)); // Fade out negro para mostrar el video
 
-        // Esperamos hasta los segundos antes del final
-        float waitTime = (float)videoPlayer.clip.length - fadeOutBeforeEnd;
+        // --- 3. Esperar mientras se reproduce el video, menos los segundos del fade final ---
+        float waitTime = (float)videoPlayer.length - fadeOutBeforeEnd;
         if (waitTime > 0)
             yield return new WaitForSeconds(waitTime);
 
-        // Fade out antes de terminar
+        // --- 4. Fade out final del video ---
         yield return StartCoroutine(Fade(0f, 1f, fadeDuration));
 
-        // Aseguramos que el video se detenga
+        // --- 5. Terminar video ---
         videoPlayer.Stop();
-        videoPlayer.gameObject.SetActive(false);
+        videoScreen.gameObject.SetActive(false);
 
-        // Restauramos canvas invisible
-        fadeCanvas.alpha = 0f;
+        // --- 6. Fade in al juego ---
+        yield return StartCoroutine(Fade(1f, 0f, fadeDuration));
+        fadeCanvas.gameObject.SetActive(false);
 
-        onComplete?.Invoke();
+        // --- 7. Llamar callback ---
+        onCinematicEnd?.Invoke();
     }
 
-    private IEnumerator Fade(float start, float end, float duration)
+    private IEnumerator Fade(float startAlpha, float endAlpha, float duration)
     {
         float t = 0f;
+        fadeCanvas.alpha = startAlpha;
         while (t < duration)
         {
-            t += Time.deltaTime;
-            fadeCanvas.alpha = Mathf.Lerp(start, end, t / duration);
+            t += Time.unscaledDeltaTime;
+            fadeCanvas.alpha = Mathf.Lerp(startAlpha, endAlpha, t / duration);
             yield return null;
         }
-        fadeCanvas.alpha = end;
+        fadeCanvas.alpha = endAlpha;
     }
 }

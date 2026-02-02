@@ -5,6 +5,9 @@ public class SwordAbilityPickup : MonoBehaviour
     [Header("Referencia al Player")]
     public Player player;
 
+    [Header("Referencia al Cinematic Manager")]
+    public SwordCinematicManager cinematicManager;
+
     [Header("Opcional: mostrar mensaje")]
     public GameObject pickupUI;
 
@@ -23,8 +26,27 @@ public class SwordAbilityPickup : MonoBehaviour
             if (player != null)
                 player.EnableMovement(false);
 
-            SwordCinematicManager.instance.PlaySwordCinematic(() =>
+            // ✅ Usamos la referencia directa, no instance
+            if (cinematicManager != null)
             {
+                cinematicManager.PlaySwordCinematic(() =>
+                {
+                    if (player != null)
+                        player.UnlockAbility(AbilityType.MeleeAttack);
+
+                    if (player != null)
+                        player.EnableMovement(true);
+
+                    if (pickupUI != null)
+                        pickupUI.SetActive(false);
+
+                    Destroy(gameObject);
+                });
+            }
+            else
+            {
+                Debug.LogWarning("Cinematic Manager no asignado en SwordAbilityPickup");
+                // Por seguridad, desbloqueamos la habilidad si no hay manager
                 if (player != null)
                     player.UnlockAbility(AbilityType.MeleeAttack);
 
@@ -35,7 +57,7 @@ public class SwordAbilityPickup : MonoBehaviour
                     pickupUI.SetActive(false);
 
                 Destroy(gameObject);
-            });
+            }
         }
     }
 }

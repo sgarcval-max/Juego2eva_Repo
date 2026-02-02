@@ -7,8 +7,7 @@ using System.Collections;
 
 public class SwordCinematicManager : MonoBehaviour
 {
-    public static SwordCinematicManager instance;
-
+    // Ya no es singleton, por lo que no usamos instance
     [Header("Video")]
     public VideoPlayer videoPlayer;
     public RawImage videoScreen;
@@ -19,22 +18,29 @@ public class SwordCinematicManager : MonoBehaviour
     public float fadeOutBeforeEnd = 2f;
 
     [Header("Escena final")]
-    public string nextSceneName; // ← PON AQUÍ EL NOMBRE DE LA ESCENA
+    public string nextSceneName; // Nombre de la escena a cargar al final
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        // Validaciones para que no se pierdan referencias
+        if (videoPlayer == null)
+            Debug.LogWarning("VideoPlayer no asignado en SwordCinematicManager");
+
+        if (videoScreen == null)
+            Debug.LogWarning("VideoScreen no asignado en SwordCinematicManager");
+
+        if (fadeCanvas == null)
+            Debug.LogWarning("FadeCanvas no asignado en SwordCinematicManager");
+
+        // Inicializamos la pantalla de fade y video
+        fadeCanvas.alpha = 0f;
+        fadeCanvas.gameObject.SetActive(false);
+
+        videoScreen.gameObject.SetActive(false);
     }
 
-    public void PlaySwordCinematic(Action onCinematicEnd)
+    // Llamar para reproducir la cinemática
+    public void PlaySwordCinematic(Action onCinematicEnd = null)
     {
         StartCoroutine(CinematicRoutine(onCinematicEnd));
     }
@@ -63,7 +69,7 @@ public class SwordCinematicManager : MonoBehaviour
         videoPlayer.Stop();
         videoScreen.gameObject.SetActive(false);
 
-        // 5️⃣ YA TODO NEGRO → cargar escena
+        // 5️⃣ Ejecutar callback y cargar escena final si está asignada
         onCinematicEnd?.Invoke();
 
         if (!string.IsNullOrEmpty(nextSceneName))

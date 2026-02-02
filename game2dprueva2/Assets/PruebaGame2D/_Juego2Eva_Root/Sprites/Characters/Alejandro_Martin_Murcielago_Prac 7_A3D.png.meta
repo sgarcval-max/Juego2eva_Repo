@@ -1,0 +1,977 @@
+fileFormatVersion: 2
+guid: 9512d502c750cb744a98957e800041c3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1814748814157585368
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_0
+  - first:
+      213: -8898778351872808121
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_1
+  - first:
+      213: -5441993342235163153
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_2
+  - first:
+      213: 4211317090003260640
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_3
+  - first:
+      213: -3135891982389190974
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_4
+  - first:
+      213: -3104111957323869249
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_5
+  - first:
+      213: -8893117628801870726
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_6
+  - first:
+      213: -7706857001067186815
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_7
+  - first:
+      213: 4289692813126383278
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_8
+  - first:
+      213: -5848050557846654813
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_9
+  - first:
+      213: -8378192356507622775
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_10
+  - first:
+      213: 3242797272942182854
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_11
+  - first:
+      213: -6517335988080184917
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_12
+  - first:
+      213: -8794320178342253449
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_13
+  - first:
+      213: 3586330359421077516
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_14
+  - first:
+      213: -5635685655563442633
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_15
+  - first:
+      213: -7350471683575145038
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_16
+  - first:
+      213: 8410829032254398912
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_17
+  - first:
+      213: 1964510430987012413
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_18
+  - first:
+      213: 8801974331206030280
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_19
+  - first:
+      213: -7078828301243126634
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_20
+  - first:
+      213: -6177286125678568782
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_21
+  - first:
+      213: -3030084478990082334
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_22
+  - first:
+      213: -991548117595501599
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_23
+  - first:
+      213: -4187979798962366702
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_24
+  - first:
+      213: -4414137886550015096
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_25
+  - first:
+      213: 8210536819470404499
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_26
+  - first:
+      213: 1800432903314547646
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_27
+  - first:
+      213: -6597454005986683449
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_28
+  - first:
+      213: 5699597646960394166
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_29
+  - first:
+      213: -4482280591129295999
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_30
+  - first:
+      213: 7565453361325168873
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_31
+  - first:
+      213: 4471428903955095894
+    second: Alejandro_Martin_Murcielago_Prac 7_A3D_32
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_0
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 2016
+        width: 315
+        height: 544
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8db9c687e684f2910800000000000000
+      internalID: 1814748814157585368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_1
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 2016
+        width: 318
+        height: 544
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74b6fa99c30318480800000000000000
+      internalID: -8898778351872808121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_2
+      rect:
+        serializedVersion: 2
+        x: 1447
+        y: 2016
+        width: 307
+        height: 544
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe5480e53e72a74b0800000000000000
+      internalID: -5441993342235163153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_3
+      rect:
+        serializedVersion: 2
+        x: 2077
+        y: 2016
+        width: 318
+        height: 544
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e41d22b49a917a30800000000000000
+      internalID: 4211317090003260640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_4
+      rect:
+        serializedVersion: 2
+        x: 2716
+        y: 2016
+        width: 317
+        height: 544
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ce52bf4bd21b74d0800000000000000
+      internalID: -3135891982389190974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_5
+      rect:
+        serializedVersion: 2
+        x: 3357
+        y: 2016
+        width: 317
+        height: 544
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb31ba00f9afbe4d0800000000000000
+      internalID: -3104111957323869249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_6
+      rect:
+        serializedVersion: 2
+        x: 4006
+        y: 2016
+        width: 307
+        height: 544
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a74108562ac459480800000000000000
+      internalID: -8893117628801870726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_7
+      rect:
+        serializedVersion: 2
+        x: 4626
+        y: 2016
+        width: 378
+        height: 544
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18578a4e36ebb0590800000000000000
+      internalID: -7706857001067186815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_8
+      rect:
+        serializedVersion: 2
+        x: 5286
+        y: 2016
+        width: 318
+        height: 544
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea6b1f1c2ec088b30800000000000000
+      internalID: 4289692813126383278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_9
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 1377
+        width: 318
+        height: 546
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a0760f700d87dea0800000000000000
+      internalID: -5848050557846654813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_10
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 1416
+        width: 377
+        height: 498
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 982687af07eaabb80800000000000000
+      internalID: -8378192356507622775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_11
+      rect:
+        serializedVersion: 2
+        x: 1396
+        y: 1456
+        width: 498
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c1035c40fab00d20800000000000000
+      internalID: 3242797272942182854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_12
+      rect:
+        serializedVersion: 2
+        x: 1987
+        y: 1276
+        width: 498
+        height: 647
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba17c9cf275cd85a0800000000000000
+      internalID: -6517335988080184917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_13
+      rect:
+        serializedVersion: 2
+        x: 2696
+        y: 1276
+        width: 438
+        height: 486
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77c2cd0646c44f580800000000000000
+      internalID: -8794320178342253449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_14
+      rect:
+        serializedVersion: 2
+        x: 3247
+        y: 1357
+        width: 557
+        height: 487
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c080e70f57435c130800000000000000
+      internalID: 3586330359421077516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_15
+      rect:
+        serializedVersion: 2
+        x: 3838
+        y: 1366
+        width: 646
+        height: 458
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 736606261c50ac1b0800000000000000
+      internalID: -5635685655563442633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 727
+        width: 643
+        height: 456
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bd9fe0c2f0edf990800000000000000
+      internalID: -7350471683575145038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_17
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 716
+        width: 607
+        height: 458
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c1e01e317449b470800000000000000
+      internalID: 8410829032254398912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_18
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 665
+        width: 608
+        height: 459
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d39c78c14d7534b10800000000000000
+      internalID: 1964510430987012413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_19
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 657
+        width: 568
+        height: 456
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c354a5f405e62a70800000000000000
+      internalID: 8801974331206030280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_20
+      rect:
+        serializedVersion: 2
+        x: 2597
+        y: 657
+        width: 566
+        height: 456
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69ceb6e4a23f2cd90800000000000000
+      internalID: -7078828301243126634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_21
+      rect:
+        serializedVersion: 2
+        x: 3236
+        y: 657
+        width: 568
+        height: 456
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2badaf25ffed54aa0800000000000000
+      internalID: -6177286125678568782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_22
+      rect:
+        serializedVersion: 2
+        x: 3857
+        y: 657
+        width: 608
+        height: 467
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ee1f5e683af2f5d0800000000000000
+      internalID: -3030084478990082334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_23
+      rect:
+        serializedVersion: 2
+        x: 4496
+        y: 696
+        width: 607
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1eb43019d305d32f0800000000000000
+      internalID: -991548117595501599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_24
+      rect:
+        serializedVersion: 2
+        x: 5137
+        y: 716
+        width: 623
+        height: 458
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 217165ccf8e41e5c0800000000000000
+      internalID: -4187979798962366702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_25
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 607
+        height: 533
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 883c792baf4ddb2c0800000000000000
+      internalID: -4414137886550015096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_26
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 0
+        width: 607
+        height: 505
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39b8ccb6cbfa1f170800000000000000
+      internalID: 8210536819470404499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_27
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 0
+        width: 560
+        height: 544
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb32dfbbf2c6cf810800000000000000
+      internalID: 1800432903314547646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_28
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 0
+        width: 557
+        height: 513
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c59f2f49822174a0800000000000000
+      internalID: -6597454005986683449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_29
+      rect:
+        serializedVersion: 2
+        x: 2668
+        y: 0
+        width: 416
+        height: 463
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bff9b5bcd9091f40800000000000000
+      internalID: 5699597646960394166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_30
+      rect:
+        serializedVersion: 2
+        x: 3267
+        y: 0
+        width: 478
+        height: 353
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1834c1eec8dbbc1c0800000000000000
+      internalID: -4482280591129295999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_31
+      rect:
+        serializedVersion: 2
+        x: 3905
+        y: 0
+        width: 498
+        height: 283
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e85296afb3edf860800000000000000
+      internalID: 7565453361325168873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alejandro_Martin_Murcielago_Prac 7_A3D_32
+      rect:
+        serializedVersion: 2
+        x: 4546
+        y: 0
+        width: 1007
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65168a2c5e4bd0e30800000000000000
+      internalID: 4471428903955095894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5df0115f366a8764b9e011e4a1dd2f91
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Alejandro_Martin_Murcielago_Prac 7_A3D_0: 1814748814157585368
+      Alejandro_Martin_Murcielago_Prac 7_A3D_1: -8898778351872808121
+      Alejandro_Martin_Murcielago_Prac 7_A3D_10: -8378192356507622775
+      Alejandro_Martin_Murcielago_Prac 7_A3D_11: 3242797272942182854
+      Alejandro_Martin_Murcielago_Prac 7_A3D_12: -6517335988080184917
+      Alejandro_Martin_Murcielago_Prac 7_A3D_13: -8794320178342253449
+      Alejandro_Martin_Murcielago_Prac 7_A3D_14: 3586330359421077516
+      Alejandro_Martin_Murcielago_Prac 7_A3D_15: -5635685655563442633
+      Alejandro_Martin_Murcielago_Prac 7_A3D_16: -7350471683575145038
+      Alejandro_Martin_Murcielago_Prac 7_A3D_17: 8410829032254398912
+      Alejandro_Martin_Murcielago_Prac 7_A3D_18: 1964510430987012413
+      Alejandro_Martin_Murcielago_Prac 7_A3D_19: 8801974331206030280
+      Alejandro_Martin_Murcielago_Prac 7_A3D_2: -5441993342235163153
+      Alejandro_Martin_Murcielago_Prac 7_A3D_20: -7078828301243126634
+      Alejandro_Martin_Murcielago_Prac 7_A3D_21: -6177286125678568782
+      Alejandro_Martin_Murcielago_Prac 7_A3D_22: -3030084478990082334
+      Alejandro_Martin_Murcielago_Prac 7_A3D_23: -991548117595501599
+      Alejandro_Martin_Murcielago_Prac 7_A3D_24: -4187979798962366702
+      Alejandro_Martin_Murcielago_Prac 7_A3D_25: -4414137886550015096
+      Alejandro_Martin_Murcielago_Prac 7_A3D_26: 8210536819470404499
+      Alejandro_Martin_Murcielago_Prac 7_A3D_27: 1800432903314547646
+      Alejandro_Martin_Murcielago_Prac 7_A3D_28: -6597454005986683449
+      Alejandro_Martin_Murcielago_Prac 7_A3D_29: 5699597646960394166
+      Alejandro_Martin_Murcielago_Prac 7_A3D_3: 4211317090003260640
+      Alejandro_Martin_Murcielago_Prac 7_A3D_30: -4482280591129295999
+      Alejandro_Martin_Murcielago_Prac 7_A3D_31: 7565453361325168873
+      Alejandro_Martin_Murcielago_Prac 7_A3D_32: 4471428903955095894
+      Alejandro_Martin_Murcielago_Prac 7_A3D_4: -3135891982389190974
+      Alejandro_Martin_Murcielago_Prac 7_A3D_5: -3104111957323869249
+      Alejandro_Martin_Murcielago_Prac 7_A3D_6: -8893117628801870726
+      Alejandro_Martin_Murcielago_Prac 7_A3D_7: -7706857001067186815
+      Alejandro_Martin_Murcielago_Prac 7_A3D_8: 4289692813126383278
+      Alejandro_Martin_Murcielago_Prac 7_A3D_9: -5848050557846654813
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

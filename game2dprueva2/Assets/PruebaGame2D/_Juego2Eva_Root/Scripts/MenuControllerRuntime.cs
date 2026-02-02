@@ -9,8 +9,7 @@ public class MenuControllerRuntime : MonoBehaviour
     public static MenuControllerRuntime Instance;
 
     [Header("Prefab Options UI")]
-    public GameObject optionsUIPrefab; // Arrastra tu prefab OptionsUI aquÌ
-    private GameObject optionsUIInstance;
+    public GameObject optionsUIPrefab; // Arrastra tu prefab OptionsUI aquÅE    private GameObject optionsUIInstance;
 
     [Header("Scene Main Menu")]
     public CanvasGroup mainMenuGroup; // Se oculta al abrir Options
@@ -53,7 +52,7 @@ public class MenuControllerRuntime : MonoBehaviour
                 canvasGO.AddComponent<GraphicRaycaster>();
 
                 // Instanciar prefab dentro del Canvas
-                optionsUIInstance = Instantiate(optionsUIPrefab, canvasGO.transform);
+                optionsUIPrefab = Instantiate(optionsUIPrefab, canvasGO.transform);
 
                 AssignPanels();
                 SetupButtons();
@@ -71,9 +70,9 @@ public class MenuControllerRuntime : MonoBehaviour
     // -------------------- PANEL ASIGNATION --------------------
     private void AssignPanels()
     {
-        if (optionsUIInstance == null) return;
+        if (optionsUIPrefab == null) return;
 
-        CanvasGroup[] panels = optionsUIInstance.GetComponentsInChildren<CanvasGroup>(true);
+        CanvasGroup[] panels = optionsUIPrefab.GetComponentsInChildren<CanvasGroup>(true);
         foreach (var cg in panels)
         {
             switch (cg.gameObject.name)
@@ -104,9 +103,9 @@ public class MenuControllerRuntime : MonoBehaviour
 
     private void SetupButtons()
     {
-        if (optionsUIInstance == null) return;
+        if (optionsUIPrefab == null) return;
 
-        Button[] buttons = optionsUIInstance.GetComponentsInChildren<Button>(true);
+        Button[] buttons = optionsUIPrefab.GetComponentsInChildren<Button>(true);
         foreach (var btn in buttons)
         {
             btn.onClick.RemoveAllListeners();
@@ -194,9 +193,9 @@ public class MenuControllerRuntime : MonoBehaviour
     // -------------------- SCENE HANDLING --------------------
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (optionsUIInstance != null)
+        if (optionsUIPrefab != null)
         {
-            AssignPanels(); // Reasigna todos los paneles, incluyendo los que se perdÌan
+            AssignPanels(); // Reasigna todos los paneles, incluyendo los que se perd˙}n
         }
     }
 }

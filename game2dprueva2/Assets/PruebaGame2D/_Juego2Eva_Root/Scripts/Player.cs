@@ -22,6 +22,8 @@ public class Player : Entity
 
     public bool IsDead => currentHealth <= 0;
 
+    public static Player Instance; // <-- agregado
+
 
     private void OnEnable()
     {

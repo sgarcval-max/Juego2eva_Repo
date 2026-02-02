@@ -16,6 +16,7 @@ public class BatLogic : MonoBehaviour
     private bool canMove = false;
 
     [SerializeField] private Animator animator;
+    [SerializeField] private bool IsFacingRight = true;
 
     void Update()
     {

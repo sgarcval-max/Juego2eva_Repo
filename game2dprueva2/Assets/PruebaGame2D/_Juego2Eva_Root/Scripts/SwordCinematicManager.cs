@@ -7,7 +7,6 @@ using System.Collections;
 
 public class SwordCinematicManager : MonoBehaviour
 {
-    // Ya no es singleton, por lo que no usamos instance
     [Header("Video")]
     public VideoPlayer videoPlayer;
     public RawImage videoScreen;
@@ -18,29 +17,9 @@ public class SwordCinematicManager : MonoBehaviour
     public float fadeOutBeforeEnd = 2f;
 
     [Header("Escena final")]
-    public string nextSceneName; // Nombre de la escena a cargar al final
+    public string nextSceneName; // ← PON AQUÍ EL NOMBRE DE LA ESCENA
 
-    private void Awake()
-    {
-        // Validaciones para que no se pierdan referencias
-        if (videoPlayer == null)
-            Debug.LogWarning("VideoPlayer no asignado en SwordCinematicManager");
-
-        if (videoScreen == null)
-            Debug.LogWarning("VideoScreen no asignado en SwordCinematicManager");
-
-        if (fadeCanvas == null)
-            Debug.LogWarning("FadeCanvas no asignado en SwordCinematicManager");
-
-        // Inicializamos la pantalla de fade y video
-        fadeCanvas.alpha = 0f;
-        fadeCanvas.gameObject.SetActive(false);
-
-        videoScreen.gameObject.SetActive(false);
-    }
-
-    // Llamar para reproducir la cinemática
-    public void PlaySwordCinematic(Action onCinematicEnd = null)
+    public void PlaySwordCinematic(Action onCinematicEnd)
     {
         StartCoroutine(CinematicRoutine(onCinematicEnd));
     }
@@ -52,24 +31,26 @@ public class SwordCinematicManager : MonoBehaviour
         fadeCanvas.gameObject.SetActive(true);
         yield return StartCoroutine(Fade(0f, 1f, fadeDuration));
 
-        // 2️⃣ Empezar video + fade out del negro
+        // 2️⃣ Cuando ya está todo negro, preparamos el video
         videoScreen.gameObject.SetActive(true);
         videoPlayer.time = 0;
         videoPlayer.Play();
+
+        // 3️⃣ Fade desde negro al video
         yield return StartCoroutine(Fade(1f, 0f, fadeDuration));
 
-        // 3️⃣ Esperar hasta casi el final del video
+        // 4️⃣ Esperar hasta casi el final del video
         float waitTime = (float)videoPlayer.length - fadeOutBeforeEnd;
         if (waitTime > 0)
             yield return new WaitForSeconds(waitTime);
 
-        // 4️⃣ Fade del video a negro
+        // 5️⃣ Fade del video a negro
         yield return StartCoroutine(Fade(0f, 1f, fadeDuration));
 
         videoPlayer.Stop();
         videoScreen.gameObject.SetActive(false);
 
-        // 5️⃣ Ejecutar callback y cargar escena final si está asignada
+        // 6️⃣ Callback y cargar escena
         onCinematicEnd?.Invoke();
 
         if (!string.IsNullOrEmpty(nextSceneName))

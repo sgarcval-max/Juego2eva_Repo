@@ -16,8 +16,8 @@ public class SwordCinematicManager : MonoBehaviour
     public float fadeDuration = 1f;
     public float fadeOutBeforeEnd = 2f;
 
-    [Header("Panel a ocultar durante la cinemática")]
-    public GameObject panelToHide;
+    [Header("Canvas Panel que se oculta")]
+    public GameObject gameplayPanel;
 
     [Header("Escena final")]
     public string nextSceneName;
@@ -29,41 +29,45 @@ public class SwordCinematicManager : MonoBehaviour
 
     private IEnumerator CinematicRoutine(Action onCinematicEnd)
     {
-        // 1️⃣ Fade a negro desde el juego
         fadeCanvas.alpha = 0f;
         fadeCanvas.gameObject.SetActive(true);
+
+        // 1️⃣ Fade a negro + bajar música
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.FadeOutMusic(fadeDuration);
+
         yield return StartCoroutine(Fade(0f, 1f, fadeDuration));
 
-        // 👉 Ocultar panel cuando ya está todo negro
-        if (panelToHide != null)
-            panelToHide.SetActive(false);
+        if (gameplayPanel != null)
+            gameplayPanel.SetActive(false);
 
-        // 2️⃣ Preparar video
+        // 2️⃣ Video
         videoScreen.gameObject.SetActive(true);
         videoPlayer.time = 0;
         videoPlayer.Play();
 
-        // 3️⃣ Fade de negro → video
         yield return StartCoroutine(Fade(1f, 0f, fadeDuration));
 
-        // 4️⃣ Esperar casi al final
+        // 3️⃣ Esperar casi final
         float waitTime = (float)videoPlayer.length - fadeOutBeforeEnd;
         if (waitTime > 0)
             yield return new WaitForSeconds(waitTime);
 
-        // 5️⃣ Fade final a negro
+        // 4️⃣ Fade final + subir música
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.FadeInMusic(fadeDuration);
+
         yield return StartCoroutine(Fade(0f, 1f, fadeDuration));
 
         videoPlayer.Stop();
         videoScreen.gameObject.SetActive(false);
 
-        // 👉 Volver a activar panel antes de cambiar escena
-        if (panelToHide != null)
-            panelToHide.SetActive(true);
+        if (gameplayPanel != null)
+            gameplayPanel.SetActive(true);
 
-        // 6️⃣ Callback + cambiar escena
         onCinematicEnd?.Invoke();
 
+        // 5️⃣ cargar escena
         if (!string.IsNullOrEmpty(nextSceneName))
             SceneManager.LoadScene(nextSceneName);
     }
@@ -83,3 +87,4 @@ public class SwordCinematicManager : MonoBehaviour
         fadeCanvas.alpha = endAlpha;
     }
 }
+

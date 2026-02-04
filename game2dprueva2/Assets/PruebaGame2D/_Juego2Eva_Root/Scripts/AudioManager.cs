@@ -227,4 +227,29 @@ public class AudioManager : MonoBehaviour
         inCombat = false;
         StartCoroutine(CrossfadeMusic(gameplayMusic));
     }
+
+    public void FadeOutMusic(float duration)
+    {
+        StartCoroutine(FadeMusicRoutine(0f, duration));
+    }
+
+    public void FadeInMusic(float duration)
+    {
+        StartCoroutine(FadeMusicRoutine(musicVolume, duration));
+    }
+
+    private IEnumerator FadeMusicRoutine(float target, float duration)
+    {
+        float start = musicSource.volume;
+        float t = 0f;
+
+        while (t < duration)
+        {
+            t += Time.unscaledDeltaTime;
+            musicSource.volume = Mathf.Lerp(start, target, t / duration);
+            yield return null;
+        }
+
+        musicSource.volume = target;
+    }
 }

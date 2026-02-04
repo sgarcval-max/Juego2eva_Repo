@@ -16,8 +16,11 @@ public class SwordCinematicManager : MonoBehaviour
     public float fadeDuration = 1f;
     public float fadeOutBeforeEnd = 2f;
 
+    [Header("Panel a ocultar durante la cinemática")]
+    public GameObject panelToHide;
+
     [Header("Escena final")]
-    public string nextSceneName; // ← PON AQUÍ EL NOMBRE DE LA ESCENA
+    public string nextSceneName;
 
     public void PlaySwordCinematic(Action onCinematicEnd)
     {
@@ -31,26 +34,34 @@ public class SwordCinematicManager : MonoBehaviour
         fadeCanvas.gameObject.SetActive(true);
         yield return StartCoroutine(Fade(0f, 1f, fadeDuration));
 
-        // 2️⃣ Cuando ya está todo negro, preparamos el video
+        // 👉 Ocultar panel cuando ya está todo negro
+        if (panelToHide != null)
+            panelToHide.SetActive(false);
+
+        // 2️⃣ Preparar video
         videoScreen.gameObject.SetActive(true);
         videoPlayer.time = 0;
         videoPlayer.Play();
 
-        // 3️⃣ Fade desde negro al video
+        // 3️⃣ Fade de negro → video
         yield return StartCoroutine(Fade(1f, 0f, fadeDuration));
 
-        // 4️⃣ Esperar hasta casi el final del video
+        // 4️⃣ Esperar casi al final
         float waitTime = (float)videoPlayer.length - fadeOutBeforeEnd;
         if (waitTime > 0)
             yield return new WaitForSeconds(waitTime);
 
-        // 5️⃣ Fade del video a negro
+        // 5️⃣ Fade final a negro
         yield return StartCoroutine(Fade(0f, 1f, fadeDuration));
 
         videoPlayer.Stop();
         videoScreen.gameObject.SetActive(false);
 
-        // 6️⃣ Callback y cargar escena
+        // 👉 Volver a activar panel antes de cambiar escena
+        if (panelToHide != null)
+            panelToHide.SetActive(true);
+
+        // 6️⃣ Callback + cambiar escena
         onCinematicEnd?.Invoke();
 
         if (!string.IsNullOrEmpty(nextSceneName))

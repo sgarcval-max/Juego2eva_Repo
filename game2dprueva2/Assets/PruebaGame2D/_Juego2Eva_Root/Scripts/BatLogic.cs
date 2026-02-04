@@ -26,6 +26,7 @@ public class BatLogic : MonoBehaviour
         {
             FollowPlayer();
         }
+
     }
 
     void DetectPlayer()
@@ -59,11 +60,14 @@ public class BatLogic : MonoBehaviour
     void FollowPlayer()
     {
         Vector2 direction = (player.position - transform.position).normalized;
-        transform.position += (Vector3)direction * moveSpeed * Time.deltaTime;
+        transform.position += (Vector3)direction * moveSpeed * Time.deltaTime; 
+        if (transform.position.x < player.transform.position.x) transform.localScale = new Vector3 (-1F, 1, 1);
+          if (transform.position.x > player.transform.position.x) transform.localScale = new Vector3 (1F, 1 ,1);
     }
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
+
 }

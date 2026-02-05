@@ -26,13 +26,16 @@ public class SwordAbilityPickup : MonoBehaviour
             if (player != null)
                 player.EnableMovement(false);
 
-            // ✅ Usamos la referencia directa, no instance
             if (cinematicManager != null)
             {
                 cinematicManager.PlaySwordCinematic(() =>
                 {
                     if (player != null)
                         player.UnlockAbility(AbilityType.MeleeAttack);
+
+                    // 🔥 ACTUALIZAR UI DE HABILIDADES con el nuevo método
+                    if (AbilityUIManager.Instance != null)
+                        AbilityUIManager.Instance.UnlockAbility(2); // espada = icono 3 (index 2)
 
                     if (player != null)
                         player.EnableMovement(true);
@@ -46,9 +49,12 @@ public class SwordAbilityPickup : MonoBehaviour
             else
             {
                 Debug.LogWarning("Cinematic Manager no asignado en SwordAbilityPickup");
-                // Por seguridad, desbloqueamos la habilidad si no hay manager
+
                 if (player != null)
                     player.UnlockAbility(AbilityType.MeleeAttack);
+
+                if (AbilityUIManager.Instance != null)
+                    AbilityUIManager.Instance.UnlockAbility(2); // espada = icono 3 (index 2)
 
                 if (player != null)
                     player.EnableMovement(true);

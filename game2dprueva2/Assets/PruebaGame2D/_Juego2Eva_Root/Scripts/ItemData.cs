@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public enum AbilityType
 {
@@ -26,9 +26,7 @@ public class ItemData : MonoBehaviour
             // Mostrar popup de UI
             ItemPopupUI popup = FindObjectOfType<ItemPopupUI>();
             if (popup != null)
-            {
                 popup.ShowItem(this);
-            }
 
             Destroy(gameObject);
         }
@@ -40,14 +38,26 @@ public class ItemData : MonoBehaviour
         {
             case AbilityType.DoubleJump:
                 AbilityManager.Instance.doubleJumpUnlocked = true;
+
+                // 🔥 UI icono 1
+                if (AbilityUIManager.Instance != null)
+                    AbilityUIManager.Instance.UnlockAbility(0); // <-- actualizado
                 break;
 
             case AbilityType.ChargedFire:
                 AbilityManager.Instance.chargedFireUnlocked = true;
+
+                // 🔥 UI icono 2
+                if (AbilityUIManager.Instance != null)
+                    AbilityUIManager.Instance.UnlockAbility(1); // <-- actualizado
                 break;
 
             case AbilityType.MeleeAttack:
                 AbilityManager.Instance.meleeAttackUnlocked = true;
+
+                // 🔥 UI icono 3
+                if (AbilityUIManager.Instance != null)
+                    AbilityUIManager.Instance.UnlockAbility(2); // <-- actualizado
                 break;
         }
 

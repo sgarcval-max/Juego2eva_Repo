@@ -271,4 +271,12 @@ public class Player : Entity
         EnableMovement(false);
         anim.SetTrigger(fireTriggerName);
     }
+
+    public void TakeHealing(int amount)
+    {
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, MaxHealth);
+
+        if (PlayerHealthManager.Instance != null)
+            PlayerHealthManager.Instance.UpdateHealth(currentHealth);
+    }
 }

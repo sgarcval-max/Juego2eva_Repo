@@ -5,6 +5,8 @@ public class PlayerHealthManager : MonoBehaviour
 {
     public static PlayerHealthManager Instance;
 
+    public Transform heartTarget;
+
     private int savedHealth = -1; // -1 significa que aún no se ha inicializado
     private int maxHealth = 5;
 

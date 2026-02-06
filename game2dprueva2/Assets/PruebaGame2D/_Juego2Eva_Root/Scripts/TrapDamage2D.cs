@@ -8,7 +8,7 @@ public class TrapDamage2D : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+            PlayerHealthManager playerHealth = other.GetComponent<PlayerHealthManager>();
 
             if (playerHealth != null)
             {

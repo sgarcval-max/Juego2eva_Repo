@@ -4,16 +4,16 @@ public class TrapDamage2D : MonoBehaviour
 {
     public int damage = 1;
 
-    private void OnColissionEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            PlayerHealthManager playerHealth = other.GetComponent<PlayerHealthManager>();
+            Player player = other.GetComponent<Player>();
 
-            if (playerHealth != null)
+            if (player != null)
             {
-                playerHealth.TakeDamage(damage);
-                Debug.Log (damage);
+                player.TakeDamage(damage);
+                Debug.Log("Daño aplicado: " + damage);
             }
         }
     }

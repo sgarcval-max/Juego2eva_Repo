@@ -143,6 +143,7 @@ public class Player : Entity
     {
         base.Die();
         UI.instance.EnableGameOverUI();
+
     }
 
     public void PlayCutsceneMovement(Vector2 velocity)

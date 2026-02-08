@@ -51,29 +51,55 @@ public class Player : Entity
         KeyCode attackKey = KeyBindingsManager.Instance.GetBinding("Attack", InputDeviceType.Keyboard);
         KeyCode fireKey = KeyBindingsManager.Instance.GetBinding("Fire", InputDeviceType.Keyboard);
 
-        // SALTO
+        // ----------------- SALTO -----------------
         if (Input.GetKeyDown(jumpKey))
-        {
             TryToJump();
-        }
 
-        // ATAQUE NORMAL (solo si está desbloqueado)
+        // ----------------- ATAQUE NORMAL -----------------
         if (Input.GetKeyDown(attackKey))
         {
-            if (AbilityManager.Instance != null &&
-                AbilityManager.Instance.meleeAttackUnlocked)
-            {
+            if (AbilityManager.Instance != null && AbilityManager.Instance.meleeAttackUnlocked)
                 HandleAttack();
-            }
         }
 
-        // FIREBALL NORMAL
-        if (Input.GetKeyDown(fireKey))
+        // ----------------- ATAQUE CARGADO -----------------
+        bool canUseChargedFire = AbilityManager.Instance != null &&
+                                  AbilityManager.Instance.chargedFireUnlocked &&
+                                  Time.time >= nextChargeTime;
+
+        // Inicia carga solo si se presiona
+        if (canUseChargedFire && Input.GetKeyDown(fireKey))
+        {
+            isCharging = true;
+            chargeTimer = 0f;
+        }
+
+        // Mientras se mantiene, aumenta chargeTimer
+        if (isCharging && Input.GetKey(fireKey))
+        {
+            chargeTimer += Time.deltaTime;
+            chargeTimer = Mathf.Clamp(chargeTimer, 0, maxChargeTime);
+        }
+
+        // Al soltar, dispara solo si se mantuvo y chargeTimer > 0
+        if (isCharging && Input.GetKeyUp(fireKey))
+        {
+            if (chargeTimer > 0f)
+            {
+                ShootChargedFireball();
+                nextChargeTime = Time.time + chargeCooldown;
+            }
+            isCharging = false;
+            chargeTimer = 0f;
+        }
+
+        // ----------------- ATAQUE NORMAL -----------------
+        // Solo dispara normal si NO estamos cargando
+        if (!isCharging && Input.GetKeyDown(fireKey))
         {
             if (Time.time >= lastFireTime + fireCooldown)
             {
                 lastFireTime = Time.time;
-
                 anim.SetTrigger("fire");
                 ShootFireball();
             }
@@ -81,6 +107,7 @@ public class Player : Entity
 
         HandleChargedFireInput();
     }
+    // ----------------- ATAQUE CARGADO -----------------
 
     protected override void HandleMovement()
     {
@@ -203,23 +230,25 @@ public class Player : Entity
     {
         if (AbilityManager.Instance == null) return;
         if (!AbilityManager.Instance.chargedFireUnlocked) return;
-
         if (Time.time < nextChargeTime) return;
 
         KeyCode fireKey = KeyBindingsManager.Instance.GetBinding("Fire", InputDeviceType.Keyboard);
 
+        // Empieza a cargar
         if (Input.GetKeyDown(fireKey))
         {
             isCharging = true;
             chargeTimer = 0f;
         }
 
+        // Mantener tecla → cargar
         if (Input.GetKey(fireKey) && isCharging)
         {
             chargeTimer += Time.deltaTime;
             chargeTimer = Mathf.Clamp(chargeTimer, 0, maxChargeTime);
         }
 
+        // Soltar tecla → dispara el ataque cargado
         if (Input.GetKeyUp(fireKey) && isCharging)
         {
             ShootChargedFireball();
@@ -230,18 +259,16 @@ public class Player : Entity
 
     private void ShootChargedFireball()
     {
-        if (chargedFireballPrefab == null || chargedFirePoint == null)
+        if (chargedFireballPrefab == null || chargedFirePoint == null || chargeTimer <= 0f)
             return;
 
         GameObject fire = Instantiate(chargedFireballPrefab, chargedFirePoint.position, Quaternion.identity);
-
         Fireball fireballScript = fire.GetComponent<Fireball>();
 
         Vector2 dir = facingRight ? Vector2.right : Vector2.left;
         fireballScript.SetDirection(dir);
 
         float damageMultiplier = 1f + (chargeTimer / maxChargeTime);
-
         fireballScript.damage = Mathf.RoundToInt(fireballScript.damage * damageMultiplier);
     }
 

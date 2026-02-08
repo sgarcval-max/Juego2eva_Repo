@@ -216,11 +216,11 @@ public class Player : Entity
     // -------------------- ATAQUE CARGADO --------------------
 
     [Header("Charged Fire Attack")]
-    [SerializeField] private GameObject chargedFireballPrefab;
-    [SerializeField] private Transform chargedFirePoint;
+    [SerializeField] private GameObject chargedFireballPrefab; // Prefab del ataque cargado
+    [SerializeField] private Transform chargedFirePoint;       // Punto de disparo del proyectil
 
-    [SerializeField] private float maxChargeTime = 2f;
-    [SerializeField] private float chargeCooldown = 3f;
+    [SerializeField] private float maxChargeTime = 2f;        // Tiempo máximo para carga
+    [SerializeField] private float chargeCooldown = 3f;       // Tiempo de espera entre cargas
 
     private float chargeTimer = 0f;
     private bool isCharging = false;
@@ -234,40 +234,56 @@ public class Player : Entity
 
         KeyCode fireKey = KeyBindingsManager.Instance.GetBinding("Fire", InputDeviceType.Keyboard);
 
-        // Empieza a cargar
+        // 1️⃣ Comienza a cargar
         if (Input.GetKeyDown(fireKey))
         {
             isCharging = true;
             chargeTimer = 0f;
+
+            // Mostramos el panel
+            if (ChargeUIController.Instance != null)
+                ChargeUIController.Instance.StartCharging(); // Aquí aparece con efecto disolver/fade
         }
 
-        // Mantener tecla → cargar
+        // 2️⃣ Mantener tecla → actualizar carga
         if (Input.GetKey(fireKey) && isCharging)
         {
             chargeTimer += Time.deltaTime;
             chargeTimer = Mathf.Clamp(chargeTimer, 0, maxChargeTime);
+
+            if (ChargeUIController.Instance != null)
+                ChargeUIController.Instance.UpdateCharge(chargeTimer / maxChargeTime);
         }
 
-        // Soltar tecla → dispara el ataque cargado
+        // 3️⃣ Soltar tecla → disparar ataque cargado
         if (Input.GetKeyUp(fireKey) && isCharging)
         {
             ShootChargedFireball();
             isCharging = false;
             nextChargeTime = Time.time + chargeCooldown;
+
+            // Ocultamos panel
+            if (ChargeUIController.Instance != null)
+                ChargeUIController.Instance.StopCharging(); // Aquí desaparece con efecto
         }
     }
 
+    // -------------------- FUNCION DE DISPARO CARGADO --------------------
     private void ShootChargedFireball()
     {
-        if (chargedFireballPrefab == null || chargedFirePoint == null || chargeTimer <= 0f)
+        if (chargedFireballPrefab == null || chargedFirePoint == null)
             return;
 
+        // Creamos proyectil
         GameObject fire = Instantiate(chargedFireballPrefab, chargedFirePoint.position, Quaternion.identity);
+
         Fireball fireballScript = fire.GetComponent<Fireball>();
 
+        // Dirección según donde esté mirando el player
         Vector2 dir = facingRight ? Vector2.right : Vector2.left;
         fireballScript.SetDirection(dir);
 
+        // Multiplicador de daño según carga
         float damageMultiplier = 1f + (chargeTimer / maxChargeTime);
         fireballScript.damage = Mathf.RoundToInt(fireballScript.damage * damageMultiplier);
     }

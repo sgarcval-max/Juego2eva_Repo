@@ -1,7 +1,14 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
+
+[System.Serializable]
+public class LevelMusic
+{
+    public string sceneName;
+    public AudioClip clip;
+}
 
 public class AudioManager : MonoBehaviour
 {
@@ -13,9 +20,12 @@ public class AudioManager : MonoBehaviour
 
     [Header("Audio Clips")]
     public AudioClip menuMusic;
-    public AudioClip gameplayMusic;      // m�sica normal del nivel
-    public AudioClip combatMusic;        // enemigos normales
-    public AudioClip bossMusic;          // boss
+    public AudioClip gameplayMusic;      // fallback por si no hay clip específico
+    public AudioClip combatMusic;
+    public AudioClip bossMusic;
+
+    [Header("Level Specific Music")]
+    public List<LevelMusic> levelMusics; // música específica por nivel
 
     [Header("Volumes")]
     [Range(0f, 1f)] public float musicVolume = 1f;
@@ -27,8 +37,11 @@ public class AudioManager : MonoBehaviour
     private bool inCombat = false;
     private bool inBossFight = false;
 
-    // ---------------- Guardar tiempo solo para combat y boss ----------------
+    // Guardar tiempo de clips de combate y jefe
     private Dictionary<AudioClip, float> clipTimes = new Dictionary<AudioClip, float>();
+
+    // 🔹 Nueva variable para guardar música actual de la escena
+    private AudioClip currentLevelMusic;
 
     private void Awake()
     {
@@ -59,7 +72,9 @@ public class AudioManager : MonoBehaviour
         combatMusic?.LoadAudioData();
         bossMusic?.LoadAudioData();
 
-        // Inicializar tiempos solo para combate y boss
+        foreach (var lm in levelMusics)
+            lm.clip?.LoadAudioData();
+
         clipTimes[combatMusic] = 0f;
         clipTimes[bossMusic] = 0f;
     }
@@ -73,19 +88,34 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySceneMusic()
     {
-        if (SceneManager.GetActiveScene().name.Contains("Menu"))
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        if (sceneName.Contains("Menu"))
         {
             if (menuMusic != null)
-                PlayMusic(menuMusic);
+            {
+                currentLevelMusic = menuMusic;
+                StartCoroutine(CrossfadeMusic(menuMusic));
+            }
         }
         else
         {
-            if (gameplayMusic != null)
-                PlayMusic(gameplayMusic); // siempre empieza desde 0
+            AudioClip levelClip = levelMusics.Find(l => l.sceneName == sceneName)?.clip;
+
+            if (levelClip != null)
+            {
+                currentLevelMusic = levelClip;
+                StartCoroutine(CrossfadeMusic(levelClip));
+            }
+            else if (gameplayMusic != null)
+            {
+                currentLevelMusic = gameplayMusic;
+                StartCoroutine(CrossfadeMusic(gameplayMusic));
+            }
         }
     }
 
-    // -------------------- M�SICA --------------------
+    // -------------------- MÚSICA --------------------
     public void PlayMusic(AudioClip clip)
     {
         if (musicSource.clip == clip) return;
@@ -126,7 +156,7 @@ public class AudioManager : MonoBehaviour
         if (musicSource != null) musicSource.volume = musicVolume;
     }
 
-    // -------------------- FADE M�SICA --------------------
+    // -------------------- FADE MÚSICA --------------------
     public void FadeMusic(float targetVolume, float duration)
     {
         if (musicSource != null)
@@ -183,7 +213,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            musicSource.time = 0f; // m�sica normal empieza desde 0
+            musicSource.time = 0f; // música normal empieza desde 0
         }
 
         musicSource.Play();
@@ -212,7 +242,7 @@ public class AudioManager : MonoBehaviour
     {
         if (inBossFight) return;
         inCombat = false;
-        StartCoroutine(CrossfadeMusic(gameplayMusic));
+        StartCoroutine(CrossfadeMusic(currentLevelMusic)); // <- vuelve a la música del nivel
     }
 
     public void EnterBoss()
@@ -225,7 +255,7 @@ public class AudioManager : MonoBehaviour
     {
         inBossFight = false;
         inCombat = false;
-        StartCoroutine(CrossfadeMusic(gameplayMusic));
+        StartCoroutine(CrossfadeMusic(currentLevelMusic)); // <- vuelve a la música del nivel
     }
 
     public void FadeOutMusic(float duration)

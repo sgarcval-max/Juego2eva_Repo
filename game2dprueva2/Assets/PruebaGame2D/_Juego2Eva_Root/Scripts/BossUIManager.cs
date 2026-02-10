@@ -1,13 +1,20 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class BossUIManager : MonoBehaviour
 {
     public static BossUIManager Instance;
 
+    [Header("Panel Texto")]
     public CanvasGroup panelGroup;
     public TextMeshProUGUI text;
+
+    [Header("Fade a negro")]
+    public CanvasGroup fadeCanvas;
+    public float fadeDuration = 2f;
+    public string nextSceneName;
 
     [SerializeField] private float fadeSpeed = 2f;
 
@@ -16,8 +23,11 @@ public class BossUIManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
         panelGroup.alpha = 0f;
         panelGroup.gameObject.SetActive(false);
+
+        fadeCanvas.alpha = 0f;
     }
 
     public void ShowPhaseTextFade(int phase)
@@ -42,7 +52,7 @@ public class BossUIManager : MonoBehaviour
 
         text.text = message;
 
-        // ---------- FADE IN ----------
+        // Fade in
         panelGroup.alpha = 0f;
         while (panelGroup.alpha < 1f)
         {
@@ -50,11 +60,9 @@ public class BossUIManager : MonoBehaviour
             yield return null;
         }
 
-        panelGroup.alpha = 1f;
-
         yield return new WaitForSecondsRealtime(2f);
 
-        // ---------- FADE OUT ----------
+        // Fade out
         while (panelGroup.alpha > 0f)
         {
             panelGroup.alpha -= Time.unscaledDeltaTime * fadeSpeed;
@@ -78,7 +86,7 @@ public class BossUIManager : MonoBehaviour
         panelGroup.gameObject.SetActive(true);
         text.text = "Dragon Derrotado";
 
-        // Fade In
+        // Fade in texto
         panelGroup.alpha = 0f;
         while (panelGroup.alpha < 1f)
         {
@@ -86,11 +94,9 @@ public class BossUIManager : MonoBehaviour
             yield return null;
         }
 
-        panelGroup.alpha = 1f;
-
         yield return new WaitForSecondsRealtime(4f);
 
-        // Fade Out
+        // Fade out texto
         while (panelGroup.alpha > 0f)
         {
             panelGroup.alpha -= Time.unscaledDeltaTime * fadeSpeed;
@@ -99,5 +105,25 @@ public class BossUIManager : MonoBehaviour
 
         panelGroup.alpha = 0f;
         panelGroup.gameObject.SetActive(false);
+
+        // 🔥 Fade a negro y cambio de escena
+        yield return StartCoroutine(FadeToBlackAndLoad());
+    }
+
+    IEnumerator FadeToBlackAndLoad()
+    {
+        fadeCanvas.alpha = 0f;
+
+        float t = 0f;
+        while (t < fadeDuration)
+        {
+            t += Time.unscaledDeltaTime;
+            fadeCanvas.alpha = Mathf.Lerp(0f, 1f, t / fadeDuration);
+            yield return null;
+        }
+
+        fadeCanvas.alpha = 1f;
+
+        SceneManager.LoadScene(nextSceneName);
     }
 }

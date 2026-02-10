@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
@@ -18,9 +18,12 @@ public class IntroSceneManager : MonoBehaviour
     public CanvasGroup fadeCanvas;
     public float fadeDuration = 1f;
 
-    [Header("Botón")]
+    [Header("BotÃ³n")]
     public GameObject continueButton;
     public string nextSceneName;
+
+    private bool skipText = false;
+    private bool typingFinished = false;
 
     private void Start()
     {
@@ -28,16 +31,23 @@ public class IntroSceneManager : MonoBehaviour
         StartCoroutine(SceneRoutine());
     }
 
+    private void Update()
+    {
+        // Pulsar ESPACIO = saltar texto
+        if (Input.GetKeyDown(KeyCode.Space) && !typingFinished)
+        {
+            skipText = true;
+        }
+    }
+
     IEnumerator SceneRoutine()
     {
-        // Fade IN desde negro
         fadeCanvas.alpha = 1f;
         yield return StartCoroutine(Fade(1f, 0f));
 
-        // Escribir texto
         yield return StartCoroutine(TypeText());
 
-        // Mostrar botón
+        typingFinished = true;
         continueButton.SetActive(true);
     }
 
@@ -47,6 +57,13 @@ public class IntroSceneManager : MonoBehaviour
 
         foreach (char c in fullText)
         {
+            // Si se pulsa espacio â†’ mostrar texto completo
+            if (skipText)
+            {
+                introText.text = fullText;
+                yield break;
+            }
+
             introText.text += c;
 
             if (typeAudio != null && typeAudio.clip != null && c != ' ')
@@ -64,10 +81,7 @@ public class IntroSceneManager : MonoBehaviour
     IEnumerator ContinueRoutine()
     {
         continueButton.SetActive(false);
-
-        // Fade OUT a negro
         yield return StartCoroutine(Fade(0f, 1f));
-
         SceneManager.LoadScene(nextSceneName);
     }
 
@@ -86,3 +100,4 @@ public class IntroSceneManager : MonoBehaviour
         fadeCanvas.alpha = end;
     }
 }
+
